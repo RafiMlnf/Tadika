@@ -6,11 +6,11 @@ import { usePathname } from 'next/navigation';
 import { useTheme } from '@/context/ThemeContext';
 
 const navLinks = [
-    { href: '/', label: 'HOME' },
-    { href: '/gallery', label: 'GALLERY' },
-    { href: '/trips', label: 'TRIPS' },
-    { href: '/archive', label: 'ARCHIVE' },
-    { href: '/upload', label: 'UPLOAD' },
+    { href: '/', label: 'Home' },
+    { href: '/gallery', label: 'Galeri' },
+    { href: '/trips', label: 'Perjalanan' },
+    { href: '/archive', label: 'Arsip' },
+    { href: '/upload', label: 'Upload' },
 ];
 
 export default function Navbar() {
@@ -50,23 +50,30 @@ export default function Navbar() {
     return (
         <>
             <header className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
-                <div className="navbar-inner section-container">
-                    {/* Brand */}
-                    <Link href="/" className="navbar-brand font-display">
-                        Tadika
-                    </Link>
-
-                    {/* Desktop Nav Links */}
-                    <nav className="navbar-links">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.href}
-                                href={link.href}
-                                className={`nav-pill ${isActive(link.href) ? 'active' : ''}`}
-                            >
-                                {link.label}
-                            </Link>
-                        ))}
+                <div className="navbar-inner section-container" style={{ justifyContent: 'space-between' }}>
+                    {/* Desktop Nav Links & Back to top */}
+                    <nav className={`navbar-links ${scrolled ? 'nav-collapsed' : ''}`}>
+                        <div className="nav-pills-container">
+                            {navLinks.map((link) => (
+                                <Link
+                                    key={link.href}
+                                    href={link.href}
+                                    className={`nav-pill ${isActive(link.href) ? 'active' : ''}`}
+                                    style={{ textTransform: 'capitalize' }}
+                                >
+                                    {link.label}
+                                </Link>
+                            ))}
+                        </div>
+                        <button
+                            className="back-to-top-btn"
+                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                            aria-label="Back to top"
+                        >
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M12 19V5M5 12l7-7 7 7" />
+                            </svg>
+                        </button>
                     </nav>
 
                     {/* Right side: Theme toggle + Mobile hamburger */}
@@ -110,7 +117,7 @@ export default function Navbar() {
                 </nav>
 
                 <div className="mobile-menu-footer font-mono">
-                    /SIRKEL ARCHIVE
+                    /TADIKA ARCHIVE
                 </div>
             </div>
         </>

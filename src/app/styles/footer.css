@@ -1,0 +1,138 @@
+/* ========================================
+   FOOTER STYLES
+   ======================================== */
+
+.site-footer {
+  position: relative;
+  padding: 80px 0 0;
+  margin-top: 80px;
+  background: var(--color-bg-alt);
+  border-top: 1px solid var(--color-border-light);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .footer-brand-col {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.footer-brand {
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: var(--color-text);
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.footer-tagline {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 320px;
+  margin-bottom: 20px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border);
+  color: var(--color-text-secondary);
+  transition: all var(--transition-base);
+}
+
+.footer-social-link:hover {
+  background: var(--color-text);
+  color: var(--color-bg);
+  border-color: var(--color-text);
+  transform: translateY(-2px);
+}
+
+.footer-heading {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 16px;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links a {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: var(--color-text);
+}
+
+.footer-bottom {
+  margin-top: 64px;
+}
+
+.footer-divider {
+  height: 1px;
+  background: var(--color-border-light);
+  margin-bottom: 24px;
+}
+
+.footer-bottom-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 32px;
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.footer-made {
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 480px) {
+  .footer-bottom-content {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}

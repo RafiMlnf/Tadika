@@ -1,0 +1,310 @@
+/* ========================================
+   NAVBAR COMPONENT
+   ======================================== */
+
+/* ---------- Nav Pill Buttons ---------- */
+.nav-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 20px 9px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.nav-pill:hover {
+  background: var(--color-text);
+  color: var(--color-bg);
+  border-color: var(--color-text);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.nav-pill.active {
+  background: var(--color-text);
+  color: var(--color-bg);
+  border-color: var(--color-text);
+}
+
+/* ---------- Navbar Layout ---------- */
+.navbar {
+  position: fixed;
+  top: 10px;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding: 16px 0;
+  transition: all var(--transition-base);
+}
+
+.navbar-scrolled {
+  padding: 10px 0;
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: nowrap;
+}
+
+.navbar-brand {
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: var(--color-text);
+  transition: opacity var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.navbar-brand:hover {
+  opacity: 0.7;
+}
+
+/* Desktop nav links */
+.navbar-links {
+  position: relative;
+  display: none;
+  align-items: center;
+}
+
+.nav-pills-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 600px;
+  width: auto;
+  padding: 2px 0;
+  overflow: hidden;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  transition: all var(--transition-slow);
+  transform-origin: left center;
+}
+
+.nav-collapsed .nav-pills-container {
+  max-width: 0px;
+  opacity: 0;
+  visibility: hidden;
+  gap: 0px;
+  transform: translateX(-20px) scale(0.8);
+  pointer-events: none;
+}
+
+/* ---------- Back to Top Button ---------- */
+.back-to-top-btn {
+  position: absolute;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px) scale(0.5);
+  pointer-events: none;
+  transition: all var(--transition-spring);
+}
+
+.nav-collapsed .back-to-top-btn {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.nav-collapsed .back-to-top-btn:hover {
+  background: var(--color-text);
+  color: var(--color-bg);
+  border-color: var(--color-text);
+  box-shadow: var(--shadow-md);
+  transform: scale(1.05);
+}
+
+.back-to-top-btn svg {
+  transform: rotate(-360deg);
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-collapsed .back-to-top-btn svg {
+  transform: rotate(0deg);
+}
+
+@media (min-width: 768px) {
+  .navbar-links {
+    display: flex;
+  }
+}
+
+/* Right actions container */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme-toggle {
+  font-size: 1.15rem;
+  padding: 8px 14px;
+}
+
+.theme-icon {
+  display: inline-block;
+  transition: transform var(--transition-spring);
+}
+
+.theme-toggle:hover .theme-icon {
+  transform: rotate(20deg) scale(1.15);
+}
+
+/* ---------- Hamburger Menu Button ---------- */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.hamburger:hover {
+  background: var(--color-text);
+  border-color: var(--color-text);
+}
+
+.hamburger:hover .hamburger-line {
+  background: var(--color-bg);
+}
+
+@media (min-width: 768px) {
+  .hamburger {
+    display: none;
+  }
+}
+
+.hamburger-line {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition: all var(--transition-base);
+  transform-origin: center;
+}
+
+.hamburger-line.open:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger-line.open:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburger-line.open:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- Mobile Menu Overlay ---------- */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  background: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--transition-slow), visibility var(--transition-slow);
+}
+
+.mobile-menu-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mobile-menu-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.mobile-menu-link {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--color-text-muted);
+  padding: 8px 24px;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.mobile-menu-open .mobile-menu-link {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
+.mobile-menu-link:hover,
+.mobile-menu-link.active {
+  color: var(--color-text);
+}
+
+.mobile-menu-link.active {
+  position: relative;
+}
+
+.mobile-menu-link.active::after {
+  content: '●';
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.5rem;
+  color: var(--color-accent);
+}
+
+.mobile-menu-footer {
+  margin-top: 48px;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 768px) {
+  .mobile-menu {
+    display: none;
+  }
+}

@@ -1,0 +1,96 @@
+/* ========================================
+   UTILITIES — Media, Overlay, Badge, etc.
+   ======================================== */
+
+/* ---------- Image / Media ---------- */
+.media-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--color-bg-alt);
+}
+
+.media-wrapper img,
+.media-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.media-wrapper:hover img,
+.media-wrapper:hover video {
+  transform: scale(1.05);
+}
+
+/* ---------- Modal / Lightbox Overlay ---------- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Badge ---------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.badge-accent {
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+}
+
+.badge-dark {
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+
+/* ---------- Scrollbar Styling ---------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-alt);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* ---------- Selection Color ---------- */
+::selection {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* ---------- Focus Styles ---------- */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Link Reset ---------- */
+a {
+  color: inherit;
+  text-decoration: none;
+}

@@ -1,0 +1,136 @@
+/* ========================================
+   CARD STYLES
+   ======================================== */
+
+.card {
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.card:hover {
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+/* ── Trip Card ── */
+.trip-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.trip-card-img {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.trip-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.trip-card:hover .trip-card-img img {
+  transform: scale(1.06);
+}
+
+.trip-card-content {
+  padding: 20px;
+}
+
+/* ── Stats Grid ── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 32px 20px;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  transition: all var(--transition-base);
+}
+
+.stat-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.stat-icon {
+  font-size: 2rem;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* ── Masonry Overlay ── */
+.masonry-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 16px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+  color: #fff;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all var(--transition-base);
+}
+
+.media-wrapper:hover .masonry-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Scroll Reveal System ── */
+.reveal-section,
+.reveal-item {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-section.revealed,
+.reveal-item.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}

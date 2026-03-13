@@ -1,0 +1,56 @@
+/* ========================================
+   LAYOUT — Containers & Grid Systems
+   ======================================== */
+
+/* ---------- Section Container ---------- */
+.section-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (min-width: 768px) {
+  .section-container {
+    padding: 0 48px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .section-container {
+    padding: 0 64px;
+  }
+}
+
+/* ---------- Masonry Gallery Base ---------- */
+.masonry-grid {
+  columns: 2;
+  column-gap: 16px;
+}
+
+.masonry-grid>* {
+  break-inside: avoid;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 768px) {
+  .masonry-grid {
+    columns: 3;
+    column-gap: 20px;
+  }
+
+  .masonry-grid>* {
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .masonry-grid {
+    columns: 4;
+    column-gap: 24px;
+  }
+
+  .masonry-grid>* {
+    margin-bottom: 24px;
+  }
+}
