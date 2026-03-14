@@ -53,7 +53,7 @@ export default function Scribbles({ maxActive = 5, spawnInterval = 2500 }: { max
     const width = Math.floor(Math.random() * 300 + 250); // 250 - 550
     const height = Math.floor(Math.random() * 400 + 300); // 300 - 700
     const duration = Math.random() * 4 + 4; // 4-8s (longer for bigger lines)
-    const strokeWidth = Math.random() * 1.5 + 1.2; // 1.2-2.7
+    const strokeWidth = Math.random() * 0.8 + 0.5; // 1.2-2.7
     const opacity = Math.random() * 0.35 + 0.15; // 0.15-0.5
 
     const currentId = idRef.current++;
