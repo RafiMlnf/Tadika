@@ -11,7 +11,7 @@ export default function Footer() {
                     <div className="footer-col footer-brand-col">
                         <Link href="/" className="footer-brand font-display">Tadika</Link>
                         <p className="footer-tagline font-body">
-                            Arsip kenangan dari 2022 hingga sekarang. Foto, video, trip, dan semua momen berharga bersama.
+                            Kumpulan memori dari 2022 sampe sekarang. Foto aib, video random, semua momen sick🔥
                         </p>
                         <div className="footer-socials">
                             <a href="#" aria-label="Instagram" className="footer-social-link">
@@ -32,7 +32,7 @@ export default function Footer() {
 
                     {/* Links Column */}
                     <div className="footer-col">
-                        <h4 className="footer-heading font-mono">NAVIGASI</h4>
+                        <h4 className="footer-heading font-mono">JALAN PINTAS</h4>
                         <ul className="footer-links">
                             <li><Link href="/">Home</Link></li>
                             <li><Link href="/gallery">Gallery</Link></li>
@@ -44,21 +44,21 @@ export default function Footer() {
 
                     {/* Collection Column */}
                     <div className="footer-col">
-                        <h4 className="footer-heading font-mono">KOLEKSI</h4>
+                        <h4 className="footer-heading font-mono">ALBUM</h4>
                         <ul className="footer-links">
-                            <li><Link href="/gallery/pantai">Pantai</Link></li>
-                            <li><Link href="/gallery/gunung">Gunung</Link></li>
-                            <li><Link href="/gallery/kota">Kota</Link></li>
-                            <li><Link href="/gallery/campus">Kampus</Link></li>
+                            <li><Link href="/gallery">Pangandaran</Link></li>
+                            <li><Link href="/gallery">Gunung Putri</Link></li>
+                            <li><Link href="/gallery">Blok M</Link></li>
+                            <li><Link href="/gallery">Random</Link></li>
                         </ul>
                     </div>
 
                     {/* Info Column */}
                     <div className="footer-col">
-                        <h4 className="footer-heading font-mono">INFO</h4>
+                        <h4 className="footer-heading font-mono">MORE INFO</h4>
                         <ul className="footer-links">
-                            <li><Link href="/archive">Arsip Lengkap</Link></li>
-                            <li><Link href="/upload">Kontribusi Foto</Link></li>
+                            <li><Link href="/gallery">Full Archive</Link></li>
+                            <li><Link href="/upload">Upload Aib Temen</Link></li>
                         </ul>
                     </div>
                 </div>
@@ -70,7 +70,7 @@ export default function Footer() {
                             © 2022 — 2026 Tadika Archive
                         </span>
                         <span className="font-mono footer-made">
-                            crafted with ♥
+                            crafted with tangan hitam
                         </span>
                     </div>
                 </div>

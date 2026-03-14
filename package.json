@@ -11,10 +11,14 @@
   "dependencies": {
     "cloudinary": "^2.9.0",
     "framer-motion": "^12.36.0",
+    "heic2any": "^0.0.4",
     "next": "16.1.6",
+    "next-cloudinary": "^6.17.5",
+    "next-image-export-optimizer": "^1.20.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "react-photo-album": "^3.5.1"
+    "react-photo-album": "^3.5.1",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

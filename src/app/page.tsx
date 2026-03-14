@@ -27,48 +27,48 @@ const tripWiki = [
   {
     title: 'Bandung 1',
     date: 'Mar 2022',
-    desc: 'Trip pertama ke Bandung. Jalan-jalan ke Braga, wisata kuliner, dan foto-foto bareng.',
-    detail: 'Trip Bandung 1 merupakan awal mula terbentuknya Tadika. Kami mengunjungi berbagai tempat ikonik seperti Jalan Braga, Gedung Sate, dan Trans Studio Mall. Momen ini menjadi fondasi persahabatan yang kuat hingga sekarang.',
+    desc: 'First trip ke Bandung bareng anak-anak. Mutar-mutar Braga, hunting kuliner hits, dan pastinya jeprat-jepret estetik.',
+    detail: 'Bandung 1 tuh titik awal Tadika terbentuk. Kita gas ke tempat ikonik kayak Braga, Gedung Sate, dan TSM. Pokoknya momen ini jadi core memory kita semua sampai sekarang.',
     img: 'https://images.unsplash.com/photo-1555899434-94d1368aa7af?w=800&q=80',
     photos: 84,
   },
   {
     title: 'Pangandaran',
     date: 'Jul 2023',
-    desc: 'Weekend seru di pantai selatan. Snorkeling, sunset, dan api unggun.',
-    detail: 'Trip ke Pangandaran adalah salah satu momen paling berkesan. Kami menikmati pantai pasir putih, snorkeling di Green Canyon, bermain air di tepi pantai, dan menyalakan api unggun sambil bermain gitar di malam hari.',
+    desc: 'Weekend getaway ke pantai selatan yang pecah banget. Ada snorkeling, chilling liat sunset, plus deep talk rill depan api unggun.',
+    detail: 'Salah satu trip paling goated! Kita enjoy mantai pasir putih, nyebur di Green Canyon, sampai nge-gitar sambil api unggun. Vibes-nya asik abis.',
     img: '/img/pgdn.jpg',
     photos: 126,
   },
   {
     title: 'Puncak Bogor',
     date: 'Des 2023',
-    desc: 'Gathering akhir tahun di villa puncak dengan pemandangan indah.',
-    detail: 'Puncak Bogor menjadi tempat gathering akhir tahun Tadika. Menginap di villa dengan pemandangan pegunungan, BBQ party, games malam, dan sunrise yang spektakuler dari balkon villa.',
+    desc: 'Vibing akhir tahun di villa Puncak dengan view yang sick parah.',
+    detail: 'Puncak Bogor jadi spot gathering penutup tahun. Nge-chill di villa, BBQ-an bareng, turnamen mini games, plus nangkring nungguin sunrise dari balkon.',
     img: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&q=80',
     photos: 67,
   },
   {
     title: 'Gunung Putri',
     date: 'Apr 2024',
-    desc: 'Pendakian ringan dan camping di bawah bintang.',
-    detail: 'Pendakian ke Gunung Putri adalah pengalaman outdoor pertama bagi beberapa anggota. Kami mendirikan tenda, memasak bersama di alam, dan menikmati langit malam penuh bintang. Sunrise dari puncaknya tak terlupakan.',
+    desc: 'Light hiking plus nge-camp chill sambil stargazing.',
+    detail: 'First time nyobain outdoor life buat anak-anak kota. Kita bangun tenda (capek no debat), masak bareng, dan nyantai di bawah bintang. Sunrise pas pagi? No kecot legit banget.',
     img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80',
     photos: 89,
   },
   {
     title: 'Blok M',
     date: 'Agt 2024',
-    desc: 'Jalan-jalan kota, thrifting, café hopping, dan kuliner malam.',
-    detail: 'Eksplorasi Blok M bersama teman-teman. Mulai dari thrifting di M Bloc, café hopping, menikmati street food di area Blok M Square, hingga nongkrong malam sambil ngobrol panjang lebar.',
+    desc: 'City stroll vibes Blok M. Mulai dari nge-thrift, café hopping estetik, sampai hunting kuliner malem.',
+    detail: 'Ngeksplor Blok M bareng gengs. Ngubek-ngubek M Bloc, pindah-pindah café, jajan street food di Blok M Square, lanjut nongkrong sambil curhat ngalor-ngidul.',
     img: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80',
     photos: 54,
   },
   {
     title: 'Lembang',
     date: 'Jan 2025',
-    desc: 'Day trip ke Lembang, menikmati alam dan kuliner khas.',
-    detail: 'Perjalanan seru ke Lembang! Mengunjungi Floating Market, The Lodge Maribaya, dan menikmati sate maranggi khas Lembang. Suasana sejuk pegunungan dan kebersamaan yang menyenangkan.',
+    desc: 'One day escape ke Lembang ngadem sambil hunting kuliner lokal yang maknyus.',
+    detail: 'Trip singkat super fun! Kita mampir ke Floating Market, exploring The Lodge Maribaya, terus mukbang sate maranggi. Vibes sejuk plus ngakak-ngakak bareng.',
     img: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80',
     photos: 72,
   },
@@ -278,7 +278,7 @@ export default function Home() {
               </div>
               <div style={{ padding: 24, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', position: 'relative', zIndex: 1 }}>
                 <h3 className="font-display" style={{ marginBottom: 8, color: '#FFFFFF' }}>Bandung 1</h3>
-                <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '0.95rem' }}>Trip pertama ke Bandung bersama Tadika.</p>
+                <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '0.95rem' }}>First trip ke Bandung bareng gengs Tadika. Vibesnya dapet!</p>
               </div>
             </Link>
 
@@ -291,7 +291,7 @@ export default function Home() {
               </div>
               <div style={{ padding: 24, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', position: 'relative', zIndex: 1 }}>
                 <h3 className="font-display" style={{ marginBottom: 8, color: '#FFFFFF' }}>Pangandaran</h3>
-                <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '0.95rem' }}>48 foto dan video dari trip pantai bersama Tadika.</p>
+                <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '0.95rem' }}>48 foto dan video dari mantai seru bareng Tadika.</p>
               </div>
             </Link>
 
@@ -304,7 +304,7 @@ export default function Home() {
               </div>
               <div style={{ padding: 24, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', position: 'relative', zIndex: 1 }}>
                 <h3 className="font-display" style={{ marginBottom: 8, color: '#FFFFFF' }}>Puncak Bogor</h3>
-                <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '0.95rem' }}>Momen seru di puncak bersama teman-teman.</p>
+                <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '0.95rem' }}>Momen pecah di Puncak bareng anak-anak. Seru abis!</p>
               </div>
             </Link>
 
@@ -317,7 +317,7 @@ export default function Home() {
               </div>
               <div style={{ padding: 24, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', position: 'relative', zIndex: 1 }}>
                 <h3 className="font-display" style={{ marginBottom: 8, color: '#FFFFFF' }}>Gunung Putri</h3>
-                <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '0.95rem' }}>35 foto dan video dari pendakian dan camping.</p>
+                <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '0.95rem' }}>35 foto dan video pas hiking dan camping cantik.</p>
               </div>
             </Link>
 
@@ -330,7 +330,7 @@ export default function Home() {
               </div>
               <div style={{ padding: 24, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', position: 'relative', zIndex: 1 }}>
                 <h3 className="font-display" style={{ marginBottom: 8, color: '#FFFFFF' }}>Blok M</h3>
-                <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '0.95rem' }}>62 foto dan video hangout di kota.</p>
+                <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '0.95rem' }}>62 foto dan video city stroll hangout di kota.</p>
               </div>
             </Link>
 
@@ -343,7 +343,7 @@ export default function Home() {
               </div>
               <div style={{ padding: 24, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', position: 'relative', zIndex: 1 }}>
                 <h3 className="font-display" style={{ marginBottom: 8, color: '#FFFFFF' }}>Lembang</h3>
-                <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '0.95rem' }}>Jalan-jalan seru di Lembang bersama Tadika.</p>
+                <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '0.95rem' }}>Jalan-jalan ngadem asik di Lembang bareng gengs.</p>
               </div>
             </Link>
           </div>

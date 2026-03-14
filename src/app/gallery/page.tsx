@@ -4,40 +4,75 @@ import { useState, useCallback, useRef, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import Image from 'next/image';
 
 /* ── Gallery photo data ── */
-const categories = ['Semua', 'Pantai', 'Gunung', 'Kota', 'Kampus', 'Event'];
+const categories = ['Semua', 'Bandung 1', 'Pangandaran', 'Puncak Bogor', 'Gunung Putri', 'Blok M', 'Lembang', 'Throwback', 'Random'];
 
 const photos = [
-  { src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80', alt: 'Pantai sunset', cat: 'Pantai', h: 360 },
-  { src: 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=400&q=80', alt: 'Ombak biru', cat: 'Pantai', h: 240 },
-  { src: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&q=80', alt: 'Gunung salju', cat: 'Gunung', h: 320 },
-  { src: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400&q=80', alt: 'Danau tenang', cat: 'Gunung', h: 280 },
-  { src: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80', alt: 'Sunrise bukit', cat: 'Gunung', h: 340 },
-  { src: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&q=80', alt: 'Co-working space', cat: 'Kota', h: 240 },
-  { src: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=600&q=80', alt: 'Festival malam', cat: 'Event', h: 300 },
-  { src: 'https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=400&q=80', alt: 'Travel road', cat: 'Gunung', h: 260 },
-  { src: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80', alt: 'Pantai tropis', cat: 'Pantai', h: 320 },
-  { src: 'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=400&q=80', alt: 'Venice canal', cat: 'Kota', h: 280 },
-  { src: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80', alt: 'Mountain peak', cat: 'Gunung', h: 360 },
-  { src: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=400&q=80', alt: 'Camera shot', cat: 'Event', h: 240 },
-  { src: 'https://images.unsplash.com/photo-1540202404-a2f29016b523?w=600&q=80', alt: 'Kampus sore', cat: 'Kampus', h: 300 },
-  { src: 'https://images.unsplash.com/photo-1562774053-701939374585?w=400&q=80', alt: 'Gedung kampus', cat: 'Kampus', h: 280 },
-  { src: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&q=80', alt: 'Hutan pagi', cat: 'Gunung', h: 340 },
-  { src: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&q=80', alt: 'City night', cat: 'Kota', h: 260 },
-  { src: 'https://images.unsplash.com/photo-1528164344705-47542687000d?w=600&q=80', alt: 'Pantai pasir', cat: 'Pantai', h: 300 },
-  { src: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&q=80', alt: 'Laut biru', cat: 'Pantai', h: 280 },
-  { src: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&q=80', alt: 'Wisuda kampus', cat: 'Kampus', h: 320 },
-  { src: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&q=80', alt: 'Konser malam', cat: 'Event', h: 260 },
+  { src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80', alt: 'Pantai sunset', cat: 'Pangandaran', h: 360 },
+  { src: 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=400&q=80', alt: 'Ombak biru', cat: 'Pangandaran', h: 240 },
+  { src: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&q=80', alt: 'Gunung salju', cat: 'Gunung Putri', h: 320 },
+  { src: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400&q=80', alt: 'Danau tenang', cat: 'Puncak Bogor', h: 280 },
+  { src: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80', alt: 'Sunrise bukit', cat: 'Lembang', h: 340 },
+  { src: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&q=80', alt: 'Co-working space', cat: 'Blok M', h: 240 },
+  { src: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=600&q=80', alt: 'Festival malam', cat: 'Bandung 1', h: 300 },
+  { src: 'https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=400&q=80', alt: 'Travel road', cat: 'Gunung Putri', h: 260 },
+  { src: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80', alt: 'Pantai tropis', cat: 'Pangandaran', h: 320 },
+  { src: 'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=400&q=80', alt: 'Venice canal', cat: 'Bandung 1', h: 280 },
+  { src: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80', alt: 'Mountain peak', cat: 'Puncak Bogor', h: 360 },
+  { src: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=400&q=80', alt: 'Camera shot', cat: 'Random', h: 240 },
+  { src: 'https://images.unsplash.com/photo-1540202404-a2f29016b523?w=600&q=80', alt: 'Kampus sore', cat: 'Throwback', h: 300 },
+  { src: 'https://images.unsplash.com/photo-1562774053-701939374585?w=400&q=80', alt: 'Gedung kampus', cat: 'Throwback', h: 280 },
+  { src: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&q=80', alt: 'Hutan pagi', cat: 'Lembang', h: 340 },
+  { src: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&q=80', alt: 'City night', cat: 'Blok M', h: 260 },
+  { src: 'https://images.unsplash.com/photo-1528164344705-47542687000d?w=600&q=80', alt: 'Pantai pasir', cat: 'Pangandaran', h: 300 },
+  { src: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&q=80', alt: 'Laut biru', cat: 'Pangandaran', h: 280 },
+  { src: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&q=80', alt: 'Wisuda kampus', cat: 'Random', h: 320 },
+  { src: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&q=80', alt: 'Konser malam', cat: 'Bandung 1', h: 260 },
 ];
 
 export default function GalleryPage() {
   const [activeFilter, setActiveFilter] = useState('Semua');
   const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
+  const [uploadedPhotos, setUploadedPhotos] = useState<any[]>([]);
 
+  useEffect(() => {
+    const fetchUploadedMedia = async () => {
+      try {
+        const res = await fetch('/api/media');
+        if (res.ok) {
+          const data = await res.json();
+          // Map to gallery format
+          const mappedData = data.map((item: any) => {
+            let cat = item.category;
+            // Fix old lowercased or deprecated categories
+            if (cat.toLowerCase() === 'random') cat = 'Random';
+            if (cat.toLowerCase() === 'throwback') cat = 'Throwback';
+            if (cat.toLowerCase() === 'pantai') cat = 'Pangandaran';
+            if (cat.toLowerCase() === 'gunung') cat = 'Gunung Putri';
+            if (cat.toLowerCase() === 'kota') cat = 'Blok M';
+
+            return {
+              src: item.url,
+              alt: item.title || item.id,
+              cat: cat,
+              h: 300 // default height for uploaded photos
+            };
+          });
+          setUploadedPhotos(mappedData);
+        }
+      } catch (err) {
+        console.error('Failed to fetch media:', err);
+      }
+    };
+    fetchUploadedMedia();
+  }, []);
+
+  const allPhotos = [...uploadedPhotos, ...photos];
   const filteredPhotos = activeFilter === 'Semua'
-    ? photos
-    : photos.filter((p) => p.cat === activeFilter);
+    ? allPhotos
+    : allPhotos.filter((p) => p.cat === activeFilter);
 
   /* ── Scroll-reveal observer ── */
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -93,12 +128,9 @@ export default function GalleryPage() {
         {/* ═══════════ HEADER ═══════════ */}
         <section style={{ paddingTop: 40, paddingBottom: 40, display: 'flex', flexWrap: 'wrap', gap: 24, justifyContent: 'space-between', alignItems: 'flex-start' }}>
           <div ref={scrollRevealRef} className="reveal-section" style={{ flex: '1 1 500px' }}>
-            <span className="badge badge-accent font-mono" style={{ marginBottom: 12, display: 'inline-block' }}>
-              GALLERY
-            </span>
             <h1 className="font-display" style={{ marginBottom: 12 }}>Galeri Foto</h1>
             <p style={{ color: 'var(--color-text-secondary)', fontSize: '1.1rem', maxWidth: 600 }}>
-              Kumpulan foto dan momen berharga dari perjalanan Tadika. Filter berdasarkan kategori untuk menemukan kenangan spesifik.
+              Kumpulan foto/video momen dari Tadika. Tinggal filter aja buat nyari foto mana yang mau lu liat.
             </p>
           </div>
           <div ref={scrollRevealRef} className="reveal-section" style={{ animationDelay: '0.1s' }}>
@@ -147,19 +179,18 @@ export default function GalleryPage() {
                   })
                 }
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={photo.src}
                   alt={photo.alt}
+                  width={600}
+                  height={photo.h}
                   style={{ width: '100%', height: photo.h, objectFit: 'cover', display: 'block' }}
-                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  quality={50}
                 />
                 <div className="masonry-overlay">
                   <span className="font-mono" style={{ fontSize: '0.75rem', letterSpacing: '0.05em' }}>
                     {photo.alt}
-                  </span>
-                  <span className="badge badge-accent font-mono" style={{ fontSize: '0.65rem', padding: '2px 8px' }}>
-                    {photo.cat}
                   </span>
                 </div>
                 {/* Zoom icon */}
@@ -177,8 +208,8 @@ export default function GalleryPage() {
 
           {filteredPhotos.length === 0 && (
             <div style={{ textAlign: 'center', padding: '80px 0', color: 'var(--color-text-muted)' }}>
-              <p className="font-display" style={{ fontSize: '1.4rem', marginBottom: 8 }}>Belum ada foto</p>
-              <p className="font-mono" style={{ fontSize: '0.85rem' }}>Kategori ini masih kosong.</p>
+              <p className="font-display" style={{ fontSize: '1.4rem', marginBottom: 8 }}>Yahhh masih kosong :(</p>
+              <p className="font-mono" style={{ fontSize: '0.85rem' }}>Belum ada foto di kategori ini nih, coba cek yang lain yak.</p>
             </div>
           )}
         </section>
@@ -206,8 +237,16 @@ export default function GalleryPage() {
             )}
 
             {/* Image */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={lightbox.src} alt={lightbox.alt} className="lightbox-img" />
+            <Image
+              src={lightbox.src}
+              alt={lightbox.alt}
+              className="lightbox-img"
+              width={1200}
+              height={800}
+              quality={80}
+              style={{ objectFit: 'contain', width: 'auto', height: 'auto', maxHeight: '85vh', maxWidth: '90vw' }}
+              unoptimized={false}
+            />
 
             {/* Next */}
             {currentIndex < filteredPhotos.length - 1 && (
