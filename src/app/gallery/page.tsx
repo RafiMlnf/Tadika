@@ -130,7 +130,7 @@ export default function GalleryPage() {
           <div ref={scrollRevealRef} className="reveal-section" style={{ flex: '1 1 500px' }}>
             <h1 className="font-display" style={{ marginBottom: 12 }}>Galeri Foto</h1>
             <p style={{ color: 'var(--color-text-secondary)', fontSize: '1.1rem', maxWidth: 600 }}>
-              Kumpulan foto/video momen dari Tadika. Tinggal filter aja buat nyari foto mana yang mau lu liat.
+              Kumpulan foto/video momen Tadika. Tinggal filter aja buat nyari foto mana yang mau lu liat.
             </p>
           </div>
           <div ref={scrollRevealRef} className="reveal-section" style={{ animationDelay: '0.1s' }}>
