@@ -6,11 +6,11 @@ import { usePathname } from 'next/navigation';
 import { useTheme } from '@/context/ThemeContext';
 
 const navLinks = [
-    { href: '/', label: 'HOME' },
-    { href: '/gallery', label: 'GALLERY' },
-    { href: '/trips', label: 'TRIPS' },
-    { href: '/archive', label: 'ARCHIVE' },
-    { href: '/upload', label: 'UPLOAD' },
+    { href: '/', label: 'Home' },
+    { href: '/gallery', label: 'Gallery' },
+    { href: '/trips', label: 'Tadikapedia' },
+    { href: '/archive', label: 'Archive' },
+    { href: '/profile', label: 'Profile' },
 ];
 
 export default function Navbar() {

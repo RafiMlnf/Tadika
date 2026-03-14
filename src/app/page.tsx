@@ -138,7 +138,7 @@ export default function Home() {
         {/* ═══════════ HERO SECTION ═══════════ */}
         <section style={{
           display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-          minHeight: '75vh', textAlign: 'center', gap: 24,
+          minHeight: '25vh', textAlign: 'center', gap: 8,
         }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 24, maxWidth: '100%' }}>
             <div style={{ position: 'relative', display: 'inline-block', maxWidth: '100%' }}>
@@ -164,7 +164,7 @@ export default function Home() {
         <section style={{ paddingBottom: 40, paddingTop: 20 }}>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center', marginBottom: 24 }}>
             <Link href="/gallery" className="btn btn-primary">Lihat Galeri →</Link>
-            <Link href="/upload" className="btn btn-outline">Upload Foto</Link>
+            <Link href="/profile" className="btn btn-outline">Profil Anggota</Link>
           </div>
         </section>
 
