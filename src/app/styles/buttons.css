@@ -15,9 +15,20 @@
   letter-spacing: 0.02em;
   cursor: pointer;
   transition: all var(--transition-base);
-  border: 2px solid transparent;
+  border: 1.5px solid transparent;
   text-decoration: none;
 }
+
+.btn:hover {
+  transform: translate(-4px, -4px);
+  border-color: var(--color-text);
+}
+
+.btn:nth-child(5n+1):hover { box-shadow: 6px 6px 0px #FF7E67 !important; }
+.btn:nth-child(5n+2):hover { box-shadow: 6px 6px 0px #699CD2 !important; }
+.btn:nth-child(5n+3):hover { box-shadow: 6px 6px 0px #6BCB77 !important; }
+.btn:nth-child(5n+4):hover { box-shadow: 6px 6px 0px #FFD166 !important; }
+.btn:nth-child(5n+5):hover { box-shadow: 6px 6px 0px #A084E8 !important; }
 
 .btn-primary {
   background: var(--color-text);
@@ -25,9 +36,10 @@
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-  opacity: 0.9;
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-text);
+  opacity: 1;
 }
 
 .btn-outline {
@@ -40,7 +52,6 @@
   background: var(--color-text);
   color: var(--color-bg);
   border-color: var(--color-text);
-  transform: translateY(-2px);
 }
 
 .btn-accent {
@@ -50,7 +61,7 @@
 }
 
 .btn-accent:hover {
-  background: var(--color-accent-hover);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-text);
 }

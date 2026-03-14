@@ -38,7 +38,7 @@ export default function ProfilePage() {
             <span className="badge badge-accent font-mono" style={{ marginBottom: 12, display: 'inline-block' }}>
               ANGGOTA
             </span>
-            <h1 className="font-display" style={{ marginBottom: 12 }}>Profil Sirkel</h1>
+            <h1 className="font-display" style={{ marginBottom: 12 }}>Profil</h1>
             <p style={{ color: 'var(--color-text-secondary)', fontSize: '1.1rem', maxWidth: 600 }}>
               Kenalan dengan wajah-wajah di balik layar Tadika Archive. Dari tukang foto sampai navigator tersesat.
             </p>

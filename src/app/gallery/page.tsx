@@ -3,6 +3,7 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Link from 'next/link';
 
 /* ── Gallery photo data ── */
 const categories = ['Semua', 'Pantai', 'Gunung', 'Kota', 'Kampus', 'Event'];
@@ -90,15 +91,25 @@ export default function GalleryPage() {
 
       <div className="section-container" style={{ position: 'relative', zIndex: 1 }}>
         {/* ═══════════ HEADER ═══════════ */}
-        <section style={{ paddingTop: 40, paddingBottom: 40 }}>
-          <div ref={scrollRevealRef} className="reveal-section">
+        <section style={{ paddingTop: 40, paddingBottom: 40, display: 'flex', flexWrap: 'wrap', gap: 24, justifyContent: 'space-between', alignItems: 'flex-start' }}>
+          <div ref={scrollRevealRef} className="reveal-section" style={{ flex: '1 1 500px' }}>
             <span className="badge badge-accent font-mono" style={{ marginBottom: 12, display: 'inline-block' }}>
               GALLERY
             </span>
             <h1 className="font-display" style={{ marginBottom: 12 }}>Galeri Foto</h1>
             <p style={{ color: 'var(--color-text-secondary)', fontSize: '1.1rem', maxWidth: 600 }}>
-              Kumpulan foto dan momen berharga dari perjalanan sirkel. Filter berdasarkan kategori untuk menemukan kenangan spesifik.
+              Kumpulan foto dan momen berharga dari perjalanan Tadika. Filter berdasarkan kategori untuk menemukan kenangan spesifik.
             </p>
+          </div>
+          <div ref={scrollRevealRef} className="reveal-section" style={{ animationDelay: '0.1s' }}>
+            <Link href="/upload" className="nav-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '10px 20px', background: 'var(--color-text)', color: 'var(--color-bg)', border: 'none' }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="17 8 12 3 7 8" />
+                <line x1="12" y1="3" x2="12" y2="15" />
+              </svg>
+              Upload Media
+            </Link>
           </div>
         </section>
 

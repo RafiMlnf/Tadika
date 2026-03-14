@@ -114,6 +114,13 @@ export default function Navbar() {
                             {link.label}
                         </Link>
                     ))}
+                    <button
+                        onClick={() => { toggleTheme(); setMobileOpen(false); }}
+                        className="mobile-menu-link"
+                        style={{ animationDelay: `${navLinks.length * 0.08}s`, border: 'none', background: 'none', cursor: 'pointer' }}
+                    >
+                        {theme === 'light' ? 'Dark Mode' : 'Light Mode'} <span className="theme-icon" style={{ marginLeft: 8 }}>{theme === 'light' ? '🌙' : '☀️'}</span>
+                    </button>
                 </nav>
 
                 <div className="mobile-menu-footer font-mono">

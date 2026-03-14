@@ -16,7 +16,7 @@
 @import './styles/profile.css';
 
 /* ========================================
-   SIRKEL ARCHIVE — DESIGN SYSTEM
+   TADIKA ARCHIVE — DESIGN SYSTEM
    Inspired: Creative / Playful / Artistic
    ======================================== */
 
@@ -92,6 +92,10 @@
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.5);
   --shadow-xl: 0 16px 50px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .dark-invert {
+  filter: invert(1) hue-rotate(180deg);
 }
 
 /* ---------- Base Reset ---------- */

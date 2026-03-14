@@ -11,10 +11,15 @@
 }
 
 .card:hover {
-  border-color: var(--color-border);
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
+  border-color: var(--color-text);
+  transform: translate(-4px, -4px);
 }
+
+.card:nth-child(5n+1):hover { box-shadow: 6px 6px 0px #FF7E67; }
+.card:nth-child(5n+2):hover { box-shadow: 6px 6px 0px #699CD2; }
+.card:nth-child(5n+3):hover { box-shadow: 6px 6px 0px #6BCB77; }
+.card:nth-child(5n+4):hover { box-shadow: 6px 6px 0px #FFD166; }
+.card:nth-child(5n+5):hover { box-shadow: 6px 6px 0px #A084E8; }
 
 /* ── Trip Card ── */
 .trip-card {
@@ -77,15 +82,15 @@
 }
 
 .stat-card:hover {
-  border-color: var(--color-accent);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-4px);
+  border-color: var(--color-text);
+  transform: translate(-4px, -4px);
 }
 
-.stat-icon {
-  font-size: 2rem;
-  margin-bottom: 4px;
-}
+.stat-card:nth-child(5n+1):hover { box-shadow: 6px 6px 0px #699CD2; }
+.stat-card:nth-child(5n+2):hover { box-shadow: 6px 6px 0px #FF7E67; }
+.stat-card:nth-child(5n+3):hover { box-shadow: 6px 6px 0px #FFD166; }
+.stat-card:nth-child(5n+4):hover { box-shadow: 6px 6px 0px #A084E8; }
+.stat-card:nth-child(5n+5):hover { box-shadow: 6px 6px 0px #6BCB77; }
 
 .stat-value {
   font-size: 2.2rem;

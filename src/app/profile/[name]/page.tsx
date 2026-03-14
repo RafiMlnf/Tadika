@@ -41,7 +41,7 @@ export default async function MemberProfile({ params }: { params: Promise<{ name
 
             <div className="profile-detail-info">
               <span className="badge badge-accent font-mono" style={{ marginBottom: 16, display: 'inline-block' }}>
-                SIRKEL MEMBER SINCE {member.joinYear}
+                MEMBER SINCE {member.joinYear}
               </span>
               <h1 className="font-display" style={{ fontSize: '3rem', marginBottom: 8 }}>{member.name}</h1>
               

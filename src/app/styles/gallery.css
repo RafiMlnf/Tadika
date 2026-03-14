@@ -200,3 +200,26 @@
     gap: 16px;
   }
 }
+
+/* ── Gallery Scroll Container ── */
+.gallery-scroll-container {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.gallery-scroll-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.gallery-scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.gallery-scroll-container::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+.gallery-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}

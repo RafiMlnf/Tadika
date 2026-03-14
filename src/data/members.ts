@@ -46,7 +46,7 @@ export const members: Member[] = [
     quote: '"Itinerary udah di Google Docs ya!"',
     joinYear: 2023,
     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80',
-    bio: 'Penyusun jadwal dan bendahara andalan sirkel. Kalau bukan karena Sarah, mungkin kita cuma akan wacana bertahun-tahun tanpa eksekusi. Sangat ketat dengan rundown.',
+    bio: 'Penyusun jadwal dan bendahara andalan. Kalau bukan karena Sarah, mungkin kita cuma akan wacana bertahun-tahun tanpa eksekusi. Sangat ketat dengan rundown.',
     stats: { trips: 10, photos: 215 },
     socials: { instagram: '@sarah.plans', twitter: '@sarahstwets' }
   },

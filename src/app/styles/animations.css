@@ -135,6 +135,21 @@
   }
 }
 
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.marquee-content {
+  animation: marquee 20s linear infinite;
+  display: inline-block;
+  padding-right: 4px;
+}
+
 /* ---------- Animation Utility Classes ---------- */
 .animate-fade-in-up {
   animation: fadeInUp 0.6s ease-out forwards;

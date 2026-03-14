@@ -11,7 +11,7 @@ export default function Footer() {
                     <div className="footer-col footer-brand-col">
                         <Link href="/" className="footer-brand font-display">Tadika</Link>
                         <p className="footer-tagline font-body">
-                            Arsip kenangan sirkel dari 2022 hingga sekarang. Foto, video, trip, dan semua momen berharga bersama.
+                            Arsip kenangan dari 2022 hingga sekarang. Foto, video, trip, dan semua momen berharga bersama.
                         </p>
                         <div className="footer-socials">
                             <a href="#" aria-label="Instagram" className="footer-social-link">
@@ -67,7 +67,7 @@ export default function Footer() {
                     <div className="footer-divider" />
                     <div className="footer-bottom-content">
                         <span className="font-mono footer-copy">
-                            © 2022 — 2026 Tadika / Sirkel Archive
+                            © 2022 — 2026 Tadika Archive
                         </span>
                         <span className="font-mono footer-made">
                             crafted with ♥

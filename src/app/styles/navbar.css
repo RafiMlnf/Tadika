@@ -26,12 +26,17 @@
 }
 
 .nav-pill:hover {
-  background: var(--color-text);
-  color: var(--color-bg);
+  background: var(--color-surface);
+  color: var(--color-text);
   border-color: var(--color-text);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  transform: translate(-4px, -4px);
 }
+
+.nav-pill:nth-child(5n+1):hover { box-shadow: 6px 6px 0px #FF7E67; }
+.nav-pill:nth-child(5n+2):hover { box-shadow: 6px 6px 0px #699CD2; }
+.nav-pill:nth-child(5n+3):hover { box-shadow: 6px 6px 0px #6BCB77; }
+.nav-pill:nth-child(5n+4):hover { box-shadow: 6px 6px 0px #FFD166; }
+.nav-pill:nth-child(5n+5):hover { box-shadow: 6px 6px 0px #A084E8; }
 
 .nav-pill.active {
   background: var(--color-text);
@@ -88,7 +93,8 @@
   gap: 8px;
   max-width: 600px;
   width: auto;
-  padding: 2px 0;
+  padding: 10px 10px;
+  margin: -10px -10px;
   overflow: hidden;
   opacity: 1;
   visibility: visible;
@@ -165,6 +171,12 @@
 .theme-toggle {
   font-size: 1.15rem;
   padding: 8px 14px;
+}
+
+@media (max-width: 767px) {
+  .theme-toggle {
+    display: none;
+  }
 }
 
 .theme-icon {
