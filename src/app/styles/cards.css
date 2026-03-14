@@ -13,6 +13,7 @@
 .card:hover {
   border-color: var(--color-text);
   transform: translate(-4px, -4px);
+  z-index: 10;
 }
 
 .card:nth-child(5n+1):hover { box-shadow: 6px 6px 0px #FF7E67; }

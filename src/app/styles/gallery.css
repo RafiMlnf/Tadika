@@ -207,6 +207,13 @@
   scrollbar-color: var(--color-border) transparent;
 }
 
+.gallery-scroll-container::after {
+  content: '';
+  display: block;
+  min-width: 16px;
+  flex-shrink: 0;
+}
+
 .gallery-scroll-container::-webkit-scrollbar {
   height: 6px;
 }

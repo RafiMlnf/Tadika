@@ -37,6 +37,23 @@
   }
 }
 
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes scribbleFade {
+  0% { opacity: 0; }
+  10% { opacity: var(--max-opacity, 1); }
+  85% { opacity: var(--max-opacity, 1); }
+  100% { opacity: 0; }
+}
+
 @keyframes scaleIn {
   from {
     opacity: 0;
@@ -135,6 +152,15 @@
   }
 }
 
+@keyframes drawLoop {
+  0% {
+    stroke-dashoffset: 1;
+  }
+  100% {
+    stroke-dashoffset: -1;
+  }
+}
+
 @keyframes marquee {
   0% {
     transform: translateX(0%);
@@ -195,6 +221,12 @@
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
   animation: drawLine 2s ease-out forwards;
+}
+
+.animate-draw-loop {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: drawLoop 6s linear infinite;
 }
 
 /* ---------- Stagger Animation Delays ---------- */

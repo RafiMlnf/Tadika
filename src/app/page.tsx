@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Scribbles from '@/components/Scribbles';
 import Link from 'next/link';
 
 /* ── Unsplash gallery images (featured masonry) ── */
@@ -148,19 +149,7 @@ export default function Home() {
 
       <Navbar />
 
-      {/* Blob SVG decoration - left */}
-      <div className="blob-decoration" style={{ top: '20%', left: -60 }}>
-        <svg width="200" height="300" viewBox="0 0 200 300">
-          <path d="M50,20 Q120,0 150,80 Q180,160 130,220 Q80,280 30,230 Q-20,180 20,100 Q40,40 50,20Z" className="animate-draw" />
-        </svg>
-      </div>
-
-      {/* Blob SVG decoration - right */}
-      <div className="blob-decoration" style={{ top: '10%', right: -40 }}>
-        <svg width="180" height="350" viewBox="0 0 180 350">
-          <path d="M90,10 Q160,30 160,120 Q160,200 120,260 Q80,320 40,280 Q0,240 20,160 Q40,80 90,10Z" className="animate-draw delay-3" />
-        </svg>
-      </div>
+      <Scribbles />
 
       <div className="section-container" style={{ position: 'relative', zIndex: 1 }}>
         {/* ═══════════ HERO SECTION ═══════════ */}
@@ -279,7 +268,7 @@ export default function Home() {
         {/* ═══════════ GALERI (scrollable cards) ═══════════ */}
         <section ref={scrollRevealRef} className="reveal-section" style={{ paddingBottom: 80 }}>
           <h2 className="font-display" style={{ marginBottom: 24 }}>Galeri</h2>
-          <div style={{ display: 'flex', gap: 20, overflowX: 'auto', paddingBottom: 16, scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch' }} className="gallery-scroll-container">
+          <div style={{ display: 'flex', gap: 20, overflowX: 'auto', padding: '16px 16px 32px 16px', margin: '-16px -16px 0 -16px', scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch' }} className="gallery-scroll-container">
             {/* 1. Bandung 1 */}
             <Link href="/gallery/bandung-1" className="card reveal-item" ref={scrollRevealRef} style={{ position: 'relative', display: 'flex', flexDirection: 'column', minHeight: 300, minWidth: 300, flex: '0 0 300px', overflow: 'hidden', scrollSnapAlign: 'start' }}>
               <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
