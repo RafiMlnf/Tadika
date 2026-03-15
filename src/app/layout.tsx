@@ -3,13 +3,13 @@ import "./globals.css";
 import Providers from "@/components/Providers";
 
 export const metadata: Metadata = {
-  title: "Tadika — Memories",
-  description: "Tempat menyimpan kenangan. Foto, video, dan trip bersama.",
-  keywords: ["tadika", "galeri", "foto", "video", "kenangan", "trip"],
-  authors: [{ name: "Tadika Crew" }],
+  title: "Tadika",
+  description: "Tempat nyimpen foto/video Tadika, biar gak lost media.",
+  keywords: ["tadika", "galeri", "foto", "video", "memories", "trip", "archives"],
+  authors: [{ name: "Tadika" }],
   openGraph: {
-    title: "Tadika — Memories",
-    description: "Tempat menyimpan kenangan.",
+    title: "Tadika",
+    description: "Tempat nyimpen foto/video Tadika, biar gak lost media.",
     type: "website",
   },
 };

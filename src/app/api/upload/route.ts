@@ -21,7 +21,10 @@ export async function POST(request: Request) {
     // Upload directly to Cloudinary via stream handler
     const uploadResult = await new Promise((resolve, reject) => {
       const uploadStream = cloudinary.uploader.upload_stream(
-        { folder: `tadika-gallery/${category}` },
+        { 
+          folder: `tadika-gallery/${category}`,
+          resource_type: 'auto' 
+        },
         (error, result) => {
           if (error) reject(error);
           else resolve(result);

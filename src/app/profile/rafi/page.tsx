@@ -15,9 +15,9 @@ const rafi: Member = {
     youtubeId: 'HLCLMuxV0bI', // Ganti dengan YouTube video ID yang bener
     title: 'Arteri',                  // Ganti judul lagu
     artist: '.Feast',                 // Ganti nama artis
-    startAt: 229,                           // Mulai dari detik ke-60
+    startAt: 232,                           // Mulai dari detik ke-60
   },
-  traits: ['Kameramen', 'Kang Event'],
+  traits: ['Orang Keren', 'IQ 115', 'Event Planner'],
   socials: { instagram: '@rafimlnf' },
 };
 

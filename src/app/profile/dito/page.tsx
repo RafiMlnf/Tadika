@@ -8,7 +8,7 @@ const dito: Member = {
   role: 'Member',
   quote: '"Yang penting makan enak."',
   joinYear: 2024,
-  image: '',
+  image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773603339/dito_ckdfsm.png',
   bio: 'Wingstop.',
   favSong: {
     youtubeId: 'iygXgP2nOF4',

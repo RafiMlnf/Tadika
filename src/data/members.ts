@@ -40,34 +40,35 @@ export const members: Member[] = [
     id: 'mikael',
     name: 'Mikael',
     role: 'Member',
-    quote: '"Boleh-boleh ayo."',
+    quote: 'Boleh-boleh ayo.',
     joinYear: 2023,
     image: '',
     bio: 'Depan PC mulu.',
-    traits: ['Anak Warnet', 'Mageran'],
-    socials: { instagram: '@mikael' }
+    traits: ['PC', 'Malas'],
+    socials: { instagram: '@mikaelrivaldo' }
   },
   {
     id: 'dito',
     name: 'Dito',
     role: 'Member',
-    quote: '"Yang penting makan enak."',
+    quote: '...',
     joinYear: 2024,
-    image: '',
+    image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773603339/dito_ckdfsm.png',
+    imageOffsetY: '25%',
     bio: 'Selalu mementingkan kuliner di setiap destinasi.',
-    traits: ['Foodie', 'Makmur'],
+    traits: ['JKT48', 'Wingstop'],
     socials: { instagram: '@dito' }
   },
   {
     id: 'rafi',
     name: 'Rafi',
     role: 'Event Planner',
-    quote: '"Keren bgt jir gw"',
+    quote: 'Keren bgt jir gw',
     joinYear: 2022,
     image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773516975/rafi_zyj2kl.jpg',
     imageScale: 1.7,     // <--- TAMBAHKAN INI. 1.0 (Normal), 1.2 (Zoom 120%), 1.5 (Zoom 150%) dst.
     bio: 'Orang di balik sebagian besar foto bagus di website ini...',
-    traits: ['Kameramen', 'Kang Event'],
+    traits: ['Orang Keren', 'IQ 115'],
     socials: { instagram: '@rafi.shoots' }
   },
   {
