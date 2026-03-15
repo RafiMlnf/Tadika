@@ -10,7 +10,7 @@ const daffa: Member = {
   joinYear: 2022,
   image: '',
   bio: 'Selalu butuh sinyal dan koneksi, tukang sebar hotspot.',
-  stats: { trips: 13, photos: 400 },
+  traits: ['Dewa Sinyal', 'Penyelamat Kuota'],
   socials: { instagram: '@daffa' },
 };
 

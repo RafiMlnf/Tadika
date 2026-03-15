@@ -10,7 +10,7 @@ const mikael: Member = {
   joinYear: 2023,
   image: '',
   bio: 'Depan PC mulu.',
-  stats: { trips: 8, photos: 90 },
+  traits: ['Anak Warnet', 'Mageran'],
   socials: { instagram: '@mikael' },
 };
 

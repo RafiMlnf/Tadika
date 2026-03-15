@@ -10,7 +10,7 @@ const raka: Member = {
   joinYear: 2024,
   image: '',
   bio: 'Supir andalan saat perjalanan jauh. Sangat hafal rute.',
-  stats: { trips: 5, photos: 60 },
+  traits: ['Supir Andalan', 'GPS Berjalan'],
   socials: { instagram: '@raka' },
 };
 

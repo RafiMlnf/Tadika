@@ -63,13 +63,14 @@ export default function ProfilePage() {
                       height={500}
                       style={{
                         objectFit: 'cover',
-                        objectPosition: member.imageOffsetY ? `center ${member.imageOffsetY}` : 'center',
+                        objectPosition: `${member.imageOffsetX || 'center'} ${member.imageOffsetY || 'center'}`,
                         width: '100%',
                         height: '100%',
                         transform: member.imageScale ? `scale(${member.imageScale})` : 'none',
                         transformOrigin: 'center center'
                       }}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      priority={i < 4}
                     />
                   ) : (
                     <div style={{
@@ -89,15 +90,12 @@ export default function ProfilePage() {
                     {member.quote}
                   </blockquote>
 
-                  <div className="profile-stats-mini">
-                    <div>
-                      <span className="font-mono">{member.stats.trips}</span>
-                      <small>Trips</small>
-                    </div>
-                    <div>
-                      <span className="font-mono">{member.stats.photos}</span>
-                      <small>Photos</small>
-                    </div>
+                  <div className="profile-stats-mini" style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                    {member.traits.map(trait => (
+                      <span key={trait} className="font-mono" style={{ padding: '4px 8px', background: 'var(--color-bg)', border: '1px solid var(--color-border)', borderRadius: '12px', fontSize: '0.7rem' }}>
+                        {trait}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </Link>

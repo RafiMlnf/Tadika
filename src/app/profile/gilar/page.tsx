@@ -10,7 +10,7 @@ const gilar: Member = {
   joinYear: 2023,
   image: '',
   bio: 'Pemberi semangat kalau rombongan sudah mulai capek.',
-  stats: { trips: 7, photos: 210 },
+  traits: ['Motivator', 'Energetik'],
   socials: { instagram: '@gilar' },
 };
 

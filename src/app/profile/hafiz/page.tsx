@@ -11,7 +11,7 @@ const hafiz: Member = {
   image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/f_auto,q_auto/v1773515971/hafiz_qnczjq.heic',
   imageScale: 1.7,
   bio: 'Pria ambisius, lu dapet hasil dari lu belajar selama ini respect, tapi jokes lu anj.',
-  stats: { trips: 5, photos: 120 },
+  traits: ['Ambisius', 'Jokes Gelap'],
   socials: { instagram: '@hafiz' },
 };
 

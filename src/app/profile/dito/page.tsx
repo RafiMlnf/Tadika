@@ -16,7 +16,7 @@ const dito: Member = {
     artist: 'NIKI',
     startAt: 192,
   },
-  stats: { trips: 4, photos: 50 },
+  traits: ['Foodie', 'Makmur'],
   socials: { instagram: '@dito' },
 };
 

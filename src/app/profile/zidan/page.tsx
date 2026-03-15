@@ -8,9 +8,9 @@ const zidan: Member = {
   role: 'The Navigator',
   quote: '"Multitalent."',
   joinYear: 2022,
-  image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773583031/zidan_ig2cul.png',
+  image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773596569/Gemini_Generated_Image_rjh99jrjh99jrjh9_xxsuhc.png',
   bio: 'Lu serba bisa, orang paling fleksibel. Ty bet udah mau ini itu, mvp parah. btw, TOMBOLLLLL.',
-  stats: { trips: 15, photos: 420 },
+  traits: ['CEO', 'Serba Bisa', 'Navigator'],
   socials: { instagram: '@zidan_nav' },
 };
 

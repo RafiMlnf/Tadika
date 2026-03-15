@@ -5,7 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export default function UploadPage() {
-  const [file, setFile] = useState<File | null>(null);
+  const [files, setFiles] = useState<File[]>([]);
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('Random');
   const [uploader, setUploader] = useState('');
@@ -14,34 +14,44 @@ export default function UploadPage() {
 
   const handleUpload = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!file) return;
+    if (files.length === 0) return;
 
     setLoading(true);
     setResult(null);
 
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('title', title);
-    formData.append('category', category);
-    formData.append('uploader', uploader);
+    let successCount = 0;
+    let failCount = 0;
 
-    try {
-      const res = await fetch('/api/upload', {
-        method: 'POST',
-        body: formData,
-      });
-      const data = await res.json();
-      if (res.ok) {
-        setResult({ success: true, message: 'Sabi beud! File sukses di-upload!' });
-        setFile(null);
-        setTitle('');
-      } else {
-        setResult({ success: false, message: data.error || 'Gagal upload nih bro' });
+    for (const f of files) {
+      const formData = new FormData();
+      formData.append('file', f);
+      formData.append('title', `${title} - ${f.name}`);
+      formData.append('category', category);
+      formData.append('uploader', uploader);
+
+      try {
+        const res = await fetch('/api/upload', {
+          method: 'POST',
+          body: formData,
+        });
+        if (res.ok) {
+          successCount++;
+        } else {
+          failCount++;
+        }
+      } catch (err) {
+        failCount++;
       }
-    } catch (err) {
-      setResult({ success: false, message: 'Yah error, servernya lagi mode kentang' });
-    } finally {
-      setLoading(false);
+    }
+
+    setLoading(false);
+    
+    if (failCount === 0) {
+       setResult({ success: true, message: `Sabi beud! ${successCount} File sukses di-upload!` });
+       setFiles([]);
+       setTitle('');
+    } else {
+       setResult({ success: false, message: `Kelakon: ${successCount} sukses, ${failCount} gagal upload nih bro.` });
     }
   };
 
@@ -62,10 +72,19 @@ export default function UploadPage() {
               <input
                 type="file"
                 accept="image/*,video/*"
-                onChange={(e) => setFile(e.target.files?.[0] || null)}
+                multiple
+                onChange={(e) => {
+                  const selectedFiles = Array.from(e.target.files || []);
+                  setFiles(selectedFiles);
+                }}
                 required
                 style={{ width: '100%', padding: '10px', background: 'var(--color-bg)', border: '2px solid var(--color-border)', borderRadius: 'var(--radius-sm)', color: 'var(--color-text)' }}
               />
+              {files.length > 0 && (
+                <div style={{ marginTop: 8, fontSize: '0.8rem', color: 'var(--color-text-muted)' }}>
+                  <em>{files.length} file dipilih.</em>
+                </div>
+              )}
             </div>
 
             <div>
@@ -113,7 +132,7 @@ export default function UploadPage() {
             <button
               type="submit"
               className="nav-pill"
-              disabled={!file || loading}
+              disabled={files.length === 0 || loading}
               style={{ marginTop: 16, padding: '14px', fontSize: '1rem', width: '100%', opacity: loading ? 0.7 : 1, textAlign: 'center', display: 'block' }}
             >
               <span className="font-mono">{loading ? 'OTW NGUPLOAD...' : 'GAS UPLOAD'}</span>

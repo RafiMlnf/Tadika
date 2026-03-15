@@ -10,7 +10,7 @@ const dzaki: Member = {
   joinYear: 2024,
   image: '',
   bio: 'Paling tenang saat nyasar atau ada masalah di jalan.',
-  stats: { trips: 3, photos: 45 },
+  traits: ['Santuy', 'Orang Sabar'],
   socials: { instagram: '@dzaki' },
 };
 

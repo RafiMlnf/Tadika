@@ -43,34 +43,36 @@ export default function MemberDetail({ member }: { member: Member }) {
         {/* Member Info */}
         <section className="profile-detail">
           <div className="profile-detail-header">
-            <div className="profile-detail-img card">
-              {member.image ? (
-                <Image 
-                  src={member.image} 
-                  alt={member.name}
-                  width={800}
-                  height={1000}
-                  style={{ 
-                    objectFit: 'cover', 
-                    objectPosition: member.imageOffsetY ? `center ${member.imageOffsetY}` : 'center',
-                    width: '100%', 
-                    height: '100%',
-                    transform: member.imageScale ? `scale(${member.imageScale})` : 'none',
-                    transformOrigin: 'center center'
-                  }}
-                  priority
-                />
-              ) : (
-                <div style={{
-                  width: '100%', height: '100%',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  background: 'linear-gradient(135deg, var(--color-border), var(--color-bg))',
-                  fontSize: '5rem', fontWeight: 700, color: 'var(--color-text-muted)',
-                  minHeight: 400
-                }} className="font-display">
-                  {member.name.charAt(0)}
-                </div>
-              )}
+            <div className={`vocal-glow-wrapper${ytPlaying ? ' glow-active' : ''}`}>
+              <div className="profile-detail-img card">
+                {member.image ? (
+                  <Image 
+                    src={member.image} 
+                    alt={member.name}
+                    width={800}
+                    height={1000}
+                    style={{ 
+                      objectFit: 'cover', 
+                      objectPosition: `${member.imageOffsetX || 'center'} ${member.imageOffsetY || 'center'}`,
+                      width: '100%', 
+                      height: '100%',
+                      transform: member.imageScale ? `scale(${member.imageScale})` : 'none',
+                      transformOrigin: 'center center'
+                    }}
+                    priority
+                  />
+                ) : (
+                  <div style={{
+                    width: '100%', height: '100%',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    background: 'linear-gradient(135deg, var(--color-border), var(--color-bg))',
+                    fontSize: '5rem', fontWeight: 700, color: 'var(--color-text-muted)',
+                    minHeight: 400
+                  }} className="font-display">
+                    {member.name.charAt(0)}
+                  </div>
+                )}
+              </div>
             </div>
 
             <div className="profile-detail-info">
@@ -172,14 +174,11 @@ export default function MemberDetail({ member }: { member: Member }) {
               )}
 
               <div className="profile-stats-grid">
-                <div className="stat-box card">
-                  <span className="stat-value font-display">{member.stats.trips}</span>
-                  <span className="stat-label font-mono">TRIPS</span>
-                </div>
-                <div className="stat-box card">
-                  <span className="stat-value font-display">{member.stats.photos}</span>
-                  <span className="stat-label font-mono">PHOTOS</span>
-                </div>
+                {member.traits.map((trait, index) => (
+                  <div key={index} className="stat-box card" style={{ padding: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <span className="stat-label font-mono" style={{ fontSize: '0.9rem', color: 'var(--color-text)', textAlign: 'center' }}>{trait}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

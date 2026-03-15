@@ -10,7 +10,7 @@ const dafa: Member = {
   joinYear: 2022,
   image: '',
   bio: 'Paling sering butuh istirahat ngopi dalam perjalanan.',
-  stats: { trips: 10, photos: 250 },
+  traits: ['Anak Senja', 'Pecandu Kafein'],
   socials: { instagram: '@dafa' },
 };
 

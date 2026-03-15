@@ -10,7 +10,7 @@ const hadi: Member = {
   joinYear: 2022,
   image: '',
   bio: 'Sering menanyakan jadwal namun sering kali juga on-time.',
-  stats: { trips: 11, photos: 100 },
+  traits: ['Si Paling On-Time', 'Banyak Nanya'],
   socials: { instagram: '@hadi' },
 };
 

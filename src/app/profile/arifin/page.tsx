@@ -10,7 +10,7 @@ const arifin: Member = {
   joinYear: 2024,
   image: '',
   bio: 'Tukang ngide buat masuk ke rute yang nyeleneh.',
-  stats: { trips: 4, photos: 30 },
+  traits: ['Tukang Ngide', 'Jalur Alternatif'],
   socials: { instagram: '@arifin' },
 };
 

@@ -355,3 +355,110 @@
   width: 4px;
   height: 6px;
 }
+
+/* ── Vocal-Sync Glow Animation ── */
+
+/* Wrapper sits OUTSIDE the overflow:hidden card */
+.vocal-glow-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+/* Base state: pseudo-elements exist but are completely hidden and NOT animating */
+.vocal-glow-wrapper::before,
+.vocal-glow-wrapper::after {
+  content: '';
+  position: absolute;
+  border-radius: calc(var(--radius-lg) + 4px);
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+  /* NO animation here — completely still and invisible */
+}
+
+.vocal-glow-wrapper::before {
+  inset: -4px;
+  background: conic-gradient(
+    from var(--glow-angle, 0deg),
+    transparent 0%,
+    #FF7E67 8%,
+    #FFD166 16%,
+    transparent 24%,
+    transparent 40%,
+    #A084E8 48%,
+    #FF7E67 56%,
+    transparent 64%,
+    transparent 80%,
+    #FFD166 88%,
+    transparent 100%
+  );
+  filter: blur(6px);
+}
+
+.vocal-glow-wrapper::after {
+  inset: -2px;
+  border-radius: calc(var(--radius-lg) + 2px);
+  background: conic-gradient(
+    from var(--glow-angle-2, 180deg),
+    transparent 0%,
+    #FF7E67 12%,
+    transparent 24%,
+    transparent 50%,
+    #A084E8 62%,
+    transparent 74%,
+    transparent 100%
+  );
+  filter: blur(2px);
+}
+
+/* ── ACTIVE state: only when music is playing ── */
+.vocal-glow-wrapper.glow-active::before {
+  opacity: 1;
+  animation:
+    vocal-rotate 3s linear infinite,
+    vocal-pulse-1 0.45s ease-in-out infinite alternate;
+}
+
+.vocal-glow-wrapper.glow-active::after {
+  opacity: 0.8;
+  animation:
+    vocal-rotate-reverse 2.4s linear infinite,
+    vocal-pulse-2 0.35s ease-in-out infinite alternate;
+}
+
+/* Rotation — sweep around the border */
+@keyframes vocal-rotate {
+  to { --glow-angle: 360deg; }
+}
+
+@keyframes vocal-rotate-reverse {
+  to { --glow-angle-2: -180deg; }
+}
+
+/* Pulsing glow intensity — simulating vocal dynamics */
+@keyframes vocal-pulse-1 {
+  0%   { filter: blur(6px) brightness(0.5); opacity: 0.6; }
+  30%  { filter: blur(10px) brightness(1.4); opacity: 1; }
+  60%  { filter: blur(4px) brightness(0.7); opacity: 0.5; }
+  100% { filter: blur(12px) brightness(1.6); opacity: 1; }
+}
+
+@keyframes vocal-pulse-2 {
+  0%   { filter: blur(2px) brightness(0.4); opacity: 0.4; }
+  40%  { filter: blur(5px) brightness(1.5); opacity: 0.9; }
+  70%  { filter: blur(2px) brightness(0.6); opacity: 0.5; }
+  100% { filter: blur(4px) brightness(1.3); opacity: 0.8; }
+}
+
+/* Register custom properties for conic-gradient animation */
+@property --glow-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@property --glow-angle-2 {
+  syntax: '<angle>';
+  initial-value: 180deg;
+  inherits: false;
+}

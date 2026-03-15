@@ -10,7 +10,7 @@ const farhan: Member = {
   joinYear: 2023,
   image: '',
   bio: 'Penggemar kegiatan outdoor dan selalu sedia peralatan camping.',
-  stats: { trips: 9, photos: 150 },
+  traits: ['Pecinta Alam', 'Kang Camping'],
   socials: { instagram: '@farhan' },
 };
 

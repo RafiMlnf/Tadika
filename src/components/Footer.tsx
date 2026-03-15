@@ -57,7 +57,7 @@ export default function Footer() {
                         <h4 className="footer-heading font-mono">MORE INFO</h4>
                         <ul className="footer-links">
                             <li><Link href="/gallery">Full Gallery</Link></li>
-                            <li><Link href="/upload">Upload Aib Temen</Link></li>
+                            <li><Link href="/upload">Upload Aib</Link></li>
                         </ul>
                     </div>
                 </div>

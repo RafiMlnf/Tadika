@@ -10,7 +10,7 @@ const akbar: Member = {
   joinYear: 2023,
   image: '',
   bio: 'Urusan logistik tiket dan penginapan, Akbar yang handle.',
-  stats: { trips: 8, photos: 85 },
+  traits: ['Menteri Keuangan', 'PIC Tiket'],
   socials: { instagram: '@akbar' },
 };
 

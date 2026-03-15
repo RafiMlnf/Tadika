@@ -34,7 +34,8 @@ const photos = [
 
 export default function GalleryPage() {
   const [activeFilter, setActiveFilter] = useState('Semua');
-  const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
+  const [mediaFilter, setMediaFilter] = useState('Semua'); // 'Semua', 'Foto', 'Video'
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string; type?: string } | null>(null);
   const [uploadedPhotos, setUploadedPhotos] = useState<any[]>([]);
 
   // 📝 Komentar state (Instagram style)
@@ -127,10 +128,16 @@ export default function GalleryPage() {
             if (cat.toLowerCase() === 'gunung') cat = 'Gunung Putri';
             if (cat.toLowerCase() === 'kota') cat = 'Blok M';
 
+            let srcUrl = item.url;
+            if (srcUrl.includes('cloudinary.com') && !srcUrl.includes('f_auto')) {
+              srcUrl = srcUrl.replace('/upload/', '/upload/f_auto,q_auto/');
+            }
+
             return {
-              src: item.url,
+              src: srcUrl,
               alt: item.title || item.id,
               cat: cat,
+              type: item.type || 'image',
               h: 300 // default height for uploaded photos
             };
           });
@@ -144,9 +151,14 @@ export default function GalleryPage() {
   }, []);
 
   const allPhotos = [...uploadedPhotos, ...photos];
-  const filteredPhotos = activeFilter === 'Semua'
-    ? allPhotos
-    : allPhotos.filter((p) => p.cat === activeFilter);
+  const filteredPhotos = allPhotos.filter((p) => {
+    const isCatMatch = activeFilter === 'Semua' || p.cat === activeFilter;
+    const itemType = p.type || 'image';
+    const isMediaMatch = mediaFilter === 'Semua' || 
+                         (mediaFilter === 'Foto' && itemType === 'image') || 
+                         (mediaFilter === 'Video' && itemType === 'video');
+    return isCatMatch && isMediaMatch;
+  });
 
   /* ── Scroll-reveal observer ── */
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -183,14 +195,14 @@ export default function GalleryPage() {
   const goNext = () => {
     if (currentIndex < filteredPhotos.length - 1) {
       const next = filteredPhotos[currentIndex + 1];
-      setLightbox({ src: next.src.replace('w=600', 'w=1200').replace('w=400', 'w=1200'), alt: next.alt });
+      setLightbox({ src: next.src.replace('w=600', 'w=1200').replace('w=400', 'w=1200'), alt: next.alt, type: next.type || 'image' });
     }
   };
 
   const goPrev = () => {
     if (currentIndex > 0) {
       const prev = filteredPhotos[currentIndex - 1];
-      setLightbox({ src: prev.src.replace('w=600', 'w=1200').replace('w=400', 'w=1200'), alt: prev.alt });
+      setLightbox({ src: prev.src.replace('w=600', 'w=1200').replace('w=400', 'w=1200'), alt: prev.alt, type: prev.type || 'image' });
     }
   };
 
@@ -221,7 +233,7 @@ export default function GalleryPage() {
 
         {/* ═══════════ FILTER PILLS ═══════════ */}
         <section ref={scrollRevealRef} className="reveal-section" style={{ paddingBottom: 32 }}>
-          <div className="gallery-filters">
+          <div className="gallery-filters" style={{ marginBottom: 16 }}>
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -235,12 +247,33 @@ export default function GalleryPage() {
               </button>
             ))}
           </div>
+          
+          <div className="gallery-filters" style={{ justifyContent: 'flex-start', borderTop: '1px solid var(--color-border)', paddingTop: 16 }}>
+            <span className="font-mono" style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', display: 'flex', alignItems: 'center', marginRight: 8 }}>Format:</span>
+            {['Semua', 'Foto', 'Video'].map((type) => (
+              <button
+                key={type}
+                className={`nav-pill gallery-filter-pill ${mediaFilter === type ? 'active' : ''}`}
+                style={{ padding: '6px 14px', fontSize: '0.8rem' }}
+                onClick={() => setMediaFilter(type)}
+              >
+                {type}
+              </button>
+            ))}
+          </div>
         </section>
 
         {/* ═══════════ MASONRY GRID ═══════════ */}
         <section style={{ paddingBottom: 80 }}>
           <div className="masonry-grid" key={activeFilter}>
-            {filteredPhotos.map((photo, i) => (
+            {filteredPhotos.map((photo, i) => {
+              const isVideo = photo.type === 'video' || photo.src.match(/\.(mp4|mov|webm)$/i);
+              // Cloudinary can generate a thumbnail automatically for videos by changing extension to .jpg
+              const thumbSrc = (isVideo && photo.src.includes('res.cloudinary.com')) 
+                  ? photo.src.replace(/\.[^/.]+$/, ".jpg") 
+                  : photo.src;
+
+              return (
               <div
                 key={`${activeFilter}-${i}`}
                 ref={scrollRevealRef}
@@ -250,34 +283,42 @@ export default function GalleryPage() {
                   setLightbox({
                     src: photo.src.replace('w=600', 'w=1200').replace('w=400', 'w=1200'),
                     alt: photo.alt,
+                    type: photo.type || 'image'
                   })
                 }
               >
                 <Image
-                  src={photo.src}
+                  src={thumbSrc}
                   alt={photo.alt}
                   width={600}
                   height={photo.h}
-                  style={{ width: '100%', height: photo.h, objectFit: 'cover', display: 'block' }}
+                  style={{ width: '100%', height: 'auto', objectFit: 'cover', display: 'block' }}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   quality={50}
+                  priority={i < 6}
                 />
                 <div className="masonry-overlay">
                   <span className="font-mono" style={{ fontSize: '0.75rem', letterSpacing: '0.05em' }}>
                     {photo.alt}
                   </span>
                 </div>
-                {/* Zoom icon */}
+                {/* Visual Icon Overlay */}
                 <div className="gallery-zoom-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="11" cy="11" r="8" />
-                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                    <line x1="11" y1="8" x2="11" y2="14" />
-                    <line x1="8" y1="11" x2="14" y2="11" />
-                  </svg>
+                  {isVideo ? (
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                      <polygon points="5 3 19 12 5 21 5 3" />
+                    </svg>
+                  ) : (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="11" cy="11" r="8" />
+                      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                      <line x1="11" y1="8" x2="11" y2="14" />
+                      <line x1="8" y1="11" x2="14" y2="11" />
+                    </svg>
+                  )}
                 </div>
               </div>
-            ))}
+            )})}
           </div>
 
           {filteredPhotos.length === 0 && (
@@ -302,16 +343,27 @@ export default function GalleryPage() {
                 </button>
               )}
               
-              <Image
-                src={lightbox.src}
-                alt={lightbox.alt}
-                className="lightbox-img"
-                width={1200}
-                height={800}
-                quality={80}
-                style={{ objectFit: 'contain', width: 'auto', height: 'auto', maxHeight: '100%', maxWidth: '100%' }}
-                unoptimized
-              />
+              {lightbox.type === 'video' || lightbox.src.match(/\.(mp4|mov|webm)$/i) ? (
+                <video
+                  src={lightbox.src}
+                  title={lightbox.alt}
+                  className="lightbox-img"
+                  controls
+                  autoPlay
+                  style={{ objectFit: 'contain', width: '100%', height: '100%', maxHeight: '100%', maxWidth: '100%' }}
+                />
+              ) : (
+                <Image
+                  src={lightbox.src}
+                  alt={lightbox.alt}
+                  className="lightbox-img"
+                  width={1200}
+                  height={800}
+                  quality={80}
+                  style={{ objectFit: 'contain', width: 'auto', height: 'auto', maxHeight: '100%', maxWidth: '100%' }}
+                  unoptimized
+                />
+              )}
 
               {currentIndex < filteredPhotos.length - 1 && (
                 <button className="lightbox-nav-btn lightbox-nav-next" onClick={goNext}>

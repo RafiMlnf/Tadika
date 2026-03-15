@@ -17,7 +17,7 @@ const rafi: Member = {
     artist: '.Feast',                 // Ganti nama artis
     startAt: 229,                           // Mulai dari detik ke-60
   },
-  stats: { trips: 14, photos: 1250 },
+  traits: ['Kameramen', 'Kang Event'],
   socials: { instagram: '@rafimlnf' },
 };
 

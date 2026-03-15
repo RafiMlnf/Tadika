@@ -12,7 +12,7 @@ const ricky: Member = {
   imageScale: 1.7,
   imageOffsetY: 'bottom',
   bio: 'Pendamping fotografer dan hobi foto pakai film.',
-  stats: { trips: 6, photos: 310 },
+  traits: ['Skena', 'Roll Film'],
   socials: { instagram: '@ricky' },
 };
 

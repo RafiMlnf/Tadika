@@ -10,7 +10,7 @@ const navin: Member = {
   joinYear: 2023,
   image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/navin_j6quol.jpg',
   bio: 'Paling ngga sabaran kalau di jalan tol.',
-  stats: { trips: 7, photos: 110 },
+  traits: ['Si Paling Ngebut', 'Gak Sabaran'],
   socials: { instagram: '@navin' },
 };
 

@@ -6,7 +6,8 @@ export interface Member {
   joinYear: number;
   image: string;
   imageScale?: number; // Optional zoom level for the physical image tag (e.g. 1.2 for 120% zoom)
-  imageOffsetY?: string; // Untuk geser posisi fokus gambar sblm di zoom (isi dgn 'top', 'bottom', atau persentase spt '20%')
+  imageOffsetX?: string; // Geser X foto (contoh: '-40%', 'center', 'right')
+  imageOffsetY?: string; // Geser Y foto (contoh: '50%', 'center', 'bottom')
   bio: string;
   spotifyTrackId?: string; // Spotify track ID untuk lagu favorit
   favSong?: { // Lagu favorit via YouTube (audio only player)
@@ -15,10 +16,7 @@ export interface Member {
     artist: string;      // Nama artis
     startAt?: number;    // Mulai dari detik ke berapa (default: 0)
   };
-  stats: {
-    trips: number;
-    photos: number;
-  };
+  traits: string[];
   socials: {
     instagram?: string;
     twitter?: string;
@@ -35,7 +33,7 @@ export const members: Member[] = [
     image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/f_auto,q_auto/v1773515971/hafiz_qnczjq.heic',
     imageScale: 1.7,
     bio: 'Pria ambisius, lu dapet hasil dari lu belajar selama ini respect, tapi jokes lu anj.',
-    stats: { trips: 5, photos: 120 },
+    traits: ['Ambisius', 'Jokes Gelap'],
     socials: { instagram: '@hafiz' }
   },
   {
@@ -46,7 +44,7 @@ export const members: Member[] = [
     joinYear: 2023,
     image: '',
     bio: 'Depan PC mulu.',
-    stats: { trips: 8, photos: 90 },
+    traits: ['Anak Warnet', 'Mageran'],
     socials: { instagram: '@mikael' }
   },
   {
@@ -57,7 +55,7 @@ export const members: Member[] = [
     joinYear: 2024,
     image: '',
     bio: 'Selalu mementingkan kuliner di setiap destinasi.',
-    stats: { trips: 4, photos: 50 },
+    traits: ['Foodie', 'Makmur'],
     socials: { instagram: '@dito' }
   },
   {
@@ -69,7 +67,7 @@ export const members: Member[] = [
     image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773516975/rafi_zyj2kl.jpg',
     imageScale: 1.7,     // <--- TAMBAHKAN INI. 1.0 (Normal), 1.2 (Zoom 120%), 1.5 (Zoom 150%) dst.
     bio: 'Orang di balik sebagian besar foto bagus di website ini...',
-    stats: { trips: 14, photos: 1250 },
+    traits: ['Kameramen', 'Kang Event'],
     socials: { instagram: '@rafi.shoots' }
   },
   {
@@ -80,7 +78,7 @@ export const members: Member[] = [
     joinYear: 2023,
     image: '',
     bio: 'Pemberi semangat kalau rombongan sudah mulai capek.',
-    stats: { trips: 7, photos: 210 },
+    traits: ['Motivator', 'Energetik'],
     socials: { instagram: '@gilar' }
   },
   {
@@ -93,7 +91,7 @@ export const members: Member[] = [
     imageScale: 1.7,
     imageOffsetY: 'bottom',
     bio: 'Pendamping fotografer dan hobi foto pakai film.',
-    stats: { trips: 6, photos: 310 },
+    traits: ['Skena', 'Roll Film'],
     socials: { instagram: '@ricky' }
   },
   {
@@ -104,7 +102,7 @@ export const members: Member[] = [
     joinYear: 2022,
     image: '',
     bio: 'Sering menanyakan jadwal namun sering kali juga on-time.',
-    stats: { trips: 11, photos: 100 },
+    traits: ['Si Paling On-Time', 'Banyak Nanya'],
     socials: { instagram: '@hadi' }
   },
   {
@@ -115,7 +113,7 @@ export const members: Member[] = [
     joinYear: 2024,
     image: '',
     bio: 'Paling tenang saat nyasar atau ada masalah di jalan.',
-    stats: { trips: 3, photos: 45 },
+    traits: ['Santuy', 'Orang Sabar'],
     socials: { instagram: '@dzaki' }
   },
   {
@@ -126,7 +124,7 @@ export const members: Member[] = [
     joinYear: 2022,
     image: '',
     bio: 'Selalu butuh sinyal dan koneksi, tukang sebar hotspot.',
-    stats: { trips: 13, photos: 400 },
+    traits: ['Dewa Sinyal', 'Penyelamat Kuota'],
     socials: { instagram: '@daffa' }
   },
   {
@@ -137,7 +135,7 @@ export const members: Member[] = [
     joinYear: 2023,
     image: '',
     bio: 'Penggemar kegiatan outdoor dan selalu sedia peralatan camping.',
-    stats: { trips: 9, photos: 150 },
+    traits: ['Pecinta Alam', 'Kang Camping'],
     socials: { instagram: '@farhan' }
   },
   {
@@ -148,7 +146,7 @@ export const members: Member[] = [
     joinYear: 2022,
     image: '',
     bio: 'Tukang setel musik di mobil dan pencair suasana saat trip mulai garing. Selalu bawa speaker Bluetooth ke mana-mana dan stok jokes bapack-bapack.',
-    stats: { trips: 12, photos: 180 },
+    traits: ['Entertainer', 'Jokes Bapack'],
     socials: { instagram: '@dimas.vibes' }
   },
   {
@@ -159,7 +157,7 @@ export const members: Member[] = [
     joinYear: 2024,
     image: '',
     bio: 'Supir andalan saat perjalanan jauh. Sangat hafal rute.',
-    stats: { trips: 5, photos: 60 },
+    traits: ['Supir Andalan', 'GPS Berjalan'],
     socials: { instagram: '@raka' }
   },
   {
@@ -170,7 +168,7 @@ export const members: Member[] = [
     joinYear: 2023,
     image: '',
     bio: 'Urusan logistik tiket dan penginapan, Akbar yang handle.',
-    stats: { trips: 8, photos: 85 },
+    traits: ['Menteri Keuangan', 'PIC Tiket'],
     socials: { instagram: '@akbar' }
   },
   {
@@ -181,7 +179,7 @@ export const members: Member[] = [
     joinYear: 2022,
     image: '',
     bio: 'Paling sering butuh istirahat ngopi dalam perjalanan.',
-    stats: { trips: 10, photos: 250 },
+    traits: ['Anak Senja', 'Pecandu Kafein'],
     socials: { instagram: '@dafa' }
   },
   {
@@ -192,7 +190,7 @@ export const members: Member[] = [
     joinYear: 2024,
     image: '',
     bio: 'Tukang ngide buat masuk ke rute yang nyeleneh.',
-    stats: { trips: 4, photos: 30 },
+    traits: ['Tukang Ngide', 'Jalur Alternatif'],
     socials: { instagram: '@arifin' }
   },
   {
@@ -203,7 +201,7 @@ export const members: Member[] = [
     joinYear: 2023,
     image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/navin_j6quol.jpg',
     bio: 'Paling ngga sabaran kalau di jalan tol.',
-    stats: { trips: 7, photos: 110 },
+    traits: ['Si Paling Ngebut', 'Gak Sabaran'],
     socials: { instagram: '@navin' }
   },
   {
@@ -212,9 +210,10 @@ export const members: Member[] = [
     role: 'The Navigator',
     quote: '"Multitalent."',
     joinYear: 2022,
-    image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773583031/zidan_ig2cul.png',
+    image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773596569/Gemini_Generated_Image_rjh99jrjh99jrjh9_xxsuhc.png',
+    imageOffsetY: '25%', // Geser atas/bawah thumbnail (contoh: 'top', 'bottom', '20%')
     bio: 'Lu serba bisa, orang paling fleksibel. Ty bet udah mau ini itu, mvp parah. btw, TOMBOLLLLL.',
-    stats: { trips: 15, photos: 420 },
+    traits: ['CEO', 'Serba Bisa'],
     socials: { instagram: '@zidan_nav' }
   }
 ];
