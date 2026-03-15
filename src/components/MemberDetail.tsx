@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
@@ -8,9 +8,13 @@ import Footer from '@/components/Footer';
 import { Member } from '@/data/members';
 
 export default function MemberDetail({ member }: { member: Member }) {
-  const [isPlaying, setIsPlaying] = useState(false);
   const [ytPlaying, setYtPlaying] = useState(false);
   const ytRef = useRef<HTMLIFrameElement>(null);
+  const [origin, setOrigin] = useState('');
+
+  useEffect(() => {
+    setOrigin(window.location.origin);
+  }, []);
 
   const toggleYt = useCallback(() => {
     if (!ytRef.current) return;
@@ -97,13 +101,6 @@ export default function MemberDetail({ member }: { member: Member }) {
               {member.spotifyTrackId && (
                 <div className="spotify-section" style={{ marginBottom: 40 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-                    <div className={`eq-bars ${isPlaying ? 'eq-playing' : ''}`}>
-                      <span className="eq-bar" />
-                      <span className="eq-bar" />
-                      <span className="eq-bar" />
-                      <span className="eq-bar" />
-                      <span className="eq-bar" />
-                    </div>
                     <span className="font-mono" style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', letterSpacing: '0.05em' }}>
                       LAGU FAVORIT
                     </span>
@@ -117,7 +114,6 @@ export default function MemberDetail({ member }: { member: Member }) {
                       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                       loading="lazy"
                       style={{ borderRadius: 12, border: 'none' }}
-                      onLoad={() => setIsPlaying(true)}
                     />
                   </div>
                 </div>
@@ -127,13 +123,6 @@ export default function MemberDetail({ member }: { member: Member }) {
               {member.favSong && (
                 <div className="yt-audio-section" style={{ marginBottom: 40 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-                    <div className={`eq-bars ${ytPlaying ? 'eq-playing' : ''}`}>
-                      <span className="eq-bar" />
-                      <span className="eq-bar" />
-                      <span className="eq-bar" />
-                      <span className="eq-bar" />
-                      <span className="eq-bar" />
-                    </div>
                     <span className="font-mono" style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', letterSpacing: '0.05em' }}>
                       LAGU FAVORIT
                     </span>
@@ -141,14 +130,16 @@ export default function MemberDetail({ member }: { member: Member }) {
 
                   {/* Hidden YouTube iframe */}
                   <div style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', opacity: 0, pointerEvents: 'none' }}>
-                    <iframe
-                      ref={ytRef}
-                      src={`https://www.youtube.com/embed/${member.favSong.youtubeId}?enablejsapi=1&start=${member.favSong.startAt || 0}&autoplay=0&controls=0&origin=${typeof window !== 'undefined' ? window.location.origin : ''}`}
-                      width="1"
-                      height="1"
-                      allow="autoplay"
-                      style={{ border: 'none' }}
-                    />
+                    {origin && (
+                      <iframe
+                        ref={ytRef}
+                        src={`https://www.youtube.com/embed/${member.favSong.youtubeId}?enablejsapi=1&start=${member.favSong.startAt || 0}&autoplay=0&controls=0&origin=${origin}`}
+                        width="1"
+                        height="1"
+                        allow="autoplay"
+                        style={{ border: 'none' }}
+                      />
+                    )}
                   </div>
 
                   {/* Custom Audio Player UI */}
