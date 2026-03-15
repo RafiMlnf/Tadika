@@ -8,7 +8,7 @@ import { useTheme } from '@/context/ThemeContext';
 const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/gallery', label: 'Gallery' },
-    { href: '/trips', label: 'Tadikapedia' },
+    { href: '/ensiklopedia', label: 'Tadikapedia' },
     { href: '/profile', label: 'Profile' },
 ];
 

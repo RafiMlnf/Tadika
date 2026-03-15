@@ -36,7 +36,7 @@ export default function Footer() {
                         <ul className="footer-links">
                             <li><Link href="/">Home</Link></li>
                             <li><Link href="/gallery">Gallery</Link></li>
-                            <li><Link href="/trips">Tadikapedia</Link></li>
+                            <li><Link href="/ensiklopedia">Tadikapedia</Link></li>
                             <li><Link href="/profile">Profile</Link></li>
                         </ul>
                     </div>

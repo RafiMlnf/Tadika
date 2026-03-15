@@ -37,6 +37,80 @@ export default function GalleryPage() {
   const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
   const [uploadedPhotos, setUploadedPhotos] = useState<any[]>([]);
 
+  // 📝 Komentar state (Instagram style)
+  type CommentMsg = { id: string; name: string; text: string; time: string };
+  const [allComments, setAllComments] = useState<Record<string, CommentMsg[]>>({});
+  const [commentName, setCommentName] = useState('');
+  const [commentText, setCommentText] = useState('');
+  const [isPosting, setIsPosting] = useState(false);
+
+  // Load username from localStorage and comments from local API
+  useEffect(() => {
+    const savedName = localStorage.getItem('tadika_commentName');
+    if (savedName) setCommentName(savedName);
+
+    // Fetch comments from local DB
+    const fetchComments = async () => {
+      try {
+        const res = await fetch('/api/comments');
+        if (res.ok) {
+          const data = await res.json();
+          setAllComments(data);
+        }
+      } catch (err) {
+        console.error('Failed to fetch comments', err);
+      }
+    };
+    fetchComments();
+  }, []);
+
+  const handlePostComment = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!commentName.trim() || !commentText.trim() || !lightbox || isPosting) return;
+
+    setIsPosting(true);
+    localStorage.setItem('tadika_commentName', commentName.trim());
+
+    const photoSrc = lightbox.src;
+    const newMsg: CommentMsg = {
+      id: Date.now().toString(),
+      name: commentName.trim(),
+      text: commentText.trim(),
+      time: new Date().toISOString(),
+    };
+
+    try {
+      const res = await fetch('/api/comments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ photoSrc, comment: newMsg }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        setAllComments(data.allComments || data); // update state with latest data
+        setCommentText('');
+      } else {
+        throw new Error('Gagal ngirim komentar');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Komen lu ga kekirim coy, cek konsol!');
+    } finally {
+      setIsPosting(false);
+    }
+  };
+
+  const getTimeAgo = (isoString: string) => {
+    const diff = Date.now() - new Date(isoString).getTime();
+    const minutes = Math.floor(diff / 60000);
+    if (minutes < 1) return 'Baru aja';
+    if (minutes < 60) return `${minutes}m`;
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) return `${hours}j`;
+    return `${Math.floor(hours / 24)}h`;
+  };
+
   useEffect(() => {
     const fetchUploadedMedia = async () => {
       try {
@@ -215,53 +289,103 @@ export default function GalleryPage() {
         </section>
       </div>
 
-      {/* ═══════════ LIGHTBOX ═══════════ */}
+      {/* ═══════════ LIGHTBOX (INSTA LIKE) ═══════════ */}
       {lightbox && (
         <div className="lightbox-overlay" onClick={() => setLightbox(null)}>
           <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-            {/* Close */}
-            <button className="lightbox-close" onClick={() => setLightbox(null)} aria-label="Close lightbox">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
+            
+            {/* Kiri: Foto */}
+            <div className="lightbox-img-wrapper">
+              {currentIndex > 0 && (
+                <button className="lightbox-nav-btn lightbox-nav-prev" onClick={goPrev}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+                </button>
+              )}
+              
+              <Image
+                src={lightbox.src}
+                alt={lightbox.alt}
+                className="lightbox-img"
+                width={1200}
+                height={800}
+                quality={80}
+                style={{ objectFit: 'contain', width: 'auto', height: 'auto', maxHeight: '100%', maxWidth: '100%' }}
+                unoptimized
+              />
 
-            {/* Prev */}
-            {currentIndex > 0 && (
-              <button className="lightbox-nav lightbox-prev" onClick={goPrev} aria-label="Previous photo">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="15 18 9 12 15 6" />
-                </svg>
-              </button>
-            )}
-
-            {/* Image */}
-            <Image
-              src={lightbox.src}
-              alt={lightbox.alt}
-              className="lightbox-img"
-              width={1200}
-              height={800}
-              quality={80}
-              style={{ objectFit: 'contain', width: 'auto', height: 'auto', maxHeight: '85vh', maxWidth: '90vw' }}
-              unoptimized={false}
-            />
-
-            {/* Next */}
-            {currentIndex < filteredPhotos.length - 1 && (
-              <button className="lightbox-nav lightbox-next" onClick={goNext} aria-label="Next photo">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="9 18 15 12 9 6" />
-                </svg>
-              </button>
-            )}
-
-            {/* Caption */}
-            <div className="lightbox-caption font-mono">
-              <span>{lightbox.alt}</span>
-              <span style={{ color: 'var(--color-text-muted)' }}>{currentIndex + 1} / {filteredPhotos.length}</span>
+              {currentIndex < filteredPhotos.length - 1 && (
+                <button className="lightbox-nav-btn lightbox-nav-next" onClick={goNext}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+                </button>
+              )}
             </div>
+
+            {/* Kanan: Sidebar Komentar */}
+            <div className="lightbox-sidebar">
+              <div className="lightbox-sidebar-header">
+                <div className="lightbox-sidebar-title">{lightbox.alt}</div>
+                <button className="lightbox-close-btn" onClick={() => setLightbox(null)}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+                </button>
+              </div>
+
+              <div className="lightbox-comments-list">
+                <div className="lightbox-comment-item" style={{ marginBottom: 8 }}>
+                  <div className="lightbox-comment-avatar" style={{ background: 'transparent', border: '1px solid var(--color-border)' }}>📸</div>
+                  <div className="lightbox-comment-content">
+                    <span className="lightbox-comment-name">System</span>
+                    <span className="lightbox-comment-text">Foto {currentIndex + 1} dari {filteredPhotos.length}</span>
+                  </div>
+                </div>
+
+                {allComments[lightbox.src]?.map((c) => (
+                  <div key={c.id} className="lightbox-comment-item">
+                    <div className="lightbox-comment-avatar">{c.name.charAt(0).toUpperCase()}</div>
+                    <div className="lightbox-comment-content">
+                      <span className="lightbox-comment-name">{c.name}</span>
+                      <span className="lightbox-comment-text">{c.text}</span>
+                      <div className="lightbox-comment-time">{getTimeAgo(c.time)}</div>
+                    </div>
+                  </div>
+                ))}
+                
+                {(!allComments[lightbox.src] || allComments[lightbox.src].length === 0) && (
+                  <div style={{ textAlign: 'center', marginTop: 40, color: 'var(--color-text-muted)' }}>
+                    <div style={{ fontSize: '2.5rem', marginBottom: 8 }}>💬</div>
+                    <p className="font-mono" style={{ fontSize: '0.8rem' }}>Belum ada komentar.<br/>Gas jadi yang pertama ngehujat!</p>
+                  </div>
+                )}
+              </div>
+
+              <form className="lightbox-comment-form" onSubmit={handlePostComment}>
+                <input
+                  type="text"
+                  placeholder="Nama lu siapa bro?"
+                  className="lightbox-comment-input"
+                  value={commentName}
+                  onChange={(e) => setCommentName(e.target.value)}
+                  required
+                />
+                <div style={{ display: 'flex', gap: 8 }}>
+                  <input
+                    type="text"
+                    placeholder="Ketikan bacotan disini..."
+                    className="lightbox-comment-input"
+                    value={commentText}
+                    onChange={(e) => setCommentText(e.target.value)}
+                    required
+                  />
+                  <button 
+                    type="submit" 
+                    className="lightbox-btn-submit"
+                    disabled={!commentName.trim() || !commentText.trim() || isPosting}
+                  >
+                    {isPosting ? '...' : 'Kirim'}
+                  </button>
+                </div>
+              </form>
+            </div>
+
           </div>
         </div>
       )}
