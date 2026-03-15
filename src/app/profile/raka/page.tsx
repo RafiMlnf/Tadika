@@ -8,7 +8,7 @@ const raka: Member = {
   role: 'Member',
   quote: '"Gue yang nyetir aja."',
   joinYear: 2024,
-  image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/navin_j6quol.jpg',
+  image: '',
   bio: 'Supir andalan saat perjalanan jauh. Sangat hafal rute.',
   stats: { trips: 5, photos: 60 },
   socials: { instagram: '@raka' },

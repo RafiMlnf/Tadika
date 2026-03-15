@@ -9,7 +9,13 @@ const dito: Member = {
   quote: '"Yang penting makan enak."',
   joinYear: 2024,
   image: '',
-  bio: 'Selalu mementingkan kuliner di setiap destinasi.',
+  bio: 'Wingstop.',
+  favSong: {
+    youtubeId: 'iygXgP2nOF4',
+    title: 'Take a Chance with Me',
+    artist: 'NIKI',
+    startAt: 192,
+  },
   stats: { trips: 4, photos: 50 },
   socials: { instagram: '@dito' },
 };

@@ -8,7 +8,7 @@ const arifin: Member = {
   role: 'Member',
   quote: '"Gampang itu mah."',
   joinYear: 2024,
-  image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/navin_j6quol.jpg',
+  image: '',
   bio: 'Tukang ngide buat masuk ke rute yang nyeleneh.',
   stats: { trips: 4, photos: 30 },
   socials: { instagram: '@arifin' },

@@ -8,7 +8,7 @@ const hadi: Member = {
   role: 'Member',
   quote: '"Jam berapa ngumpulnya?"',
   joinYear: 2022,
-  image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/navin_j6quol.jpg',
+  image: '',
   bio: 'Sering menanyakan jadwal namun sering kali juga on-time.',
   stats: { trips: 11, photos: 100 },
   socials: { instagram: '@hadi' },

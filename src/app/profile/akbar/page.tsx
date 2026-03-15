@@ -8,7 +8,7 @@ const akbar: Member = {
   role: 'Member',
   quote: '"Udah pesan tiket blm?"',
   joinYear: 2023,
-  image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/navin_j6quol.jpg',
+  image: '',
   bio: 'Urusan logistik tiket dan penginapan, Akbar yang handle.',
   stats: { trips: 8, photos: 85 },
   socials: { instagram: '@akbar' },

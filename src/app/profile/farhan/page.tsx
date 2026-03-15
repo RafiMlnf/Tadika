@@ -8,7 +8,7 @@ const farhan: Member = {
   role: 'Member',
   quote: '"Gas aja mumpung cerah."',
   joinYear: 2023,
-  image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/navin_j6quol.jpg',
+  image: '',
   bio: 'Penggemar kegiatan outdoor dan selalu sedia peralatan camping.',
   stats: { trips: 9, photos: 150 },
   socials: { instagram: '@farhan' },

@@ -102,7 +102,7 @@ export const members: Member[] = [
     role: 'Member',
     quote: '"Jam berapa ngumpulnya?"',
     joinYear: 2022,
-    image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/navin_j6quol.jpg',
+    image: '',
     bio: 'Sering menanyakan jadwal namun sering kali juga on-time.',
     stats: { trips: 11, photos: 100 },
     socials: { instagram: '@hadi' }
@@ -113,7 +113,7 @@ export const members: Member[] = [
     role: 'Member',
     quote: '"Santuy aja lah."',
     joinYear: 2024,
-    image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/navin_j6quol.jpg',
+    image: '',
     bio: 'Paling tenang saat nyasar atau ada masalah di jalan.',
     stats: { trips: 3, photos: 45 },
     socials: { instagram: '@dzaki' }
@@ -124,7 +124,7 @@ export const members: Member[] = [
     role: 'Member',
     quote: '"Cari WiFi di mana nih?"',
     joinYear: 2022,
-    image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/navin_j6quol.jpg',
+    image: '',
     bio: 'Selalu butuh sinyal dan koneksi, tukang sebar hotspot.',
     stats: { trips: 13, photos: 400 },
     socials: { instagram: '@daffa' }
@@ -135,7 +135,7 @@ export const members: Member[] = [
     role: 'Member',
     quote: '"Gas aja mumpung cerah."',
     joinYear: 2023,
-    image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/navin_j6quol.jpg',
+    image: '',
     bio: 'Penggemar kegiatan outdoor dan selalu sedia peralatan camping.',
     stats: { trips: 9, photos: 150 },
     socials: { instagram: '@farhan' }
@@ -146,7 +146,7 @@ export const members: Member[] = [
     role: 'The Entertainer',
     quote: '"Bro, dengerin playlist gue nih."',
     joinYear: 2022,
-    image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/navin_j6quol.jpg',
+    image: '',
     bio: 'Tukang setel musik di mobil dan pencair suasana saat trip mulai garing. Selalu bawa speaker Bluetooth ke mana-mana dan stok jokes bapack-bapack.',
     stats: { trips: 12, photos: 180 },
     socials: { instagram: '@dimas.vibes' }
@@ -157,7 +157,7 @@ export const members: Member[] = [
     role: 'Member',
     quote: '"Gue yang nyetir aja."',
     joinYear: 2024,
-    image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/navin_j6quol.jpg',
+    image: '',
     bio: 'Supir andalan saat perjalanan jauh. Sangat hafal rute.',
     stats: { trips: 5, photos: 60 },
     socials: { instagram: '@raka' }
@@ -168,7 +168,7 @@ export const members: Member[] = [
     role: 'Member',
     quote: '"Udah pesan tiket blm?"',
     joinYear: 2023,
-    image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/navin_j6quol.jpg',
+    image: '',
     bio: 'Urusan logistik tiket dan penginapan, Akbar yang handle.',
     stats: { trips: 8, photos: 85 },
     socials: { instagram: '@akbar' }
@@ -179,7 +179,7 @@ export const members: Member[] = [
     role: 'Member',
     quote: '"Ayo mampir beli kopi bentar."',
     joinYear: 2022,
-    image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/navin_j6quol.jpg',
+    image: '',
     bio: 'Paling sering butuh istirahat ngopi dalam perjalanan.',
     stats: { trips: 10, photos: 250 },
     socials: { instagram: '@dafa' }
@@ -190,7 +190,7 @@ export const members: Member[] = [
     role: 'Member',
     quote: '"Gampang itu mah."',
     joinYear: 2024,
-    image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/navin_j6quol.jpg',
+    image: '',
     bio: 'Tukang ngide buat masuk ke rute yang nyeleneh.',
     stats: { trips: 4, photos: 30 },
     socials: { instagram: '@arifin' }
@@ -212,8 +212,8 @@ export const members: Member[] = [
     role: 'The Navigator',
     quote: '"Multitalent."',
     joinYear: 2022,
-    image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/navin_j6quol.jpg',
-    bio: 'Zidan adalah orang yang selalu dipersilahkan untuk memegang Google Maps. Spesialis jalan-jalan spontan dan penemu tempat makan hidden gem. Tidak pernah absen dalam trip apapun.',
+    image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773583031/zidan_ig2cul.png',
+    bio: 'Lu serba bisa, orang paling fleksibel. Ty bet udah mau ini itu, mvp parah. btw, TOMBOLLLLL.',
     stats: { trips: 15, photos: 420 },
     socials: { instagram: '@zidan_nav' }
   }

@@ -8,7 +8,7 @@ const dzaki: Member = {
   role: 'Member',
   quote: '"Santuy aja lah."',
   joinYear: 2024,
-  image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/navin_j6quol.jpg',
+  image: '',
   bio: 'Paling tenang saat nyasar atau ada masalah di jalan.',
   stats: { trips: 3, photos: 45 },
   socials: { instagram: '@dzaki' },
