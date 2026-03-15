@@ -5,9 +5,7 @@ import { Member } from '@/data/members';
 const akbar: Member = {
   id: 'akbar',
   name: 'Akbar',
-  role: 'Member',
   quote: '"Udah pesan tiket blm?"',
-  joinYear: 2023,
   image: '',
   bio: 'Urusan logistik tiket dan penginapan, Akbar yang handle.',
   traits: ['Menteri Keuangan', 'PIC Tiket'],

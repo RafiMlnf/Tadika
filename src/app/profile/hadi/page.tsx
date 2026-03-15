@@ -5,9 +5,7 @@ import { Member } from '@/data/members';
 const hadi: Member = {
   id: 'hadi',
   name: 'Hadi',
-  role: 'Member',
   quote: '"Jam berapa ngumpulnya?"',
-  joinYear: 2022,
   image: '',
   bio: 'Sering menanyakan jadwal namun sering kali juga on-time.',
   traits: ['Si Paling On-Time', 'Banyak Nanya'],

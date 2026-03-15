@@ -5,9 +5,7 @@ import { Member } from '@/data/members';
 const ricky: Member = {
   id: 'ricky',
   name: 'Ricky',
-  role: 'Member',
   quote: '"Tunggu dulu, foto bentar."',
-  joinYear: 2023,
   image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/ricky_c8uiry.jpg',
   imageScale: 1.7,
   imageOffsetY: 'bottom',

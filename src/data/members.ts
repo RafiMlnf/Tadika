@@ -1,9 +1,7 @@
 export interface Member {
   id: string;
   name: string;
-  role: string;
   quote: string;
-  joinYear: number;
   image: string;
   imageScale?: number; // Optional zoom level for the physical image tag (e.g. 1.2 for 120% zoom)
   imageOffsetX?: string; // Geser X foto (contoh: '-40%', 'center', 'right')
@@ -27,9 +25,7 @@ export const members: Member[] = [
   {
     id: 'hafiz',
     name: 'Hafiz',
-    role: 'Member',
-    quote: 'Pria ambisius.',
-    joinYear: 2023,
+    quote: 'Sahabat D.',
     image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/f_auto,q_auto/v1773515971/hafiz_qnczjq.heic',
     imageScale: 1.7,
     bio: 'Pria ambisius, lu dapet hasil dari lu belajar selama ini respect, tapi jokes lu anj.',
@@ -39,9 +35,7 @@ export const members: Member[] = [
   {
     id: 'mikael',
     name: 'Mikael',
-    role: 'Member',
     quote: 'Boleh-boleh ayo.',
-    joinYear: 2023,
     image: '',
     bio: 'Depan PC mulu.',
     traits: ['PC', 'Malas'],
@@ -50,9 +44,7 @@ export const members: Member[] = [
   {
     id: 'dito',
     name: 'Dito',
-    role: 'Member',
     quote: '...',
-    joinYear: 2024,
     image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773603339/dito_ckdfsm.png',
     imageOffsetY: '25%',
     bio: 'Selalu mementingkan kuliner di setiap destinasi.',
@@ -62,9 +54,7 @@ export const members: Member[] = [
   {
     id: 'rafi',
     name: 'Rafi',
-    role: 'Event Planner',
     quote: 'Keren bgt jir gw',
-    joinYear: 2022,
     image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773516975/rafi_zyj2kl.jpg',
     imageScale: 1.7,     // <--- TAMBAHKAN INI. 1.0 (Normal), 1.2 (Zoom 120%), 1.5 (Zoom 150%) dst.
     bio: 'Orang di balik sebagian besar foto bagus di website ini...',
@@ -74,9 +64,7 @@ export const members: Member[] = [
   {
     id: 'gilar',
     name: 'Gilar',
-    role: 'Member',
     quote: '"Gass terus."',
-    joinYear: 2023,
     image: '',
     bio: 'Pemberi semangat kalau rombongan sudah mulai capek.',
     traits: ['Motivator', 'Energetik'],
@@ -85,12 +73,11 @@ export const members: Member[] = [
   {
     id: 'ricky',
     name: 'Ricky',
-    role: 'Member',
     quote: '"Tunggu dulu, foto bentar."',
-    joinYear: 2023,
     image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/ricky_c8uiry.jpg',
     imageScale: 1.7,
     imageOffsetY: 'bottom',
+    imageOffsetX: '10px',
     bio: 'Pendamping fotografer dan hobi foto pakai film.',
     traits: ['Skena', 'Roll Film'],
     socials: { instagram: '@ricky' }
@@ -98,9 +85,7 @@ export const members: Member[] = [
   {
     id: 'hadi',
     name: 'Hadi',
-    role: 'Member',
     quote: '"Jam berapa ngumpulnya?"',
-    joinYear: 2022,
     image: '',
     bio: 'Sering menanyakan jadwal namun sering kali juga on-time.',
     traits: ['Si Paling On-Time', 'Banyak Nanya'],
@@ -109,9 +94,7 @@ export const members: Member[] = [
   {
     id: 'dzaki',
     name: 'Dzaki',
-    role: 'Member',
     quote: '"Santuy aja lah."',
-    joinYear: 2024,
     image: '',
     bio: 'Paling tenang saat nyasar atau ada masalah di jalan.',
     traits: ['Santuy', 'Orang Sabar'],
@@ -120,9 +103,7 @@ export const members: Member[] = [
   {
     id: 'daffa',
     name: 'Daffa',
-    role: 'Member',
     quote: '"Cari WiFi di mana nih?"',
-    joinYear: 2022,
     image: '',
     bio: 'Selalu butuh sinyal dan koneksi, tukang sebar hotspot.',
     traits: ['Dewa Sinyal', 'Penyelamat Kuota'],
@@ -131,9 +112,7 @@ export const members: Member[] = [
   {
     id: 'farhan',
     name: 'Farhan',
-    role: 'Member',
     quote: '"Gas aja mumpung cerah."',
-    joinYear: 2023,
     image: '',
     bio: 'Penggemar kegiatan outdoor dan selalu sedia peralatan camping.',
     traits: ['Pecinta Alam', 'Kang Camping'],
@@ -142,9 +121,7 @@ export const members: Member[] = [
   {
     id: 'dimas',
     name: 'Dimas',
-    role: 'The Entertainer',
     quote: '"Bro, dengerin playlist gue nih."',
-    joinYear: 2022,
     image: '',
     bio: 'Tukang setel musik di mobil dan pencair suasana saat trip mulai garing. Selalu bawa speaker Bluetooth ke mana-mana dan stok jokes bapack-bapack.',
     traits: ['Entertainer', 'Jokes Bapack'],
@@ -153,9 +130,7 @@ export const members: Member[] = [
   {
     id: 'raka',
     name: 'Raka',
-    role: 'Member',
     quote: '"Gue yang nyetir aja."',
-    joinYear: 2024,
     image: '',
     bio: 'Supir andalan saat perjalanan jauh. Sangat hafal rute.',
     traits: ['Supir Andalan', 'GPS Berjalan'],
@@ -164,9 +139,7 @@ export const members: Member[] = [
   {
     id: 'akbar',
     name: 'Akbar',
-    role: 'Member',
     quote: '"Udah pesan tiket blm?"',
-    joinYear: 2023,
     image: '',
     bio: 'Urusan logistik tiket dan penginapan, Akbar yang handle.',
     traits: ['Menteri Keuangan', 'PIC Tiket'],
@@ -175,9 +148,7 @@ export const members: Member[] = [
   {
     id: 'dafa',
     name: 'Dafa',
-    role: 'Member',
     quote: '"Ayo mampir beli kopi bentar."',
-    joinYear: 2022,
     image: '',
     bio: 'Paling sering butuh istirahat ngopi dalam perjalanan.',
     traits: ['Anak Senja', 'Pecandu Kafein'],
@@ -186,9 +157,7 @@ export const members: Member[] = [
   {
     id: 'arifin',
     name: 'Arifin',
-    role: 'Member',
     quote: '"Gampang itu mah."',
-    joinYear: 2024,
     image: '',
     bio: 'Tukang ngide buat masuk ke rute yang nyeleneh.',
     traits: ['Tukang Ngide', 'Jalur Alternatif'],
@@ -197,9 +166,7 @@ export const members: Member[] = [
   {
     id: 'navin',
     name: 'Navin',
-    role: 'Member',
     quote: '"Udah nyampe belom bos?"',
-    joinYear: 2023,
     image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/navin_j6quol.jpg',
     bio: 'Paling ngga sabaran kalau di jalan tol.',
     traits: ['Si Paling Ngebut', 'Gak Sabaran'],
@@ -208,9 +175,7 @@ export const members: Member[] = [
   {
     id: 'zidan',
     name: 'Zidan',
-    role: 'The Navigator',
     quote: '"Multitalent."',
-    joinYear: 2022,
     image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773596569/Gemini_Generated_Image_rjh99jrjh99jrjh9_xxsuhc.png',
     imageOffsetY: '25%', // Geser atas/bawah thumbnail (contoh: 'top', 'bottom', '20%')
     bio: 'Lu serba bisa, orang paling fleksibel. Ty bet udah mau ini itu, mvp parah. btw, TOMBOLLLLL.',

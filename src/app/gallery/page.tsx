@@ -9,28 +9,7 @@ import Image from 'next/image';
 /* ── Gallery photo data ── */
 const categories = ['Semua', 'Bandung 1', 'Pangandaran', 'Puncak Bogor', 'Gunung Putri', 'Blok M', 'Lembang', 'Throwback', 'Random'];
 
-const photos = [
-  { src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80', alt: 'Pantai sunset', cat: 'Pangandaran', h: 360 },
-  { src: 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=400&q=80', alt: 'Ombak biru', cat: 'Pangandaran', h: 240 },
-  { src: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&q=80', alt: 'Gunung salju', cat: 'Gunung Putri', h: 320 },
-  { src: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400&q=80', alt: 'Danau tenang', cat: 'Puncak Bogor', h: 280 },
-  { src: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80', alt: 'Sunrise bukit', cat: 'Lembang', h: 340 },
-  { src: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&q=80', alt: 'Co-working space', cat: 'Blok M', h: 240 },
-  { src: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=600&q=80', alt: 'Festival malam', cat: 'Bandung 1', h: 300 },
-  { src: 'https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=400&q=80', alt: 'Travel road', cat: 'Gunung Putri', h: 260 },
-  { src: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80', alt: 'Pantai tropis', cat: 'Pangandaran', h: 320 },
-  { src: 'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=400&q=80', alt: 'Venice canal', cat: 'Bandung 1', h: 280 },
-  { src: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80', alt: 'Mountain peak', cat: 'Puncak Bogor', h: 360 },
-  { src: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=400&q=80', alt: 'Camera shot', cat: 'Random', h: 240 },
-  { src: 'https://images.unsplash.com/photo-1540202404-a2f29016b523?w=600&q=80', alt: 'Kampus sore', cat: 'Throwback', h: 300 },
-  { src: 'https://images.unsplash.com/photo-1562774053-701939374585?w=400&q=80', alt: 'Gedung kampus', cat: 'Throwback', h: 280 },
-  { src: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&q=80', alt: 'Hutan pagi', cat: 'Lembang', h: 340 },
-  { src: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&q=80', alt: 'City night', cat: 'Blok M', h: 260 },
-  { src: 'https://images.unsplash.com/photo-1528164344705-47542687000d?w=600&q=80', alt: 'Pantai pasir', cat: 'Pangandaran', h: 300 },
-  { src: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&q=80', alt: 'Laut biru', cat: 'Pangandaran', h: 280 },
-  { src: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&q=80', alt: 'Wisuda kampus', cat: 'Random', h: 320 },
-  { src: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&q=80', alt: 'Konser malam', cat: 'Bandung 1', h: 260 },
-];
+const photos: any[] = [];
 
 export default function GalleryPage() {
   const [activeFilter, setActiveFilter] = useState('Semua');

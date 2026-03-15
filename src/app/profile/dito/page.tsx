@@ -5,9 +5,7 @@ import { Member } from '@/data/members';
 const dito: Member = {
   id: 'dito',
   name: 'Dito',
-  role: 'Member',
   quote: '"Yang penting makan enak."',
-  joinYear: 2024,
   image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773603339/dito_ckdfsm.png',
   bio: 'Wingstop.',
   favSong: {

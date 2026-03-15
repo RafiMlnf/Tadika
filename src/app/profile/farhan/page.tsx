@@ -5,9 +5,7 @@ import { Member } from '@/data/members';
 const farhan: Member = {
   id: 'farhan',
   name: 'Farhan',
-  role: 'Member',
   quote: '"Gas aja mumpung cerah."',
-  joinYear: 2023,
   image: '',
   bio: 'Penggemar kegiatan outdoor dan selalu sedia peralatan camping.',
   traits: ['Pecinta Alam', 'Kang Camping'],

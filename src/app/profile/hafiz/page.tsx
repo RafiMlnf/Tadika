@@ -5,9 +5,7 @@ import { Member } from '@/data/members';
 const hafiz: Member = {
   id: 'hafiz',
   name: 'Hafiz',
-  role: 'Member',
-  quote: 'Pria ambisius.',
-  joinYear: 2023,
+  quote: 'Sahabat D.',
   image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/f_auto,q_auto/v1773515971/hafiz_qnczjq.heic',
   imageScale: 1.7,
   bio: 'Pria ambisius, lu dapet hasil dari lu belajar selama ini respect, tapi jokes lu anj.',

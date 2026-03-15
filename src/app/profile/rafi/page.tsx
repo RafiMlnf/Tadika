@@ -5,9 +5,7 @@ import { Member } from '@/data/members';
 const rafi: Member = {
   id: 'rafi',
   name: 'Rafi',
-  role: 'Event Planner',
   quote: '"Keren bgt jir gw"',
-  joinYear: 2022,
   image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773516975/rafi_zyj2kl.jpg',
   imageScale: 1.7,
   bio: 'Orang keren',
