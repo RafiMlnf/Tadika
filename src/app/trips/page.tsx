@@ -112,7 +112,7 @@ export default function TripsWikiPage() {
           <div className="card" style={{ padding: 0, display: 'flex', flexDirection: 'column' }}>
             {/* Split layout: Sidebar for navigation, Main for content */}
             <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-              
+
               {/* Sidebar Navigation */}
               <div style={{ flex: '1 1 250px', borderRight: '1px solid var(--color-border)', background: 'var(--color-bg-alt)' }}>
                 <div style={{ padding: '24px', borderBottom: '1px solid var(--color-border)' }}>
@@ -170,7 +170,7 @@ export default function TripsWikiPage() {
                   </p>
                 </div>
 
-                <div style={{ padding: 24, background: 'var(--color-bg-alt)', borderRadius: 'var(--radius-sm)', borderLefT: '4px solid var(--color-accent)' }}>
+                <div style={{ padding: 24, background: 'var(--color-bg-alt)', borderRadius: 'var(--radius-sm)', borderLeft: '4px solid var(--color-accent)' }}>
                   <h3 className="font-mono" style={{ fontSize: '1rem', letterSpacing: '0.05em', marginBottom: 8 }}>CATATAN SEJARAH:</h3>
                   <p className="font-body" style={{ color: 'var(--color-text)' }}>
                     "{activeTrip.detail}"

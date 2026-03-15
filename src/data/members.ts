@@ -68,7 +68,7 @@ export const members: Member[] = [
     joinYear: 2022,
     image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773516975/rafi_zyj2kl.jpg',
     imageScale: 1.7,     // <--- TAMBAHKAN INI. 1.0 (Normal), 1.2 (Zoom 120%), 1.5 (Zoom 150%) dst.
-    bio: 'Orang di balik sebagian besar foto bagus di archive ini...',
+    bio: 'Orang di balik sebagian besar foto bagus di website ini...',
     stats: { trips: 14, photos: 1250 },
     socials: { instagram: '@rafi.shoots' }
   },

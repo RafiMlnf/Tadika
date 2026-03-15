@@ -9,7 +9,6 @@ const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/gallery', label: 'Gallery' },
     { href: '/trips', label: 'Tadikapedia' },
-    { href: '/archive', label: 'Archive' },
     { href: '/profile', label: 'Profile' },
 ];
 
@@ -124,7 +123,7 @@ export default function Navbar() {
                 </nav>
 
                 <div className="mobile-menu-footer font-mono">
-                    /TADIKA ARCHIVE
+                    /TADIKA MEMORIES
                 </div>
             </div>
         </>

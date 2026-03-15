@@ -37,7 +37,6 @@ export default function Footer() {
                             <li><Link href="/">Home</Link></li>
                             <li><Link href="/gallery">Gallery</Link></li>
                             <li><Link href="/trips">Tadikapedia</Link></li>
-                            <li><Link href="/archive">Archive</Link></li>
                             <li><Link href="/profile">Profile</Link></li>
                         </ul>
                     </div>
@@ -57,7 +56,7 @@ export default function Footer() {
                     <div className="footer-col">
                         <h4 className="footer-heading font-mono">MORE INFO</h4>
                         <ul className="footer-links">
-                            <li><Link href="/gallery">Full Archive</Link></li>
+                            <li><Link href="/gallery">Full Gallery</Link></li>
                             <li><Link href="/upload">Upload Aib Temen</Link></li>
                         </ul>
                     </div>
@@ -67,7 +66,7 @@ export default function Footer() {
                     <div className="footer-divider" />
                     <div className="footer-bottom-content">
                         <span className="font-mono footer-copy">
-                            © 2022 — 2026 Tadika Archive
+                            © 2022 — 2026 Tadika
                         </span>
                         <span className="font-mono footer-made">
                             crafted with tangan hitam

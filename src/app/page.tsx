@@ -172,7 +172,7 @@ export default function Home() {
             <span style={{ fontSize: '3rem', fontWeight: 900, color: 'var(--color-text)' }}>Infinity</span>
           </div>
           <span className="font-mono" style={{ fontSize: '0.8rem', letterSpacing: '0.15em', color: 'var(--color-text-muted)' }}>
-            /TADIKA ARCHIVE
+            /TADIKA MEMORIES
           </span>
         </section>
 
@@ -187,10 +187,10 @@ export default function Home() {
         <section style={{ position: 'relative', width: '110vw', left: '50%', right: '50%', marginLeft: '-55vw', marginRight: '-55vw', padding: '16px 0', background: 'var(--color-text)', color: 'var(--color-bg)', transform: 'rotate(-2deg)', marginBottom: 100, zIndex: 10, overflow: 'hidden', borderTop: '2px solid var(--color-border)', borderBottom: '2px solid var(--color-border)' }}>
           <div className="marquee-container font-mono" style={{ display: 'flex', whiteSpace: 'nowrap' }}>
             <div className="marquee-content" style={{ fontSize: '1.1rem', fontWeight: 'bold', letterSpacing: '0.1em' }}>
-              ✦ TADIKA ARCHIVE ✦ MEMORIES ✦ 2022-∞ ✦ FRIENDS ✦ JOURNEYS ✦ EST. 2022 ✦ TADIKA ARCHIVE ✦ MEMORIES ✦ 2022-∞ ✦ FRIENDS ✦ JOURNEYS ✦ EST. 2022 ✦ 
+              ✦ TADIKA MEMORIES ✦ MEMORIES ✦ 2022-∞ ✦ FRIENDS ✦ JOURNEYS ✦ EST. 2022 ✦ TADIKA MEMORIES ✦ MEMORIES ✦ 2022-∞ ✦ FRIENDS ✦ JOURNEYS ✦ EST. 2022 ✦ 
             </div>
             <div className="marquee-content" style={{ fontSize: '1.1rem', fontWeight: 'bold', letterSpacing: '0.1em' }}>
-              ✦ TADIKA ARCHIVE ✦ MEMORIES ✦ 2022-∞ ✦ FRIENDS ✦ JOURNEYS ✦ EST. 2022 ✦ TADIKA ARCHIVE ✦ MEMORIES ✦ 2022-∞ ✦ FRIENDS ✦ JOURNEYS ✦ EST. 2022 ✦ 
+              ✦ TADIKA MEMORIES ✦ MEMORIES ✦ 2022-∞ ✦ FRIENDS ✦ JOURNEYS ✦ EST. 2022 ✦ TADIKA MEMORIES ✦ MEMORIES ✦ 2022-∞ ✦ FRIENDS ✦ JOURNEYS ✦ EST. 2022 ✦ 
             </div>
           </div>
         </section>
