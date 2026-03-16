@@ -1,16 +1,16 @@
-import MemberDetail from '@/components/MemberDetail';
-import { Member } from '@/data/members';
+import MemberDetail from "@/components/MemberDetail";
+import { Member } from "@/data/members";
 
 // ====== DATA HAFIZ — Edit di sini aja! ======
 const hafiz: Member = {
-  id: 'hafiz',
-  name: 'Hafiz',
-  quote: 'Sahabat D.',
-  image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/f_auto,q_auto/v1773515971/hafiz_qnczjq.heic',
+  id: "hafiz",
+  name: "Ahmad Hapizhudin",
+  quote: "Sahabat D.",
+  image: "https://res.cloudinary.com/dpr6rjjun/image/upload/f_auto,q_auto/v1773515971/hafiz_qnczjq.heic",
   imageScale: 1.7,
-  bio: 'Pria ambisius, lu dapet hasil dari lu belajar selama ini respect, tapi jokes lu anj.',
-  traits: ['Ambisius', 'Jokes Gelap'],
-  socials: { instagram: '@hafiz' },
+  bio: "Pria ambisius, lu dapet hasil dari lu belajar selama ini respect, tapi jokes lu anj.",
+  traits: ["Ambisius", "Jokes Gelap"],
+  socials: { instagram: "@hafiz" },
 };
 
 export default function HafizPage() {

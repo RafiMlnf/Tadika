@@ -1,17 +1,17 @@
-import MemberDetail from '@/components/MemberDetail';
-import { Member } from '@/data/members';
+import MemberDetail from "@/components/MemberDetail";
+import { Member } from "@/data/members";
 
 // ====== DATA RICKY — Edit di sini aja! ======
 const ricky: Member = {
-  id: 'ricky',
-  name: 'Ricky',
+  id: "ricky",
+  name: "Ricky Alfian Saputra",
   quote: '"Tunggu dulu, foto bentar."',
-  image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/ricky_c8uiry.jpg',
+  image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/ricky_c8uiry.jpg",
   imageScale: 1.7,
-  imageOffsetY: 'bottom',
-  bio: 'Pendamping fotografer dan hobi foto pakai film.',
-  traits: ['Skena', 'Roll Film'],
-  socials: { instagram: '@ricky' },
+  imageOffsetY: "bottom",
+  bio: "Pendamping fotografer dan hobi foto pakai film.",
+  traits: ["Skena", "Roll Film"],
+  socials: { instagram: "@ricky" },
 };
 
 export default function RickyPage() {

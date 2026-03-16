@@ -1,15 +1,15 @@
-import MemberDetail from '@/components/MemberDetail';
-import { Member } from '@/data/members';
+import MemberDetail from "@/components/MemberDetail";
+import { Member } from "@/data/members";
 
 // ====== DATA NAVIN — Edit di sini aja! ======
 const navin: Member = {
-  id: 'navin',
-  name: 'Navin',
-  quote: '"Udah nyampe belom bos?"',
-  image: 'https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/navin_j6quol.jpg',
-  bio: 'Paling ngga sabaran kalau di jalan tol.',
-  traits: ['Si Paling Ngebut', 'Gak Sabaran'],
-  socials: { instagram: '@navin' },
+  id: "navin",
+  name: "Fadhlurohman Fatikh Navintino",
+  quote: "Nyalakan Genderang Perang",
+  image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/navin_j6quol.jpg",
+  bio: "Paling ngga sabaran kalau di jalan tol.",
+  traits: ["Gay", "Kesayangan Tadika"],
+  socials: { instagram: "@napvn" },
 };
 
 export default function NavinPage() {
