@@ -19,16 +19,24 @@ export async function GET() {
       localData = JSON.parse(fs.readFileSync(metaFile, 'utf8'));
     }
     
-    // Create map for fast lookup
+    // Create map for fast lookup — index by id, url, and filename (last segment of public_id)
     const localMap = new Map();
     localData.forEach(item => {
-      localMap.set(item.id, item); // ID is usually the Cloudinary public_id
-      localMap.set(item.url, item); // Fallback lookup by URL
+      if (item.id) localMap.set(item.id, item);  // exact public_id match
+      if (item.url) {
+        localMap.set(item.url, item);  // full URL match
+        // Also normalize URL (strip version segment e.g. /v1234567890/) for fuzzy match
+        const normalizedUrl = item.url.replace(/\/v\d+\//, '/');
+        localMap.set(normalizedUrl, item);
+      }
     });
 
     // 3. Merge Cloudinary images/videos with local metadata
     const mappedData = results.resources.map((res: any) => {
-      const localInfo = localMap.get(res.public_id) || localMap.get(res.secure_url);
+      const normalizedResUrl = res.secure_url.replace(/\/v\d+\//, '/');
+      const localInfo = localMap.get(res.public_id)
+        || localMap.get(res.secure_url)
+        || localMap.get(normalizedResUrl);
       
       // Extract category from asset_folder (e.g., tadika-gallery/Bandung 1 -> Bandung 1)
       let category = 'Random';

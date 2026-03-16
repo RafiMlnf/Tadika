@@ -14,7 +14,7 @@ const photos: any[] = [];
 export default function GalleryPage() {
   const [activeFilter, setActiveFilter] = useState('Semua');
   const [mediaFilter, setMediaFilter] = useState('Semua'); // 'Semua', 'Foto', 'Video'
-  const [lightbox, setLightbox] = useState<{ src: string; alt: string; type?: string } | null>(null);
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string; type?: string; uploader?: string } | null>(null);
   const [uploadedPhotos, setUploadedPhotos] = useState<any[]>([]);
 
   // 📝 Komentar state (Instagram style)
@@ -117,6 +117,7 @@ export default function GalleryPage() {
               alt: item.title || item.id,
               cat: cat,
               type: item.type || 'image',
+              uploader: item.uploader || 'Unknown',
               h: 300 // default height for uploaded photos
             };
           });
@@ -133,9 +134,9 @@ export default function GalleryPage() {
   const filteredPhotos = allPhotos.filter((p) => {
     const isCatMatch = activeFilter === 'Semua' || p.cat === activeFilter;
     const itemType = p.type || 'image';
-    const isMediaMatch = mediaFilter === 'Semua' || 
-                         (mediaFilter === 'Foto' && itemType === 'image') || 
-                         (mediaFilter === 'Video' && itemType === 'video');
+    const isMediaMatch = mediaFilter === 'Semua' ||
+      (mediaFilter === 'Foto' && itemType === 'image') ||
+      (mediaFilter === 'Video' && itemType === 'video');
     return isCatMatch && isMediaMatch;
   });
 
@@ -174,14 +175,14 @@ export default function GalleryPage() {
   const goNext = () => {
     if (currentIndex < filteredPhotos.length - 1) {
       const next = filteredPhotos[currentIndex + 1];
-      setLightbox({ src: next.src.replace('w=600', 'w=1200').replace('w=400', 'w=1200'), alt: next.alt, type: next.type || 'image' });
+      setLightbox({ src: next.src.replace('w=600', 'w=1200').replace('w=400', 'w=1200'), alt: next.alt, type: next.type || 'image', uploader: next.uploader || 'Unknown' });
     }
   };
 
   const goPrev = () => {
     if (currentIndex > 0) {
       const prev = filteredPhotos[currentIndex - 1];
-      setLightbox({ src: prev.src.replace('w=600', 'w=1200').replace('w=400', 'w=1200'), alt: prev.alt, type: prev.type || 'image' });
+      setLightbox({ src: prev.src.replace('w=600', 'w=1200').replace('w=400', 'w=1200'), alt: prev.alt, type: prev.type || 'image', uploader: prev.uploader || 'Unknown' });
     }
   };
 
@@ -226,7 +227,7 @@ export default function GalleryPage() {
               </button>
             ))}
           </div>
-          
+
           <div className="gallery-filters" style={{ justifyContent: 'flex-start', borderTop: '1px solid var(--color-border)', paddingTop: 16 }}>
             <span className="font-mono" style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', display: 'flex', alignItems: 'center', marginRight: 8 }}>Format:</span>
             {['Semua', 'Foto', 'Video'].map((type) => (
@@ -248,61 +249,63 @@ export default function GalleryPage() {
             {filteredPhotos.map((photo, i) => {
               const isVideo = photo.type === 'video' || photo.src.match(/\.(mp4|mov|webm)$/i);
               // Cloudinary can generate a thumbnail automatically for videos by changing extension to .jpg
-              const thumbSrc = (isVideo && photo.src.includes('res.cloudinary.com')) 
-                  ? photo.src.replace(/\.[^/.]+$/, ".jpg") 
-                  : photo.src;
+              const thumbSrc = (isVideo && photo.src.includes('res.cloudinary.com'))
+                ? photo.src.replace(/\.[^/.]+$/, ".jpg")
+                : photo.src;
 
               return (
-              <div
-                key={`${activeFilter}-${i}`}
-                ref={scrollRevealRef}
-                className="reveal-item gallery-item media-wrapper"
-                style={{ animationDelay: `${i * 0.04}s`, cursor: 'pointer' }}
-                onClick={() =>
-                  setLightbox({
-                    src: photo.src.replace('w=600', 'w=1200').replace('w=400', 'w=1200'),
-                    alt: photo.alt,
-                    type: photo.type || 'image'
-                  })
-                }
-              >
-                <Image
-                  src={thumbSrc}
-                  alt={photo.alt}
-                  width={600}
-                  height={photo.h}
-                  style={{ width: '100%', height: 'auto', objectFit: 'cover', display: 'block' }}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  quality={50}
-                  priority={i < 6}
-                />
-                <div className="masonry-overlay">
-                  <span className="font-mono" style={{ fontSize: '0.75rem', letterSpacing: '0.05em' }}>
-                    {photo.alt}
-                  </span>
+                <div
+                  key={`${activeFilter}-${i}`}
+                  ref={scrollRevealRef}
+                  className="reveal-item gallery-item media-wrapper"
+                  style={{ animationDelay: `${i * 0.04}s`, cursor: 'pointer' }}
+                  onClick={() =>
+                    setLightbox({
+                      src: photo.src.replace('w=600', 'w=1200').replace('w=400', 'w=1200'),
+                      alt: photo.alt,
+                      type: photo.type || 'image',
+                      uploader: photo.uploader || 'Unknown'
+                    })
+                  }
+                >
+                  <Image
+                    src={thumbSrc}
+                    alt={photo.alt}
+                    width={600}
+                    height={photo.h}
+                    style={{ width: '100%', height: 'auto', objectFit: 'cover', display: 'block' }}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    quality={50}
+                    priority={i < 6}
+                  />
+                  <div className="masonry-overlay">
+                    <span className="font-mono" style={{ fontSize: '0.75rem', letterSpacing: '0.05em' }}>
+                      {photo.alt}
+                    </span>
+                  </div>
+                  {/* Visual Icon Overlay */}
+                  <div className="gallery-zoom-icon">
+                    {isVideo ? (
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                        <polygon points="5 3 19 12 5 21 5 3" />
+                      </svg>
+                    ) : (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        <line x1="11" y1="8" x2="11" y2="14" />
+                        <line x1="8" y1="11" x2="14" y2="11" />
+                      </svg>
+                    )}
+                  </div>
                 </div>
-                {/* Visual Icon Overlay */}
-                <div className="gallery-zoom-icon">
-                  {isVideo ? (
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none">
-                      <polygon points="5 3 19 12 5 21 5 3" />
-                    </svg>
-                  ) : (
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="11" cy="11" r="8" />
-                      <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                      <line x1="11" y1="8" x2="11" y2="14" />
-                      <line x1="8" y1="11" x2="14" y2="11" />
-                    </svg>
-                  )}
-                </div>
-              </div>
-            )})}
+              )
+            })}
           </div>
 
           {filteredPhotos.length === 0 && (
             <div style={{ textAlign: 'center', padding: '80px 0', color: 'var(--color-text-muted)' }}>
-              <p className="font-display" style={{ fontSize: '1.4rem', marginBottom: 8 }}>Yahhh masih kosong :(</p>
+              <p className="font-display" style={{ fontSize: '1.4rem', marginBottom: 8 }}>Tunggu ya wok loading, atmin nyari gratisan :(</p>
               <p className="font-mono" style={{ fontSize: '0.85rem' }}>Belum ada foto di kategori ini nih, coba cek yang lain yak.</p>
             </div>
           )}
@@ -313,7 +316,7 @@ export default function GalleryPage() {
       {lightbox && (
         <div className="lightbox-overlay" onClick={() => setLightbox(null)}>
           <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-            
+
             {/* Kiri: Foto */}
             <div className="lightbox-img-wrapper">
               {currentIndex > 0 && (
@@ -321,7 +324,7 @@ export default function GalleryPage() {
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
                 </button>
               )}
-              
+
               {lightbox.type === 'video' || lightbox.src.match(/\.(mp4|mov|webm)$/i) ? (
                 <video
                   src={lightbox.src}
@@ -364,7 +367,7 @@ export default function GalleryPage() {
                 <div className="lightbox-comment-item" style={{ marginBottom: 8 }}>
                   <div className="lightbox-comment-avatar" style={{ background: 'transparent', border: '1px solid var(--color-border)' }}>📸</div>
                   <div className="lightbox-comment-content">
-                    <span className="lightbox-comment-name">System</span>
+                    <span className="lightbox-comment-name">{lightbox.uploader || 'Unknown'}</span>
                     <span className="lightbox-comment-text">Foto {currentIndex + 1} dari {filteredPhotos.length}</span>
                   </div>
                 </div>
@@ -379,11 +382,11 @@ export default function GalleryPage() {
                     </div>
                   </div>
                 ))}
-                
+
                 {(!allComments[lightbox.src] || allComments[lightbox.src].length === 0) && (
                   <div style={{ textAlign: 'center', marginTop: 40, color: 'var(--color-text-muted)' }}>
                     <div style={{ fontSize: '2.5rem', marginBottom: 8 }}>💬</div>
-                    <p className="font-mono" style={{ fontSize: '0.8rem' }}>Belum ada komentar.<br/>Gas jadi yang pertama ngehujat!</p>
+                    <p className="font-mono" style={{ fontSize: '0.8rem' }}>Belum ada komentar.<br />Gas jadi yang pertama ngehujat!</p>
                   </div>
                 )}
               </div>
@@ -406,8 +409,8 @@ export default function GalleryPage() {
                     onChange={(e) => setCommentText(e.target.value)}
                     required
                   />
-                  <button 
-                    type="submit" 
+                  <button
+                    type="submit"
                     className="lightbox-btn-submit"
                     disabled={!commentName.trim() || !commentText.trim() || isPosting}
                   >
