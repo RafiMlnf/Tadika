@@ -9,7 +9,7 @@ const dito: Member = {
   image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1773603339/dito_ckdfsm.png",
   bio: "Wingstop.",
   favSong: {
-    youtubeId: "iygXgP2nOF4",
+    audioSrc: "/audio/take-a-chance-with-me.mp3", // File audio lokal di folder public/audio/
     title: "Take a Chance with Me",
     artist: "NIKI",
     startAt: 192,

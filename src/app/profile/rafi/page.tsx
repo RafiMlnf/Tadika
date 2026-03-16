@@ -9,10 +9,11 @@ const rafi: Member = {
   image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1773612655/rafi_syykn9.jpg",
   bio: "Orang keren",
   favSong: {
-    youtubeId: "HLCLMuxV0bI", // Ganti dengan YouTube video ID yang bener
-    title: "Arteri", // Ganti judul lagu
-    artist: ".Feast", // Ganti nama artis
-    startAt: 232, // Mulai dari detik ke-60
+    audioSrc: "/audio/arteri.mp3", // File audio lokal di folder public/audio/
+    title: "Arteri",
+    artist: ".Feast",
+    startAt: 232,
+    bpm: 182,
   },
   traits: ["Orang Keren", "IQ 115", "Event Planner"],
   socials: { instagram: "@rafimlnf" },

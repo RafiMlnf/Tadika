@@ -325,9 +325,11 @@
   0% {
     height: 4px;
   }
+
   50% {
     height: 14px;
   }
+
   100% {
     height: 18px;
   }
@@ -351,7 +353,7 @@
 }
 
 @media (max-width: 640px) {
-  .yt-audio-player > div:first-child {
+  .yt-audio-player>div:first-child {
     flex-wrap: wrap;
   }
 
@@ -418,101 +420,170 @@
   height: 6px;
 }
 
-/* ── Vocal-Sync Glow Animation ── */
+/* ── Vocal-Sync Glow Animation — Per-Instrument Bands ── */
+/*
+   3 separate glow layers, each driven by CSS custom properties from JS:
+     --glow-bass  (0–1) + --glow-bass-px  →  ::before          →  Orange/Yellow  (kick, bass)
+     --glow-mid   (0–1) + --glow-mid-px   →  ::after           →  Purple/Pink    (vocals, snare)
+     --glow-high  (0–1) + --glow-high-px  →  .glow-layer-high  →  Cyan/Blue      (hi-hat, cymbals)
+   
+   Each band's glow GROWS and SHRINKS dynamically (like EQ bars) via --glow-*-px
+*/
 
-/* Wrapper sits OUTSIDE the overflow:hidden card */
+/* Default custom property values (silence) */
 .vocal-glow-wrapper {
+  --glow-bass: 0;
+  --glow-mid: 0;
+  --glow-high: 0;
+  --glow-bass-px: 3px;
+  --glow-mid-px: 3px;
+  --glow-high-px: 2px;
   position: relative;
   z-index: 1;
 }
 
-/* Base state: pseudo-elements exist but are completely hidden and NOT animating */
+/* ── Shared base for all glow layers ── */
 .vocal-glow-wrapper::before,
-.vocal-glow-wrapper::after {
+.vocal-glow-wrapper::after,
+.vocal-glow-wrapper .glow-layer-high {
   content: '';
   position: absolute;
-  border-radius: calc(var(--radius-lg) + 4px);
+  border-radius: calc(var(--radius-lg) + 6px);
   z-index: -1;
   opacity: 0;
   pointer-events: none;
-  /* NO animation here — completely still and invisible */
 }
 
+/* ═══ BASS LAYER (::before) — Orange/Yellow ═══ 
+   Inset & blur driven dynamically by --glow-bass-px */
 .vocal-glow-wrapper::before {
-  inset: -4px;
-  background: conic-gradient(
-    from var(--glow-angle, 0deg),
-    transparent 0%,
-    #FF7E67 8%,
-    #FFD166 16%,
-    transparent 24%,
-    transparent 40%,
-    #A084E8 48%,
-    #FF7E67 56%,
-    transparent 64%,
-    transparent 80%,
-    #FFD166 88%,
-    transparent 100%
-  );
-  filter: blur(6px);
+  inset: calc(-1 * var(--glow-bass-px));
+  background: conic-gradient(from var(--glow-angle, 0deg),
+      transparent 0%,
+      #FF7E67 10%,
+      #FFD166 20%,
+      transparent 32%,
+      transparent 50%,
+      #FF9A3C 60%,
+      #FFD166 70%,
+      transparent 82%,
+      transparent 100%);
+  filter: blur(var(--glow-bass-px));
 }
 
+/* ═══ MID LAYER (::after) — Purple/Pink ═══ */
 .vocal-glow-wrapper::after {
-  inset: -2px;
-  border-radius: calc(var(--radius-lg) + 2px);
-  background: conic-gradient(
-    from var(--glow-angle-2, 180deg),
-    transparent 0%,
-    #FF7E67 12%,
-    transparent 24%,
-    transparent 50%,
-    #A084E8 62%,
-    transparent 74%,
-    transparent 100%
-  );
-  filter: blur(2px);
+  inset: calc(-1 * var(--glow-mid-px));
+  border-radius: calc(var(--radius-lg) + 5px);
+  background: conic-gradient(from var(--glow-angle-2, 180deg),
+      transparent 0%,
+      #A084E8 12%,
+      #ec4899 22%,
+      transparent 34%,
+      transparent 52%,
+      #8b5cf6 64%,
+      #A084E8 74%,
+      transparent 86%,
+      transparent 100%);
+  filter: blur(var(--glow-mid-px));
 }
 
-/* ── ACTIVE state: only when music is playing ── */
+/* ═══ HIGH LAYER (.glow-layer-high) — Cyan/Blue ═══ */
+.vocal-glow-wrapper .glow-layer-high {
+  inset: calc(-1 * var(--glow-high-px));
+  border-radius: calc(var(--radius-lg) + 5px);
+  background: conic-gradient(from var(--glow-angle-3, 90deg),
+      transparent 0%,
+      #22d3ee 8%,
+      #67e8f9 16%,
+      transparent 28%,
+      transparent 55%,
+      #06b6d4 65%,
+      transparent 78%,
+      transparent 100%);
+  filter: blur(var(--glow-high-px));
+}
+
+/* ══════════════════════════════════════════════
+   ACTIVE state: only when music is playing
+   Each layer: rotation + brightness pulse + JS-driven opacity
+   ══════════════════════════════════════════════ */
+
+/* BASS — slow rotate + energetic pulse */
 .vocal-glow-wrapper.glow-active::before {
-  opacity: 1;
+  opacity: var(--glow-bass);
   animation:
-    vocal-rotate 3s linear infinite,
-    vocal-pulse-1 0.45s ease-in-out infinite alternate;
+    vocal-rotate 5.5s linear infinite,
+    bass-pulse 0.3s ease-in-out infinite alternate;
 }
 
+/* MID — counter-rotate + gentle pulse */
 .vocal-glow-wrapper.glow-active::after {
-  opacity: 0.8;
+  opacity: var(--glow-mid);
   animation:
-    vocal-rotate-reverse 2.4s linear infinite,
-    vocal-pulse-2 0.35s ease-in-out infinite alternate;
+    vocal-rotate-reverse 1.8s linear infinite,
+    mid-pulse 0.55s ease-in-out infinite alternate;
 }
 
-/* Rotation — sweep around the border */
+/* HIGH — fast rotate + sparkle pulse */
+.vocal-glow-wrapper.glow-active .glow-layer-high {
+  opacity: var(--glow-high);
+  animation:
+    vocal-rotate-high 2s linear infinite,
+    high-pulse 0.3s ease-in-out infinite alternate;
+}
+
+/* ── Rotation keyframes ── */
 @keyframes vocal-rotate {
-  to { --glow-angle: 360deg; }
+  to {
+    --glow-angle: 360deg;
+  }
 }
 
 @keyframes vocal-rotate-reverse {
-  to { --glow-angle-2: -180deg; }
+  to {
+    --glow-angle-2: -180deg;
+  }
 }
 
-/* Pulsing glow intensity — simulating vocal dynamics */
-@keyframes vocal-pulse-1 {
-  0%   { filter: blur(6px) brightness(0.5); opacity: 0.6; }
-  30%  { filter: blur(10px) brightness(1.4); opacity: 1; }
-  60%  { filter: blur(4px) brightness(0.7); opacity: 0.5; }
-  100% { filter: blur(12px) brightness(1.6); opacity: 1; }
+@keyframes vocal-rotate-high {
+  to {
+    --glow-angle-3: 450deg;
+  }
 }
 
-@keyframes vocal-pulse-2 {
-  0%   { filter: blur(2px) brightness(0.4); opacity: 0.4; }
-  40%  { filter: blur(5px) brightness(1.5); opacity: 0.9; }
-  70%  { filter: blur(2px) brightness(0.6); opacity: 0.5; }
-  100% { filter: blur(4px) brightness(1.3); opacity: 0.8; }
+/* ── Per-band brightness pulse layers — adds "breathing" energy ── */
+@keyframes bass-pulse {
+  0% {
+    filter: blur(var(--glow-bass-px)) brightness(0.8);
+  }
+
+  100% {
+    filter: blur(var(--glow-bass-px)) brightness(1.8);
+  }
 }
 
-/* Register custom properties for conic-gradient animation */
+@keyframes mid-pulse {
+  0% {
+    filter: blur(var(--glow-mid-px)) brightness(0.7);
+  }
+
+  100% {
+    filter: blur(var(--glow-mid-px)) brightness(1.6);
+  }
+}
+
+@keyframes high-pulse {
+  0% {
+    filter: blur(var(--glow-high-px)) brightness(0.6);
+  }
+
+  100% {
+    filter: blur(var(--glow-high-px)) brightness(2.0);
+  }
+}
+
+/* ── Register custom properties for conic-gradient animation ── */
 @property --glow-angle {
   syntax: '<angle>';
   initial-value: 0deg;
@@ -522,5 +593,11 @@
 @property --glow-angle-2 {
   syntax: '<angle>';
   initial-value: 180deg;
+  inherits: false;
+}
+
+@property --glow-angle-3 {
+  syntax: '<angle>';
+  initial-value: 90deg;
   inherits: false;
 }

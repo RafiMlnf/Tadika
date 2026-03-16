@@ -8,67 +8,230 @@ import Footer from "@/components/Footer";
 import { Member } from "@/data/members";
 
 export default function MemberDetail({ member }: { member: Member }) {
-  const [ytPlaying, setYtPlaying] = useState(false);
-  const ytRef = useRef<HTMLIFrameElement>(null);
-  const [origin, setOrigin] = useState("");
-  const [progress, setProgress] = useState(0);
-  const [duration, setDuration] = useState(1);
+  const [isPlaying, setIsPlaying] = useState(false);
 
-  useEffect(() => {
-    setOrigin(window.location.origin);
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const audioCtxRef = useRef<AudioContext | null>(null);
+  const analyserRef = useRef<AnalyserNode | null>(null);
+  const animFrameRef = useRef<number | null>(null);
+  const glowWrapperRef = useRef<HTMLDivElement>(null);
 
-    const onMessage = (event: MessageEvent) => {
-      if (typeof event.data === "string") {
-        try {
-          const data = JSON.parse(event.data);
-          // Only update if it's the expected infoDelivery event containing time info
-          if (data.event === "infoDelivery" && data.info) {
-            if (data.info.currentTime !== undefined) {
-              setProgress(data.info.currentTime);
-            }
-            if (data.info.duration !== undefined) {
-              setDuration(data.info.duration);
-            }
-          }
-        } catch (e) {}
-      }
-    };
-    window.addEventListener("message", onMessage);
-    return () => window.removeEventListener("message", onMessage);
+  // Setup Web Audio API
+  const setupAnalyser = useCallback(() => {
+    if (!audioRef.current || audioCtxRef.current) return;
+
+    const ctx = new AudioContext();
+    const analyser = ctx.createAnalyser();
+    analyser.fftSize = 512;
+    analyser.smoothingTimeConstant = 0.65;
+    analyser.minDecibels = -85;
+    analyser.maxDecibels = -10;
+
+    const source = ctx.createMediaElementSource(audioRef.current);
+    source.connect(analyser);
+    analyser.connect(ctx.destination);
+
+    audioCtxRef.current = ctx;
+    analyserRef.current = analyser;
   }, []);
 
-  const onIframeLoad = () => {
-    if (ytRef.current && ytRef.current.contentWindow) {
-      ytRef.current.contentWindow.postMessage(JSON.stringify({ event: "listening" }), "*");
-    }
-  };
+  // Glow animation loop — 3 separate frequency bands → 3 CSS custom properties
+  // Now supports automatic BPM fallback if 'bpm' is defined instead of live Audio API tracking
+  const startGlowLoop = useCallback(() => {
+    if (!glowWrapperRef.current) return;
 
-  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const val = parseFloat(e.target.value);
-    setProgress(val);
-    if (ytRef.current && ytRef.current.contentWindow) {
-      ytRef.current.contentWindow.postMessage(
-        JSON.stringify({
-          event: "command",
-          func: "seekTo",
-          args: [val, true],
-        }),
-        "*",
-      );
-    }
-  };
+    if (member.favSong?.bpm) {
+      // --------------------------------------------------------------------
+      // MODE 1: BPM-BASED SYNC (Manual Timer)
+      // --------------------------------------------------------------------
+      const bpm = member.favSong.bpm;
+      const beatDuration = 60 / bpm; // duration of one beat in seconds
 
-  const toggleYt = useCallback(() => {
-    if (!ytRef.current) return;
-    const iframe = ytRef.current;
-    if (ytPlaying) {
-      iframe.contentWindow?.postMessage('{"event":"command","func":"pauseVideo","args":""}', "*");
-      setYtPlaying(false);
+      let smoothBass = 0;
+      let smoothMid = 0;
+      let smoothHigh = 0;
+
+      const tick = () => {
+        const audio = audioRef.current;
+        const wrapper = glowWrapperRef.current;
+        if (!audio || !wrapper) return;
+
+        // Get phase of current beat (0.0 to 1.0)
+        // Note: the audio.currentTime might need tweaking if the vocal doesn't align exactly at 0.0s.
+        const phase = (audio.currentTime % beatDuration) / beatDuration;
+        
+        // Attack (0-15%), Decay (15%-100%)
+        let intensity = 0;
+        if (phase < 0.15) {
+          intensity = phase / 0.15; // fade in fast (0 to 1)
+        } else {
+          intensity = 1 - ((phase - 0.15) / 0.85); // fade out
+          intensity = Math.pow(intensity, 2.5); // steep exponential decay for punchy kick
+        }
+
+        const bassRaw = intensity;
+        
+        // Highs (hi-hats) pulse off-beat (offset by 0.5 beat)
+        const highPhase = ((audio.currentTime + beatDuration * 0.5) % beatDuration) / beatDuration;
+        let highIntensity = 0;
+        if (highPhase < 0.1) {
+          highIntensity = highPhase / 0.1;
+        } else {
+          highIntensity = Math.pow(1 - ((highPhase - 0.1) / 0.9), 2);
+        }
+        const highRaw = highIntensity * 0.7; // slightly lower intensity
+        
+        const midRaw = intensity * 0.6; // Mids follow the beat gently
+
+        // Smooth output slightly to remove digital harshness
+        smoothBass = bassRaw > smoothBass ? smoothBass * 0.1 + bassRaw * 0.9 : smoothBass * 0.85 + bassRaw * 0.15;
+        smoothMid = midRaw > smoothMid ? smoothMid * 0.2 + midRaw * 0.8 : smoothMid * 0.88 + midRaw * 0.12;
+        smoothHigh = highRaw > smoothHigh ? smoothHigh * 0.2 + highRaw * 0.8 : smoothHigh * 0.8 + highRaw * 0.2;
+
+        wrapper.style.setProperty("--glow-bass", smoothBass.toFixed(3));
+        wrapper.style.setProperty("--glow-mid", smoothMid.toFixed(3));
+        wrapper.style.setProperty("--glow-high", smoothHigh.toFixed(3));
+        wrapper.style.setProperty("--glow-bass-px", `${(3 + smoothBass * 10).toFixed(1)}px`);
+        wrapper.style.setProperty("--glow-mid-px", `${(3 + smoothMid * 8).toFixed(1)}px`);
+        wrapper.style.setProperty("--glow-high-px", `${(2 + smoothHigh * 7).toFixed(1)}px`);
+
+        animFrameRef.current = requestAnimationFrame(tick);
+      };
+
+      animFrameRef.current = requestAnimationFrame(tick);
+
     } else {
-      iframe.contentWindow?.postMessage('{"event":"command","func":"playVideo","args":""}', "*");
-      setYtPlaying(true);
+      // --------------------------------------------------------------------
+      // MODE 2: WEB AUDIO API SYNC (Real-time Spectrum Analysis)
+      // --------------------------------------------------------------------
+      if (!analyserRef.current) return;
+
+      const bufferLength = analyserRef.current.frequencyBinCount;
+      const freqData = new Uint8Array(bufferLength);
+
+      let smoothBass = 0;
+      let smoothMid = 0;
+      let smoothHigh = 0;
+
+      const tick = () => {
+        const analyser = analyserRef.current;
+        const wrapper = glowWrapperRef.current;
+        if (!analyser || !wrapper) return;
+
+        analyser.getByteFrequencyData(freqData);
+
+        // === BASS (bins 1-12): kick drum, bass guitar, sub → ORANGE/YELLOW ===
+        let bassSum = 0;
+        for (let i = 1; i <= 12; i++) bassSum += freqData[i];
+        const bassRaw = Math.min((bassSum / (12 * 255)) * 2.5, 1);
+
+        // === MID (bins 13-60): vocals, guitar, snare, keys → PURPLE/PINK ===
+        let midSum = 0;
+        for (let i = 13; i <= 60; i++) midSum += freqData[i];
+        const midRaw = Math.min((midSum / (48 * 255)) * 2.5, 1);
+
+        // === HIGH (bins 61-140): hi-hat, cymbals, sparkle, sibilance → CYAN/BLUE ===
+        const highEnd = Math.min(140, bufferLength);
+        let highSum = 0;
+        for (let i = 61; i < highEnd; i++) highSum += freqData[i];
+        const highRaw = Math.min((highSum / ((highEnd - 61) * 255)) * 3, 1);
+
+        // Smooth each band: rise FAST, fall FAST — more EQ-like snappy response
+        smoothBass = bassRaw > smoothBass ? smoothBass * 0.15 + bassRaw * 0.85 : smoothBass * 0.75 + bassRaw * 0.25;
+        smoothMid = midRaw > smoothMid ? smoothMid * 0.2 + midRaw * 0.8 : smoothMid * 0.78 + midRaw * 0.22;
+        smoothHigh = highRaw > smoothHigh ? smoothHigh * 0.15 + highRaw * 0.85 : smoothHigh * 0.72 + highRaw * 0.28;
+
+        // Set CSS custom properties on the wrapper
+        // Opacity (0–1)
+        wrapper.style.setProperty("--glow-bass", smoothBass.toFixed(3));
+        wrapper.style.setProperty("--glow-mid", smoothMid.toFixed(3));
+        wrapper.style.setProperty("--glow-high", smoothHigh.toFixed(3));
+        // Dynamic spread in px — glow physically grows/shrinks like EQ bars
+        wrapper.style.setProperty("--glow-bass-px", `${(3 + smoothBass * 10).toFixed(1)}px`);
+        wrapper.style.setProperty("--glow-mid-px", `${(3 + smoothMid * 8).toFixed(1)}px`);
+        wrapper.style.setProperty("--glow-high-px", `${(2 + smoothHigh * 7).toFixed(1)}px`);
+
+        animFrameRef.current = requestAnimationFrame(tick);
+      };
+
+      animFrameRef.current = requestAnimationFrame(tick);
     }
-  }, [ytPlaying]);
+  }, [member.favSong]);
+
+  const stopGlowLoop = useCallback(() => {
+    if (animFrameRef.current !== null) {
+      cancelAnimationFrame(animFrameRef.current);
+      animFrameRef.current = null;
+    }
+    // Reset CSS vars
+    const wrapper = glowWrapperRef.current;
+    if (wrapper) {
+      wrapper.style.setProperty("--glow-bass", "0");
+      wrapper.style.setProperty("--glow-mid", "0");
+      wrapper.style.setProperty("--glow-high", "0");
+      wrapper.style.setProperty("--glow-bass-px", "3px");
+      wrapper.style.setProperty("--glow-mid-px", "3px");
+      wrapper.style.setProperty("--glow-high-px", "2px");
+    }
+  }, []);
+
+  const togglePlay = useCallback(async () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    setupAnalyser();
+    if (audioCtxRef.current?.state === "suspended") {
+      await audioCtxRef.current.resume();
+    }
+
+    if (isPlaying) {
+      audio.pause();
+      stopGlowLoop();
+      setIsPlaying(false);
+    } else {
+      if (member.favSong?.startAt && audio.currentTime < member.favSong.startAt) {
+        audio.currentTime = member.favSong.startAt;
+      }
+      await audio.play();
+      startGlowLoop();
+      setIsPlaying(true);
+    }
+  }, [isPlaying, member.favSong, setupAnalyser, startGlowLoop, stopGlowLoop]);
+
+  const handleReset = useCallback(() => {
+    const audio = audioRef.current;
+    if (!audio || !member.favSong) return;
+    audio.currentTime = member.favSong.startAt || 0;
+  }, [member.favSong]);
+
+  // Audio event listeners
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const onLoadedMetadata = () => {
+      if (member.favSong?.startAt) audio.currentTime = member.favSong.startAt;
+    };
+    const onEnded = () => {
+      stopGlowLoop();
+      setIsPlaying(false);
+    };
+
+    audio.addEventListener("loadedmetadata", onLoadedMetadata);
+    audio.addEventListener("ended", onEnded);
+    return () => {
+      audio.removeEventListener("loadedmetadata", onLoadedMetadata);
+      audio.removeEventListener("ended", onEnded);
+    };
+  }, [member.favSong, stopGlowLoop]);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      stopGlowLoop();
+      audioCtxRef.current?.close();
+    };
+  }, [stopGlowLoop]);
 
   return (
     <div className="grid-bg" style={{ minHeight: "100vh", position: "relative" }}>
@@ -85,7 +248,11 @@ export default function MemberDetail({ member }: { member: Member }) {
         {/* Member Info */}
         <section className="profile-detail">
           <div className="profile-detail-header">
-            <div className={`vocal-glow-wrapper${ytPlaying ? " glow-active" : ""}`}>
+            {/* Profile Photo — Glow lives here */}
+            <div
+              ref={glowWrapperRef}
+              className={`vocal-glow-wrapper${isPlaying ? " glow-active" : ""}`}
+            >
               <div className="profile-detail-img card">
                 {member.image ? (
                   <Image
@@ -123,6 +290,8 @@ export default function MemberDetail({ member }: { member: Member }) {
                   </div>
                 )}
               </div>
+              {/* Extra glow layer for highs (cyan) — needs a real element */}
+              <div className="glow-layer-high" />
             </div>
 
             <div className="profile-detail-info">
@@ -132,12 +301,22 @@ export default function MemberDetail({ member }: { member: Member }) {
 
               <div className="social-links-inline font-mono" style={{ marginBottom: 32 }}>
                 {member.socials.instagram && (
-                  <a href={`https://instagram.com/${member.socials.instagram.replace("@", "")}`} target="_blank" rel="noreferrer" className="social-link">
+                  <a
+                    href={`https://instagram.com/${member.socials.instagram.replace("@", "")}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="social-link"
+                  >
                     IG: {member.socials.instagram}
                   </a>
                 )}
                 {member.socials.twitter && (
-                  <a href={`https://twitter.com/${member.socials.twitter.replace("@", "")}`} target="_blank" rel="noreferrer" className="social-link">
+                  <a
+                    href={`https://twitter.com/${member.socials.twitter.replace("@", "")}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="social-link"
+                  >
                     X: {member.socials.twitter}
                   </a>
                 )}
@@ -153,7 +332,10 @@ export default function MemberDetail({ member }: { member: Member }) {
               {member.spotifyTrackId && (
                 <div className="spotify-section" style={{ marginBottom: 40 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-                    <span className="font-mono" style={{ fontSize: "0.85rem", color: "var(--color-text-muted)", letterSpacing: "0.05em" }}>
+                    <span
+                      className="font-mono"
+                      style={{ fontSize: "0.85rem", color: "var(--color-text-muted)", letterSpacing: "0.05em" }}
+                    >
                       LAGU FAVORIT
                     </span>
                   </div>
@@ -171,35 +353,35 @@ export default function MemberDetail({ member }: { member: Member }) {
                 </div>
               )}
 
-              {/* YouTube Audio Player */}
+              {/* Local Audio Player */}
               {member.favSong && (
                 <div className="yt-audio-section" style={{ marginBottom: 40 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-                    <span className="font-mono" style={{ fontSize: "0.85rem", color: "var(--color-text-muted)", letterSpacing: "0.05em" }}>
+                    <span
+                      className="font-mono"
+                      style={{ fontSize: "0.85rem", color: "var(--color-text-muted)", letterSpacing: "0.05em" }}
+                    >
                       LAGU FAVORIT
                     </span>
                   </div>
 
-                  {/* Hidden YouTube iframe */}
-                  <div style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", opacity: 0, pointerEvents: "none" }}>
-                    {origin && (
-                      <iframe
-                        ref={ytRef}
-                        onLoad={onIframeLoad}
-                        src={`https://www.youtube.com/embed/${member.favSong.youtubeId}?enablejsapi=1&start=${member.favSong.startAt || 0}&autoplay=0&controls=0&origin=${origin}`}
-                        width="1"
-                        height="1"
-                        allow="autoplay"
-                        style={{ border: "none" }}
-                      />
-                    )}
-                  </div>
+                  {/* Hidden native audio element */}
+                  <audio ref={audioRef} src={member.favSong.audioSrc} preload="metadata" crossOrigin="anonymous" />
 
-                  {/* Custom Audio Player UI */}
-                  <div className="yt-audio-player card" style={{ padding: "0", overflow: "hidden", display: "flex" }}>
-                    <div style={{ display: "flex", alignItems: "center", padding: "16px", gap: "16px", flex: 1, width: "100%" }}>
-                      <button className="yt-play-btn" aria-label={ytPlaying ? "Pause" : "Play"} onClick={toggleYt}>
-                        {ytPlaying ? (
+                  {/* Music Card — clean, no glow here */}
+                  <div className="yt-audio-player card" style={{ padding: "0", overflow: "hidden", borderRadius: 14 }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        padding: "16px",
+                        gap: "16px",
+                        width: "100%",
+                      }}
+                    >
+                      {/* Play / Pause */}
+                      <button className="yt-play-btn" aria-label={isPlaying ? "Pause" : "Play"} onClick={togglePlay}>
+                        {isPlaying ? (
                           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                             <rect x="6" y="4" width="4" height="16" rx="1" />
                             <rect x="14" y="4" width="4" height="16" rx="1" />
@@ -210,22 +392,12 @@ export default function MemberDetail({ member }: { member: Member }) {
                           </svg>
                         )}
                       </button>
+
+                      {/* Reset to startAt */}
                       <button
                         className="yt-reset-btn"
                         aria-label="Reset"
-                        onClick={() => {
-                          if (ytRef.current && ytRef.current.contentWindow && member.favSong) {
-                            ytRef.current.contentWindow.postMessage(
-                              JSON.stringify({
-                                event: "command",
-                                func: "seekTo",
-                                args: [member.favSong.startAt || 0, true],
-                              }),
-                              "*",
-                            );
-                            setProgress(member.favSong.startAt || 0);
-                          }
-                        }}
+                        onClick={handleReset}
                         style={{
                           marginLeft: 4,
                           width: 22,
@@ -238,14 +410,28 @@ export default function MemberDetail({ member }: { member: Member }) {
                           justifyContent: "center",
                           cursor: "pointer",
                           opacity: 0.85,
+                          flexShrink: 0,
                         }}
                       >
                         <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
-                          <path d="M10 3v2.5A5.5 5.5 0 1 1 4.5 11" stroke="#888" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                          <polyline points="7 6 10 3 13 6" stroke="#888" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          <path
+                            d="M10 3v2.5A5.5 5.5 0 1 1 4.5 11"
+                            stroke="#888"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <polyline
+                            points="7 6 10 3 13 6"
+                            stroke="#888"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
                         </svg>
                       </button>
 
+                      {/* Song Info */}
                       <div className="yt-song-info" style={{ flex: 1, minWidth: 0 }}>
                         <span className="yt-song-title font-display">{member.favSong.title}</span>
                         <span className="yt-song-artist font-mono">{member.favSong.artist}</span>

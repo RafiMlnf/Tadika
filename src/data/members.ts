@@ -9,11 +9,12 @@ export interface Member {
   bio: string;
   spotifyTrackId?: string; // Spotify track ID untuk lagu favorit
   favSong?: {
-    // Lagu favorit via YouTube (audio only player)
-    youtubeId: string; // ID video YouTube (dari link, contoh: 'dQw4w9WgXcQ')
-    title: string; // Judul lagu
-    artist: string; // Nama artis
+    // Lagu favorit via file audio lokal (Web Audio API / BPM Sync)
+    audioSrc: string; // Path ke file audio lokal, contoh: '/audio/arteri.mp3'
+    title: string;    // Judul lagu
+    artist: string;   // Nama artis
     startAt?: number; // Mulai dari detik ke berapa (default: 0)
+    bpm?: number;     // BPM (Beats Per Minute) lagu untuk sync manual
   };
   traits: string[];
   socials: {
