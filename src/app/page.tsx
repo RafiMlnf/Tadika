@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Scribbles from '@/components/Scribbles';
 import Link from 'next/link';
+import TripSlideshow from '@/components/TripSlideshow';
 
 /* ── Unsplash gallery images (featured masonry) ── */
 const galleryImages = [
@@ -27,8 +28,23 @@ const tripWiki = [
   {
     title: 'Bandung 1',
     date: 'Mar 2022',
-    desc: 'First trip ke Bandung bareng anak-anak. Mutar-mutar Braga, hunting kuliner hits, dan pastinya jeprat-jepret estetik.',
-    detail: 'Bandung 1 tuh titik awal Tadika terbentuk. Kita gas ke tempat ikonik kayak Braga, Gedung Sate, dan TSM. Pokoknya momen ini jadi core memory kita semua sampai sekarang.',
+    desc: 'Wacana motoran Gedebage gara-gara Dafa ngajak Rafi nge-thrift berujung pecah jadi trip beneran setelah Dzaki tiba-tiba nimbrung H-2.',
+    detail: `suatu hari dikelas, rafi seseorang yang menyedihkan, tiba-tiba dihampiri oleh dafa alfiana. dafa ngajak ngobrol, 
+---
+bro said : fi, nge thrift yo ke gedebage bandung motoran
+rafi     : ayo, ajak yang lain juga yo biar ramean
+bro dafa : gas
+---
+lalu si keren rafi menyusun dan mengajak yang lain. tapi... setelah semua tersusun, ter-plan rapih, dihari yg panas dikelas, dafa menghampiri.
+---
+dafa : fi kayanya gua gabisa (lupa alesan nya apa njir).
+rafi : damn okoklah
+---
+rafi kebingungan nyari siapa lagi biar partisipan pas 8 orang, hingga h-2, seseorang yang gapernah disangka, orang yang mungkin tidak bisa dianggap remeh atas kerasnya dunia upb, 
+---
+dzaki bilek : gua ikut, bayar berapa
+---
+dan tour pertama terjadi, terimakasih dzaki`,
     img: 'https://images.unsplash.com/photo-1555899434-94d1368aa7af?w=800&q=80',
     photos: 84,
   },
@@ -36,7 +52,7 @@ const tripWiki = [
     title: 'Pangandaran',
     date: 'Jul 2023',
     desc: 'Weekend getaway ke pantai selatan yang pecah banget. Ada snorkeling, chilling liat sunset, plus deep talk rill depan api unggun.',
-    detail: 'Salah satu trip paling goated! Kita enjoy mantai pasir putih, nyebur di Green Canyon, sampai nge-gitar sambil api unggun. Vibes-nya asik abis.',
+    detail: `selang semesteran after bandung 1, ada usulan villa-an lagi tapi ke bogor. cuma partisipan nya kyknya dikit, yaudah geser plan extreme, berbahaya, yang mungkin dapat menyebabkan kematian, bahkan orang manapun mungkin tidak bisa (ymma). pangandaran, usulan konyol yang suprisingly ada yang minat, keren2. dengan keterbatasan anggota yg ikut tapi terjadi meski menantang batas kemampuan mental dan batin rata2 manusia UPB. bretttt baliknya ilang setengah nyawa dan akal sehat.`,
     img: '/img/pgdn.jpg',
     photos: 126,
   },
@@ -44,15 +60,15 @@ const tripWiki = [
     title: 'Puncak Bogor',
     date: 'Des 2023',
     desc: 'Vibing akhir tahun di villa Puncak dengan view yang sick parah.',
-    detail: 'Puncak Bogor jadi spot gathering penutup tahun. Nge-chill di villa, BBQ-an bareng, turnamen mini games, plus nangkring nungguin sunrise dari balkon.',
+    detail: `kebersamaan cenah, biar ga tadika2 aja, kawan2 pengen adain acara sekelas, dimas, rafi, fajri telah pidato di grup A4 tapi gaada yg jawab, dahlah ujungnya mah tadika2 lagi. tour yg membangun chemistry tadika, emang ada yg masi asing pas di loc, tapi lihatlah sekarang. tour ter-goated.`,
     img: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&q=80',
     photos: 67,
   },
   {
     title: 'Gunung Putri',
     date: 'Apr 2024',
-    desc: 'Light hiking plus nge-camp chill sambil stargazing.',
-    detail: 'First time nyobain outdoor life buat anak-anak kota. Kita bangun tenda (capek no debat), masak bareng, dan nyantai di bawah bintang. Sunrise pas pagi? No kecot legit banget.',
+    desc: 'Camping Sehari.',
+    detail: `dibilang trip bukan, dibilang filler juga bukan soalnya jauh, plan awalnya mau sawarna / goa langir banten, brett ada berita megathrust (siapa yg kaga takut coba diancam tsunami). yaudahlah geser ke gunung2an biar ga kena tsunami, bro ricky nyari2 rekomen tempat camping, nemu tu opsi loji atau gn putri, hasil vote gn putri menang. tour paling murah, ga pusing mikirin biaya, makanya biar rame lagi ngajak bro dimas dan raka, tapi si hafiz hampir gamau soalnya dia udah join satset (gasih, karena gaada ongkos wkwk), tapi terimakasih gita telah membujuk hapis.`,
     img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80',
     photos: 89,
   },
@@ -60,7 +76,7 @@ const tripWiki = [
     title: 'Blok M',
     date: 'Agt 2024',
     desc: 'City stroll vibes Blok M. Mulai dari nge-thrift, café hopping estetik, sampai hunting kuliner malem.',
-    detail: 'Ngeksplor Blok M bareng gengs. Ngubek-ngubek M Bloc, pindah-pindah café, jajan street food di Blok M Square, lanjut nongkrong sambil curhat ngalor-ngidul.',
+    detail: `dadakan njir`,
     img: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80',
     photos: 54,
   },
@@ -68,7 +84,7 @@ const tripWiki = [
     title: 'Lembang',
     date: 'Jan 2025',
     desc: 'One day escape ke Lembang ngadem sambil hunting kuliner lokal yang maknyus.',
-    detail: 'Trip singkat super fun! Kita mampir ke Floating Market, exploring The Lodge Maribaya, terus mukbang sate maranggi. Vibes sejuk plus ngakak-ngakak bareng.',
+    detail: `tba`,
     img: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80',
     photos: 72,
   },
@@ -85,6 +101,16 @@ const stats = [
 export default function Home() {
   const [pixelCells, setPixelCells] = useState<React.ReactNode[]>([]);
   const [activeTrip, setActiveTrip] = useState<typeof tripWiki[0] | null>(null);
+  const [mediaList, setMediaList] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetch('/api/media')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) setMediaList(data);
+      })
+      .catch(err => console.error('Failed to load media:', err));
+  }, []);
 
   /* ── Pixel background generation ── */
   useEffect(() => {
@@ -249,8 +275,11 @@ export default function Home() {
             {tripWiki.map((trip, i) => (
               <div key={i} ref={scrollRevealRef} className="card trip-card reveal-item" style={{ animationDelay: `${i * 0.12}s`, cursor: 'pointer' }} onClick={() => setActiveTrip(trip)}>
                 <div className="trip-card-img">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={trip.img} alt={trip.title} loading="lazy" />
+                  <TripSlideshow
+                    category={trip.title}
+                    fallbackImg={trip.img}
+                    mediaList={mediaList}
+                  />
                 </div>
                 <div className="trip-card-content">
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 2 }}>
@@ -272,21 +301,19 @@ export default function Home() {
             {/* 1. Bandung 1 */}
             <Link href="/gallery/bandung-1" className="card reveal-item" ref={scrollRevealRef} style={{ position: 'relative', display: 'flex', flexDirection: 'column', minHeight: 300, minWidth: 300, flex: '0 0 300px', overflow: 'hidden', scrollSnapAlign: 'start' }}>
               <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://images.unsplash.com/photo-1555899434-94d1368aa7af?w=800&q=80" alt="Bandung 1" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} loading="lazy" />
+                <TripSlideshow category="Bandung 1" fallbackImg="https://images.unsplash.com/photo-1555899434-94d1368aa7af?w=800&q=80" mediaList={mediaList} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%)' }} />
               </div>
               <div style={{ padding: 24, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', position: 'relative', zIndex: 1 }}>
                 <h3 className="font-display" style={{ marginBottom: 8, color: '#FFFFFF' }}>Bandung 1</h3>
-                <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '0.95rem' }}>First trip ke Bandung bareng gengs Tadika. Vibesnya dapet!</p>
+                <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '0.95rem' }}>Dari wacana motoran Gedebage yang nyaris gagal, malah jadi titik awal sejarah ngumpulnya Tadika.</p>
               </div>
             </Link>
 
             {/* 2. Pangandaran */}
             <Link href="/gallery/pangandaran" className="card reveal-item" ref={scrollRevealRef} style={{ position: 'relative', display: 'flex', flexDirection: 'column', minHeight: 300, minWidth: 300, flex: '0 0 300px', overflow: 'hidden', scrollSnapAlign: 'start' }}>
               <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/img/pgdn.jpg" alt="Pangandaran" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                <TripSlideshow category="Pangandaran" fallbackImg="/img/pgdn.jpg" mediaList={mediaList} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%)' }} />
               </div>
               <div style={{ padding: 24, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', position: 'relative', zIndex: 1 }}>
@@ -298,8 +325,7 @@ export default function Home() {
             {/* 3. Puncak Bogor */}
             <Link href="/gallery/puncak-bogor" className="card reveal-item" ref={scrollRevealRef} style={{ position: 'relative', display: 'flex', flexDirection: 'column', minHeight: 300, minWidth: 300, flex: '0 0 300px', overflow: 'hidden', scrollSnapAlign: 'start' }}>
               <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&q=80" alt="Puncak Bogor" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} loading="lazy" />
+                <TripSlideshow category="Puncak Bogor" fallbackImg="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&q=80" mediaList={mediaList} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%)' }} />
               </div>
               <div style={{ padding: 24, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', position: 'relative', zIndex: 1 }}>
@@ -311,8 +337,7 @@ export default function Home() {
             {/* 4. Gunung Putri */}
             <Link href="/gallery/gunung-putri" className="card reveal-item" ref={scrollRevealRef} style={{ position: 'relative', display: 'flex', flexDirection: 'column', minHeight: 300, minWidth: 300, flex: '0 0 300px', overflow: 'hidden', scrollSnapAlign: 'start' }}>
               <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80" alt="Gunung Putri" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} loading="lazy" />
+                <TripSlideshow category="Gunung Putri" fallbackImg="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80" mediaList={mediaList} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%)' }} />
               </div>
               <div style={{ padding: 24, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', position: 'relative', zIndex: 1 }}>
@@ -324,8 +349,7 @@ export default function Home() {
             {/* 5. Blok M */}
             <Link href="/gallery/blok-m" className="card reveal-item" ref={scrollRevealRef} style={{ position: 'relative', display: 'flex', flexDirection: 'column', minHeight: 300, minWidth: 300, flex: '0 0 300px', overflow: 'hidden', scrollSnapAlign: 'start' }}>
               <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80" alt="Blok M" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} loading="lazy" />
+                <TripSlideshow category="Blok M" fallbackImg="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80" mediaList={mediaList} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%)' }} />
               </div>
               <div style={{ padding: 24, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', position: 'relative', zIndex: 1 }}>
@@ -337,8 +361,7 @@ export default function Home() {
             {/* 6. Lembang */}
             <Link href="/gallery/lembang" className="card reveal-item" ref={scrollRevealRef} style={{ position: 'relative', display: 'flex', flexDirection: 'column', minHeight: 300, minWidth: 300, flex: '0 0 300px', overflow: 'hidden', scrollSnapAlign: 'start' }}>
               <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80" alt="Lembang" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} loading="lazy" />
+                <TripSlideshow category="Lembang" fallbackImg="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80" mediaList={mediaList} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%)' }} />
               </div>
               <div style={{ padding: 24, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', position: 'relative', zIndex: 1 }}>
@@ -372,8 +395,13 @@ export default function Home() {
             </button>
 
             {/* Image */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={activeTrip.img} alt={activeTrip.title} style={{ width: '100%', height: 280, objectFit: 'cover', display: 'block', borderRadius: 'var(--radius-lg) var(--radius-lg) 0 0' }} />
+            <div style={{ width: '100%', height: 280, borderRadius: 'var(--radius-lg) var(--radius-lg) 0 0', overflow: 'hidden' }}>
+              <TripSlideshow
+                category={activeTrip.title}
+                fallbackImg={activeTrip.img}
+                mediaList={mediaList}
+              />
+            </div>
 
             {/* Content */}
             <div style={{ padding: 32 }}>
@@ -382,7 +410,26 @@ export default function Home() {
                 <span className="font-mono" style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)' }}>{activeTrip.photos} foto</span>
               </div>
               <h2 className="font-display" style={{ fontSize: '1.8rem', marginBottom: 12 }}>{activeTrip.title}</h2>
-              <p style={{ color: 'var(--color-text-secondary)', fontSize: '1rem', lineHeight: 1.7 }}>{activeTrip.detail}</p>
+              <div style={{ color: 'var(--color-text-secondary)', fontSize: '1rem', lineHeight: 1.7 }}>
+                {activeTrip.detail.split('---').map((part, index) => {
+                  const isDialog = index % 2 === 1;
+                  return (
+                    <div key={index} style={{
+                      padding: isDialog ? '12px 16px' : '0',
+                      margin: isDialog ? '16px 0' : '0',
+                      background: isDialog ? 'var(--color-bg-alt)' : 'transparent',
+                      borderTop: isDialog ? '1px dashed var(--color-border)' : 'none',
+                      borderBottom: isDialog ? '1px dashed var(--color-border)' : 'none',
+                      whiteSpace: 'pre-wrap',
+                      fontFamily: isDialog ? 'monospace' : 'inherit',
+                      fontSize: isDialog ? '0.9rem' : '1rem',
+                      color: isDialog ? 'var(--color-text-muted)' : 'var(--color-text-secondary)'
+                    }}>
+                      {part.trim()}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>

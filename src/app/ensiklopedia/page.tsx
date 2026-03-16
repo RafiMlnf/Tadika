@@ -1,9 +1,10 @@
 'use client';
 
-import { useRef, useCallback, useState } from 'react';
+import { useRef, useCallback, useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Scribbles from '@/components/Scribbles';
+import TripSlideshow from '@/components/TripSlideshow';
 
 /* ── Encyclopedia sections (general info cards without Highlights) ── */
 const encyclopediaSections = [
@@ -32,8 +33,8 @@ const encyclopediaSections = [
 
 /* ── Timeline data ── */
 const timelineEvents = [
-  { year: '2022', month: 'Mar', event: 'Trip Bandung 1 — Tadika terlahir tanpa niat ketidaksengajaan brutal.', icon: '01' },
-  { year: '2023', month: 'Jul', event: 'Trip Pangandaran — Fix pantai pertama, gosong ria bareng.', icon: '02' },
+  { year: '2022', month: 'Feb', event: 'Trip Bandung 1 — Tadika terlahir tanpa niat ketidaksengajaan brutal.', icon: '01' },
+  { year: '2022', month: 'Agt', event: 'Trip Pangandaran — Fix pantai pertama, gosong ria bareng.', icon: '02' },
   { year: '2023', month: 'Des', event: 'Gathering Puncak Bogor — Akhir tahun sok asik pamer kedinginan.', icon: '03' },
   { year: '2024', month: 'Apr', event: 'Gunung Putri — First camping trip, isinya full komplain dan mengeluh.', icon: '04' },
   { year: '2024', month: 'Agt', event: 'Blok M — Anak skena dadakan, ngemper gembel di kota raya.', icon: '05' },
@@ -46,8 +47,23 @@ const tripData = [
     title: 'Bandung 1',
     date: 'Mar 2022',
     tags: ['Awal Mula', 'City Stroll', 'Roadtrip'],
-    desc: 'Trip perdana ke Bandung bareng bader-bader gabut. Kelayapan di Braga, hunting kuliner, sama menuhin storage hape ampe jebol full aib.',
-    detail: 'Bandung 1 tuh origin story-nya Tadika. Kita gas ke tempat mainstream macem Braga, Gedung Sate, n TSM. Biar kata cupu, momen ini yang nge-lock kita tetep nyatu saling ngata-ngatain sampe sekarang.',
+    desc: "Awalnya wacana motoran ke Gedebage gara-gara Dafa ngajak Rafi nge-thrift. Ujungnya rencana berubah jadi ke Bandung dan Dzaki pun jadi MVP karena ikut H-2 masuk squadlist Timnas Tadika.",
+    detail: `suatu hari dikelas, rafi seseorang yang menyedihkan, tiba-tiba dihampiri oleh dafa alfiana. dafa ngajak ngobrol, 
+---
+bro said : fi, nge thrift yo ke gedebage bandung motoran
+rafi     : ayo, ajak yang lain juga yo biar ramean
+bro dafa : gas
+---
+lalu si keren rafi menyusun dan mengajak yang lain. tapi... setelah semua tersusun, ter-plan rapih, dihari yg panas dikelas, dafa menghampiri.
+---
+dafa : fi kayanya gua gabisa (lupa alesan nya apa njir).
+rafi : damn okoklah
+---
+rafi kebingungan nyari siapa lagi biar partisipan pas 8 orang, hingga h-2, seseorang yang gapernah disangka, orang yang mungkin tidak bisa dianggap remeh atas kerasnya dunia upb, 
+---
+dzaki bilek : gua ikut, bayar berapa
+---
+dan tour pertama terjadi, terimakasih dzaki`,
     img: 'https://images.unsplash.com/photo-1555899434-94d1368aa7af?w=800&q=80',
     photos: 84,
   },
@@ -56,7 +72,7 @@ const tripData = [
     date: 'Jul 2023',
     tags: ['Gosong', 'Sunset', 'Deep Talk'],
     desc: 'Ngegas ke pantai selatan pas weekend. Nyebur bebas, nungguin sunset sok indie, dilanjut bacot malem depan api unggun.',
-    detail: 'Salah satu trip ter-goated! Gosong bareng di pasir putih, bodoh-bodohan nyebur di Green Canyon, malemnya genjreng gitar sampe pada teler. Vibesnya dapet banget gila.',
+    detail: `selang semesteran after bandung 1, ada usulan villa-an lagi tapi ke bogor. cuma partisipan nya kyknya dikit, yaudah geser plan extreme, berbahaya, yang mungkin dapat menyebabkan kematian, bahkan orang manapun mungkin tidak bisa (ymma). pangandaran, usulan konyol yang suprisingly ada yang minat, keren2. dengan keterbatasan anggota yg ikut tapi terjadi meski menantang batas kemampuan mental dan batin rata2 manusia UPB. bretttt baliknya ilang setengah nyawa dan akal sehat.`,
     img: '/img/pgdn.jpg',
     photos: 126,
   },
@@ -65,7 +81,7 @@ const tripData = [
     date: 'Des 2023',
     tags: ['Villa', 'Ngemper', 'Gathering'],
     desc: 'Ngerayain pergantian taun di villa Puncak dengan view lumayan lah buat dibikin story IG pamer pamer dikit.',
-    detail: 'Kumpul akhir taun isinya cuma goler-goler gajelas di villa, bakar sate, turnamen game absurd, terus sok kuat nungguin sunrise di balkon padahal kedinginan mau mati.',
+    detail: `kebersamaan cenah, biar ga tadika2 aja, kawan2 pengen adain acara sekelas, dimas, rafi, fajri telah pidato di grup A4 tapi gaada yg jawab, dahlah ujungnya mah tadika2 lagi. tour yg membangun chemistry tadika, emang ada yg masi asing pas di loc, tapi lihatlah sekarang. tour ter-goated.`,
     img: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&q=80',
     photos: 67,
   },
@@ -74,7 +90,7 @@ const tripData = [
     date: 'Apr 2024',
     tags: ['Sok Pecinta Alam', 'Hiking', 'Stargazing'],
     desc: 'Sok asik main ke alam, nanjak cimit doang capeknya ngga ngotak, ujung-ujungnya cuma pgn rebahan doang.',
-    detail: 'First time ngerasain idup susah buat nih anak-anak kota. Bikin tenda aja penuh makian, masak mie seketika jadi rasa caviar elit. Pas sunrise dateng mah auto pada senyap saking takjub, no debat lah.',
+    detail: `dibilang trip bukan, dibilang filler juga bukan soalnya jauh, plan awalnya mau sawarna / goa langir banten, brett ada berita megathrust (siapa yg kaga takut coba diancam tsunami). yaudahlah geser ke gunung2an biar ga kena tsunami, bro ricky nyari2 rekomen tempat camping, nemu tu opsi loji atau gn putri, hasil vote gn putri menang. tour paling murah, ga pusing mikirin biaya, makanya biar rame lagi ngajak bro dimas dan raka, tapi si hafiz hampir gamau soalnya dia udah join satset (gasih, karena gaada ongkos wkwk), tapi terimakasih gita telah membujuk hapis.`,
     img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80',
     photos: 89,
   },
@@ -83,7 +99,7 @@ const tripData = [
     date: 'Agt 2024',
     tags: ['Skena', 'Nongkrong', 'Thrift'],
     desc: 'Sok skena muterin Blok M. Rutenya nge-thrift gajelas, mampir cafe overprice ga ngotak, trus kelayapan jajan.',
-    detail: 'Ngubek kawasan hits bareng anak dajjal. Keliling M Bloc cari spot foto estetik, mindah-mindah tempat duduk doang buat ghibah, ampe akhirnya nge-gembel makan cireng di Blok M Square.',
+    detail: `dadakan njir`,
     img: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80',
     photos: 54,
   },
@@ -92,7 +108,7 @@ const tripData = [
     date: 'Jan 2025',
     tags: ['Healing', 'Makan Mulu', 'One Day Trip'],
     desc: 'Pelarian nyari angin adem sehari doang, ujung-ujungnya tetep mukbang brutal sate maranggi.',
-    detail: 'Trip kilat tapi riweuh parah! Mampir Floating Market, foto norak gaya bapak-bapak di The Lodge Maribaya, trus kalap pas makan. Udaranya adem asik buat molor, eh di kelilingan pada nyanyi teriak-teriak pusing dah.',
+    detail: `tba`,
     img: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80',
     photos: 72,
   },
@@ -101,6 +117,16 @@ const tripData = [
 export default function EnsiklopediaPage() {
   const [activeWikiIndex, setActiveWikiIndex] = useState(0);
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
+  const [mediaList, setMediaList] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetch('/api/media')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) setMediaList(data);
+      })
+      .catch(err => console.error('Failed to load media:', err));
+  }, []);
 
   /* ── Scroll-reveal observer ── */
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -316,7 +342,7 @@ export default function EnsiklopediaPage() {
               <div style={{ flex: '3 1 600px', padding: '32px' }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <div style={{ position: 'relative', width: '100%', height: '350px', borderRadius: 'var(--radius-md)', overflow: 'hidden', marginBottom: 24 }}>
-                  <img src={activeTrip.img} alt={activeTrip.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <TripSlideshow category={activeTrip.title} fallbackImg={activeTrip.img} mediaList={mediaList} />
                   <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: 24, background: 'linear-gradient(transparent, rgba(0,0,0,0.8))' }}>
                     <div className="font-mono text-white" style={{ fontSize: '1rem', marginBottom: 8, opacity: 0.9 }}>{activeTrip.date}</div>
                     <h2 className="font-display text-white" style={{ fontSize: '2.5rem', color: 'white' }}>{activeTrip.title}</h2>
@@ -338,11 +364,28 @@ export default function EnsiklopediaPage() {
                   </p>
                 </div>
 
-                <div style={{ padding: 24, background: 'var(--color-bg-alt)', borderRadius: 'var(--radius-sm)', borderLeft: '4px solid var(--color-accent)' }}>
-                  <h3 className="font-mono" style={{ fontSize: '1rem', letterSpacing: '0.05em', marginBottom: 8 }}>BOCORAN ASLI:</h3>
-                  <p className="font-body" style={{ color: 'var(--color-text)' }}>
-                    &quot;{activeTrip.detail}&quot;
-                  </p>
+                <div className="card" style={{ padding: 32, marginTop: 24 }}>
+                  <h3 className="font-mono" style={{ fontSize: '1rem', letterSpacing: '0.05em', marginBottom: 16, color: 'var(--color-accent)' }}>DOKSLI:</h3>
+                  <div className="font-body" style={{ color: 'var(--color-text)' }}>
+                    {activeTrip.detail.split('---').map((part, index) => {
+                      const isDialog = index % 2 === 1;
+                      return (
+                        <div key={index} style={{
+                          padding: isDialog ? '16px 0' : '0',
+                          margin: isDialog ? '16px 0' : '0',
+                          borderTop: isDialog ? '1px dashed var(--color-border)' : 'none',
+                          borderBottom: isDialog ? '1px dashed var(--color-border)' : 'none',
+                          whiteSpace: 'pre-wrap',
+                          fontFamily: isDialog ? 'monospace' : 'inherit',
+                          fontSize: isDialog ? '0.9rem' : '1.05rem',
+                          color: isDialog ? 'var(--color-text-secondary)' : 'var(--color-text)',
+                          lineHeight: 1.6
+                        }}>
+                          {part.trim()}
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
 
               </div>

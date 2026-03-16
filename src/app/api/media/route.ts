@@ -48,7 +48,9 @@ export async function GET() {
         url: res.secure_url,
         type: res.resource_type, // 'image' or 'video'
         uploader: localInfo?.uploader || 'Cloudinary',
-        date: localInfo?.date || res.created_at.split('T')[0]
+        date: localInfo?.date || res.created_at.split('T')[0],
+        width: res.width || localInfo?.width || 0,
+        height: res.height || localInfo?.height || 0
       };
     });
 
