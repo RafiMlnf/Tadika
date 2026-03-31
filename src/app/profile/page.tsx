@@ -38,7 +38,7 @@ export default function ProfilePage() {
           <div ref={scrollRevealRef} className="reveal-section">
             <h1 className="font-display" style={{ marginBottom: 12 }}>Profil</h1>
             <p style={{ color: 'var(--color-text-secondary)', fontSize: '1.1rem', maxWidth: 600 }}>
-              Kenalan dong sama muka-muka di balik Tadika. Mulai dari kang foto hypebeast sampai navigator spesialis nyasar.
+              Profil warga tadika yang terindikasi keren.
             </p>
           </div>
         </section>
@@ -100,6 +100,20 @@ export default function ProfilePage() {
                 </div>
               </Link>
             ))}
+          </div>
+        </section>
+
+        {/* ═══════════ PAST MEMBERS ═══════════ */}
+        <section ref={scrollRevealRef} className="reveal-section" style={{ paddingTop: 48 }}>
+          <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: 24 }}>
+            <span className="font-mono" style={{ fontSize: '0.7rem', letterSpacing: '0.1em', color: 'var(--color-text-muted)', display: 'block', marginBottom: 12 }}>PAST MEMBERS</span>
+            <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+              {['Akram Satya', 'Yudha Devun', 'Azzam Sauqi', 'Hafiz Fatur'].map(name => (
+                <span key={name} className="font-display" style={{ fontSize: '0.95rem', color: 'var(--color-text-muted)', opacity: 0.6 }}>
+                  {name}
+                </span>
+              ))}
+            </div>
           </div>
         </section>
       </div>

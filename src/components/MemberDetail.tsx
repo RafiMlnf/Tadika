@@ -368,30 +368,54 @@ export default function MemberDetail({ member }: { member: Member }) {
                   {/* Hidden native audio element */}
                   <audio ref={audioRef} src={member.favSong.audioSrc} preload="metadata" crossOrigin="anonymous" />
 
-                  {/* Music Card — clean, no glow here */}
-                  <div className="yt-audio-player card" style={{ padding: "0", overflow: "hidden", borderRadius: 14 }}>
+                  {/* Clean Minimal Audio Player */}
+                  <div className="yt-audio-player" style={{ padding: 0, overflow: "hidden" }}>
                     <div
                       style={{
                         display: "flex",
                         alignItems: "center",
-                        padding: "16px",
-                        gap: "16px",
+                        gap: "12px",
                         width: "100%",
                       }}
                     >
                       {/* Play / Pause */}
-                      <button className="yt-play-btn" aria-label={isPlaying ? "Pause" : "Play"} onClick={togglePlay}>
+                      <button 
+                        className="yt-play-btn" 
+                        aria-label={isPlaying ? "Pause" : "Play"} 
+                        onClick={togglePlay}
+                        style={{
+                          width: 40,
+                          height: 40,
+                          borderRadius: "50%",
+                          background: "var(--color-accent)",
+                          border: "none",
+                          color: "var(--color-bg)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          cursor: "pointer",
+                          transition: "transform 0.2s ease, opacity 0.2s ease",
+                        }}
+                      >
                         {isPlaying ? (
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                             <rect x="6" y="4" width="4" height="16" rx="1" />
                             <rect x="14" y="4" width="4" height="16" rx="1" />
                           </svg>
                         ) : (
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style={{ marginLeft: 3 }}>
                             <polygon points="6,4 20,12 6,20" />
                           </svg>
                         )}
                       </button>
+
+                      {/* Song Info */}
+                      <div className="yt-song-info" style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
+                          <span className="yt-song-title font-display" style={{ fontSize: '1.2rem', margin: 0 }}>{member.favSong.title}</span>
+                          <span className="yt-song-artist font-mono" style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)' }}>{member.favSong.artist}</span>
+                        </div>
+                      </div>
 
                       {/* Reset to startAt */}
                       <button
@@ -399,43 +423,39 @@ export default function MemberDetail({ member }: { member: Member }) {
                         aria-label="Reset"
                         onClick={handleReset}
                         style={{
-                          marginLeft: 4,
-                          width: 22,
-                          height: 22,
-                          borderRadius: 6,
-                          background: "#e5e5e5",
-                          border: "none",
+                          width: 28,
+                          height: 28,
+                          borderRadius: "50%",
+                          background: "transparent",
+                          border: "1px solid var(--color-border)",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
                           cursor: "pointer",
-                          opacity: 0.85,
+                          opacity: 0.6,
                           flexShrink: 0,
+                          transition: "opacity 0.2s ease",
                         }}
+                        onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
+                        onMouseLeave={(e) => e.currentTarget.style.opacity = '0.6'}
                       >
-                        <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+                        <svg width="12" height="12" viewBox="0 0 20 20" fill="none">
                           <path
                             d="M10 3v2.5A5.5 5.5 0 1 1 4.5 11"
-                            stroke="#888"
+                            stroke="currentColor"
                             strokeWidth="2"
                             strokeLinecap="round"
                             strokeLinejoin="round"
                           />
                           <polyline
                             points="7 6 10 3 13 6"
-                            stroke="#888"
+                            stroke="currentColor"
                             strokeWidth="2"
                             strokeLinecap="round"
                             strokeLinejoin="round"
                           />
                         </svg>
                       </button>
-
-                      {/* Song Info */}
-                      <div className="yt-song-info" style={{ flex: 1, minWidth: 0 }}>
-                        <span className="yt-song-title font-display">{member.favSong.title}</span>
-                        <span className="yt-song-artist font-mono">{member.favSong.artist}</span>
-                      </div>
                     </div>
                   </div>
                 </div>

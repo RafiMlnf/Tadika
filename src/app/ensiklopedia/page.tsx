@@ -41,13 +41,26 @@ const timelineEvents = [
   { year: '2025', month: 'Jan', event: 'Lembang — One day trip, isinya numpang makan doang kagak ada ujungnya.', icon: '06' },
 ];
 
+/* ── Hangout spots (Markas Nongkrong) ── */
+const hangoutSpots = [
+  { id: 1, name: 'Tangga Darurat Samping Masjid', emoji: '→', vibe: 'Rahasia', detail: 'Tempat nongki pertama, adem ada AC bisa sebat tapi banyak dosen lewat.' },
+  { id: 2, name: 'Warung Depan', emoji: '→', vibe: 'Klasik', detail: 'Ada gorengan enak jir tp skrng dah beda warung.' },
+  { id: 3, name: 'Warung Nasi Bibi Seberang', emoji: '→', vibe: 'Legendaris', detail: 'Era masa kelaparan, tiap hari harus makan disitu.' },
+  { id: 4, name: 'Alfamart WBM', emoji: '→', vibe: 'Strategis', detail: 'The Legend' },
+  { id: 5, name: 'Belokan Rusa', emoji: '→', vibe: 'Nongki', detail: 'Gegara alfa penuh, si apis nyari tempat nongkrong ke arah kebun buah eh nemu tempat adem banyak pohon banyak nyamuk.' },
+  { id: 6, name: 'Sungai Samping Kampus', emoji: '→', vibe: 'Vibes', detail: 'Udh kek camping bawa kompor & mie tiap hari' },
+  { id: 7, name: 'Panggung Pakde Freedom', emoji: '→', vibe: 'Publik', detail: 'Adem sepoi syahdu suara aliran air got deket belokan rusa' },
+  { id: 8, name: 'iPoint', emoji: '→', vibe: 'Modern', detail: 'Bentaran doang' },
+  { id: 9, name: 'Kantin Masbro', emoji: '→', vibe: 'Basecamp', detail: 'Sang legenda yang sekarang telah dirubuhkan oleh rezim-rezim UPB, terlama setelah alfa wbm' },
+];
+
 /* ── Trip Wiki data ── */
 const tripData = [
   {
     title: 'Bandung 1',
     date: 'Mar 2022',
     tags: ['Awal Mula', 'City Stroll', 'Roadtrip'],
-    desc: "Awalnya wacana motoran ke Gedebage gara-gara Dafa ngajak Rafi nge-thrift. Ujungnya rencana berubah jadi ke Bandung dan Dzaki pun jadi MVP karena ikut H-2 masuk squadlist Timnas Tadika.",
+    desc: "Awalnya wacana motoran ke Gedebage gegara Dafa ngajakin nge-thrift. Ujungnya rencana berubah jadi touring Bandung.",
     detail: `suatu hari dikelas, rafi seseorang yang menyedihkan, tiba-tiba dihampiri oleh dafa alfiana. dafa ngajak ngobrol, 
 ---
 bro said : fi, nge thrift yo ke gedebage bandung motoran
@@ -57,7 +70,7 @@ bro dafa : gas
 lalu si keren rafi menyusun dan mengajak yang lain. tapi... setelah semua tersusun, ter-plan rapih, dihari yg panas dikelas, dafa menghampiri.
 ---
 dafa : fi kayanya gua gabisa (lupa alesan nya apa njir).
-rafi : damn okoklah
+rafi : terimakasih
 ---
 rafi kebingungan nyari siapa lagi biar partisipan pas 8 orang, hingga h-2, seseorang yang gapernah disangka, orang yang mungkin tidak bisa dianggap remeh atas kerasnya dunia upb, 
 ---
@@ -72,7 +85,7 @@ dan tour pertama terjadi, terimakasih dzaki`,
     date: 'Jul 2023',
     tags: ['Gosong', 'Sunset', 'Deep Talk'],
     desc: 'Ngegas ke pantai selatan pas weekend. Nyebur bebas, nungguin sunset sok indie, dilanjut bacot malem depan api unggun.',
-    detail: `selang semesteran after bandung 1, ada usulan villa-an lagi tapi ke bogor. cuma partisipan nya kyknya dikit, yaudah geser plan extreme, berbahaya, yang mungkin dapat menyebabkan kematian, bahkan orang manapun mungkin tidak bisa (ymma). pangandaran, usulan konyol yang suprisingly ada yang minat, keren2. dengan keterbatasan anggota yg ikut tapi terjadi meski menantang batas kemampuan mental dan batin rata2 manusia UPB. bretttt baliknya ilang setengah nyawa dan akal sehat.`,
+    detail: `Selang semesteran after bandung 1, ada usulan villa-an lagi tapi ke bogor. cuma partisipan nya kyknya dikit, yaudah geser plan extreme, berbahaya, yang mungkin dapat menyebabkan kematian, bahkan orang manapun mungkin tidak bisa (ymma). pangandaran, usulan konyol yg suprisingly ada yang minat, keren bet kalian. dengan keterbatasan anggota yg ikut tapi terjadi meski menantang batas kemampuan mental dan batin rata2 manusia UPB. bretttt baliknya ilang setengah nyawa dan akal sehat.`,
     img: '/img/pgdn.jpg',
     photos: 126,
   },
@@ -81,7 +94,7 @@ dan tour pertama terjadi, terimakasih dzaki`,
     date: 'Des 2023',
     tags: ['Villa', 'Ngemper', 'Gathering'],
     desc: 'Ngerayain pergantian taun di villa Puncak dengan view lumayan lah buat dibikin story IG pamer pamer dikit.',
-    detail: `kebersamaan cenah, biar ga tadika2 aja, kawan2 pengen adain acara sekelas, dimas, rafi, fajri telah pidato di grup A4 tapi gaada yg jawab, dahlah ujungnya mah tadika2 lagi. tour yg membangun chemistry tadika, emang ada yg masi asing pas di loc, tapi lihatlah sekarang. tour ter-goated.`,
+    detail: `Kebersamaan cenah, biar ga tadika2 aja, kawan2 pengen adain acara sekelas, dimas, rafi, fajri telah pidato di grup A4 tapi gaada yg jawab, dahlah ujungnya mah tadika2 lagi. tour yg membangun chemistry tadika, emang ada yg masi asing pas di loc, tapi lihatlah sekarang.`,
     img: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&q=80',
     photos: 67,
   },
@@ -90,7 +103,7 @@ dan tour pertama terjadi, terimakasih dzaki`,
     date: 'Apr 2024',
     tags: ['Sok Pecinta Alam', 'Hiking', 'Stargazing'],
     desc: 'Sok asik main ke alam, nanjak cimit doang capeknya ngga ngotak, ujung-ujungnya cuma pgn rebahan doang.',
-    detail: `dibilang trip bukan, dibilang filler juga bukan soalnya jauh, plan awalnya mau sawarna / goa langir banten, brett ada berita megathrust (siapa yg kaga takut coba diancam tsunami). yaudahlah geser ke gunung2an biar ga kena tsunami, bro ricky nyari2 rekomen tempat camping, nemu tu opsi loji atau gn putri, hasil vote gn putri menang. tour paling murah, ga pusing mikirin biaya, makanya biar rame lagi ngajak bro dimas dan raka, tapi si hafiz hampir gamau soalnya dia udah join satset (gasih, karena gaada ongkos wkwk), tapi terimakasih gita telah membujuk hapis.`,
+    detail: `Plan awalnya mau sawarna / goa langir banten, brett ada berita megathrust (siapa yg kaga takut coba diancam tsunami). yaudahlah geser ke gunung2an biar ga kena tsunami, bro ricky nyari2 rekomen tempat camping, nemu tu opsi loji atau gn putri, hasil vote gn putri menang. tour paling murah, ga pusing mikirin biaya, makanya biar rame lagi ngajak bro dimas dan raka, tapi si hafiz hampir gamau soalnya dia udah join satset (gasih, karena dompet telah korosi).`,
     img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80',
     photos: 89,
   },
@@ -117,6 +130,7 @@ dan tour pertama terjadi, terimakasih dzaki`,
 export default function EnsiklopediaPage() {
   const [activeWikiIndex, setActiveWikiIndex] = useState(0);
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
+  const [expandedHangout, setExpandedHangout] = useState<number | null>(null);
   const [mediaList, setMediaList] = useState<any[]>([]);
 
   useEffect(() => {
@@ -160,9 +174,7 @@ export default function EnsiklopediaPage() {
         {/* ═══════════ HEADER ═══════════ */}
         <section style={{ paddingTop: 60, paddingBottom: 40, textAlign: 'center' }}>
           <div ref={scrollRevealRef} className="reveal-section">
-            <span className="badge badge-accent font-mono" style={{ marginBottom: 12, display: 'inline-block' }}>
-              TADIKAPEDIA
-            </span>
+
             <h1 className="font-display" style={{ marginBottom: 16 }}>Ensiklopedia Tadika</h1>
             <p style={{ color: 'var(--color-text-secondary)', fontSize: '1.1rem', maxWidth: 600, margin: '0 auto' }}>
               Semua hal absurd yang butuh lu tau tentang bader-bader ini. Mulai dari kronologi kejadian awal, kelakuan minus, sampe arsip aib terekam jelas di mari.
@@ -170,125 +182,203 @@ export default function EnsiklopediaPage() {
           </div>
         </section>
 
-        {/* ═══════════ KARTU SEJARAH + TIMELINE ═══════════ */}
+        {/* ═══════════ KARTU ALKISAH ═══════════ */}
         <section ref={scrollRevealRef} className="reveal-section" style={{ paddingBottom: 48 }}>
           <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
-            <div style={{ padding: '32px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-                <span className="font-mono" style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--color-accent)' }}>00</span>
-                <div>
-                  <h3 className="font-display" style={{ fontSize: '1.5rem', margin: 0, lineHeight: 1.2 }}>
-                    Awal Mula Bencana
-                  </h3>
-                  <span className="font-mono" style={{ fontSize: '0.85rem', color: 'var(--color-accent)', letterSpacing: '0.03em' }}>
-                    Sejarah Tadika
-                  </span>
-                </div>
-              </div>
-
-              <p style={{ color: 'var(--color-text-secondary)', fontSize: '1rem', lineHeight: 1.6, marginBottom: 32 }}>
-                Dibuat sama Akram Satya tanggal 30 September 2022. Dengan nama awal Grup Belajar, karena pengen punya grup juga kaya Good Student. Ngambil nama dari TK Upin Ipin, nama Grup Belajar berubah jadi Tadika Mesra. Tapi suatu hari rezim Akram dan jajarannya dikudeta oleh Ricky dan jajarannya (bro dijadiin admin ama owner, somehow bisa demote owner).
+            {/* Cinematic header */}
+            <div style={{
+              padding: '40px 32px 32px',
+              borderBottom: '1px solid var(--color-border)',
+              background: 'var(--color-bg-alt)',
+              textAlign: 'center',
+            }}>
+              <span className="font-mono" style={{ fontSize: '0.75rem', letterSpacing: '0.15em', color: 'var(--color-text-muted)', display: 'block', marginBottom: 8 }}>CHAPTER 00</span>
+              <h3 className="font-display" style={{ fontSize: '2rem', margin: '0 0 8px', lineHeight: 1.2 }}>
+                Alkisah
+              </h3>
+              <p className="font-mono" style={{ fontSize: '0.85rem', color: 'var(--color-accent)', margin: 0 }}>
+                Bagaimana sekumpulan orang random bisa jadi keluarga
               </p>
+            </div>
 
-              <h4 className="font-mono" style={{ fontSize: '0.9rem', marginBottom: 16, letterSpacing: '0.05em', color: 'var(--color-text)' }}>REKAMAN KELAYAPAN (TIMELINE):</h4>
+            {/* Chapter entries */}
+            <div style={{ padding: '0' }}>
+              {[
+                {
+                  chapter: 'I',
+                  title: 'Asal Usul',
+                  subtitle: 'Bagaimana semuanya bermula',
+                  icon: (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
+                    </svg>
+                  ),
+                  content: '...',
+                },
+                {
+                  chapter: 'II',
+                  title: 'Nama "Tadika"',
+                  subtitle: 'Arti di balik nama yang absurd',
+                  icon: (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                    </svg>
+                  ),
+                  content: '...',
+                },
+                {
+                  chapter: 'III',
+                  title: 'Dari Temen Jadi Saudara',
+                  subtitle: 'Ikatan yang tumbuh tanpa dipaksa',
+                  icon: (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                  ),
+                  content: '...',
+                },
+                {
+                  chapter: 'IV',
+                  title: 'Nilai yang Kita Pegang',
+                  subtitle: 'Prinsip tanpa perlu ditulis',
+                  icon: (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                  ),
+                  content: '...',
+                },
+                {
+                  chapter: 'V',
+                  title: 'Apa Itu Tadika, Sebenarnya?',
+                  subtitle: 'Lebih dari sekadar grup chat',
+                  icon: (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                    </svg>
+                  ),
+                  content: '...',
+                },
+              ].map((entry, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    padding: '28px 32px',
+                    borderBottom: idx < 4 ? '1px solid var(--color-border)' : 'none',
+                    transition: 'background 0.2s ease',
+                  }}
+                >
+                  <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+                    {/* Chapter number + icon */}
+                    <div style={{
+                      minWidth: 48,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      gap: 6,
+                      paddingTop: 2,
+                    }}>
+                      <span className="font-mono" style={{ fontSize: '0.65rem', color: 'var(--color-text-muted)', letterSpacing: '0.1em' }}>{entry.chapter}</span>
+                      <div style={{ color: 'var(--color-accent)' }}>{entry.icon}</div>
+                    </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                {timelineEvents.map((item, idx) => (
-                  <div key={idx} style={{ display: 'flex', gap: 16, alignItems: 'flex-start', background: 'var(--color-bg-alt)', padding: '12px 16px', borderRadius: 'var(--radius-sm)' }}>
-                    <span className="font-mono" style={{ fontWeight: 800, color: 'var(--color-accent)' }}>{item.icon}</span>
-                    <div>
-                      <div className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', marginBottom: 2 }}>{item.month} {item.year}</div>
-                      <div className="font-body" style={{ fontSize: '0.95rem', color: 'var(--color-text)', margin: 0 }}>{item.event}</div>
+                    {/* Text content */}
+                    <div style={{ flex: 1 }}>
+                      <h4 className="font-display" style={{ fontSize: '1.15rem', margin: '0 0 4px' }}>{entry.title}</h4>
+                      <span className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--color-accent)', letterSpacing: '0.03em' }}>{entry.subtitle}</span>
+                      <p className="font-body" style={{
+                        fontSize: '0.95rem',
+                        color: 'var(--color-text-secondary)',
+                        lineHeight: 1.7,
+                        marginTop: 12,
+                        marginBottom: 0,
+                      }}>
+                        {entry.content}
+                      </p>
                     </div>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* ═══════════ ENSIKLOPEDIA UMUM (Card Grid) ═══════════ */}
+        {/* ═══════════ MARKAS NONGKRONG ═══════════ */}
         <section ref={scrollRevealRef} className="reveal-section" style={{ paddingBottom: 48 }}>
           <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 24, flexWrap: 'wrap', gap: 12 }}>
-            <h2 className="font-display" style={{ fontSize: 'clamp(1.4rem, 3vw, 1.8rem)' }}>Buku Suci Tadika</h2>
+            <h2 className="font-display" style={{ fontSize: 'clamp(1.4rem, 3vw, 1.8rem)' }}>Markas Nongkrong</h2>
             <span className="font-mono" style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', letterSpacing: '0.05em' }}>
-              {encyclopediaSections.length} ENTRI MENGANDUNG AIB
+              {hangoutSpots.length} TITIK MANGKAL
             </span>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
-            {encyclopediaSections.map((section, i) => (
-              <div
-                key={section.id}
-                ref={scrollRevealRef}
-                className="card reveal-item"
-                style={{
-                  animationDelay: `${i * 0.1}s`,
-                  cursor: 'pointer',
-                  padding: 0,
-                  overflow: 'hidden',
-                  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                }}
-                onClick={() => setExpandedCard(expandedCard === section.id ? null : section.id)}
-              >
-                {/* Card Header */}
-                <div style={{
-                  padding: '24px 24px 16px',
-                }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-                    <span className="font-mono" style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--color-accent)' }}>{section.icon}</span>
-                    <div>
-                      <h3 className="font-display" style={{ fontSize: '1.2rem', margin: 0, lineHeight: 1.2 }}>
-                        {section.title}
-                      </h3>
-                      <span className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--color-accent)', letterSpacing: '0.03em' }}>
-                        {section.subtitle}
-                      </span>
-                    </div>
+          <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+            {/* Compact header */}
+            <div style={{
+              padding: '14px 20px',
+              borderBottom: '1px solid var(--color-border)',
+              background: 'var(--color-bg-alt)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}>
+              <h3 className="font-display" style={{ fontSize: '0.95rem', margin: 0 }}>Tempat Nongki</h3>
+              <span className="font-mono" style={{ fontSize: '0.65rem', color: 'var(--color-text-muted)' }}>{hangoutSpots.length} spot</span>
+            </div>
+
+            {/* Compact list */}
+            <div style={{ padding: '8px 0' }}>
+              {hangoutSpots.map((spot, idx) => (
+                <div
+                  key={spot.id}
+                  onClick={() => setExpandedHangout(expandedHangout === spot.id ? null : spot.id)}
+                  style={{
+                    display: 'flex',
+                    gap: 12,
+                    alignItems: 'center',
+                    padding: '8px 20px',
+                    cursor: 'pointer',
+                    borderBottom: idx < hangoutSpots.length - 1 ? '1px solid var(--color-border)' : 'none',
+                    transition: 'background 0.2s ease',
+                    background: expandedHangout === spot.id ? 'var(--color-bg-alt)' : 'transparent',
+                  }}
+                >
+                  {/* Compact pin */}
+                  <div style={{
+                    minWidth: 28, minHeight: 28,
+                    borderRadius: '50%',
+                    background: expandedHangout === spot.id ? 'var(--color-text)' : 'var(--color-bg-alt)',
+                    border: '1.5px solid var(--color-border)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    transition: 'all 0.3s ease',
+                  }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={expandedHangout === spot.id ? 'var(--color-bg)' : 'currentColor'} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ transition: 'all 0.3s ease', transform: expandedHangout === spot.id ? 'rotate(90deg)' : 'none' }}>
+                      <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+                    </svg>
                   </div>
 
-                  {/* Preview text (expandable via WebkitLineClamp) */}
-                  <p style={{
-                    color: 'var(--color-text-secondary)',
-                    fontSize: '0.9rem',
-                    lineHeight: 1.5,
-                    display: '-webkit-box',
-                    WebkitLineClamp: expandedCard === section.id ? 'unset' : 2,
-                    WebkitBoxOrient: 'vertical',
-                    overflow: expandedCard === section.id ? 'visible' : 'hidden',
-                    transition: 'all 0.3s ease',
-                  } as React.CSSProperties}>
-                    {section.content}
-                  </p>
-                </div>
+                  {/* Content */}
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <span className="font-mono" style={{ fontSize: '0.6rem', color: 'var(--color-text-muted)' }}>#{String(spot.id).padStart(2, '0')}</span>
+                      <span className="font-display" style={{ fontSize: '0.9rem' }}>{spot.name}</span>
+                      <span className="font-mono" style={{ fontSize: '0.6rem', color: 'var(--color-accent)', marginLeft: 'auto', flexShrink: 0 }}>{spot.vibe}</span>
+                    </div>
 
-                {/* Expand indicator */}
-                <div style={{
-                  padding: '8px 24px 12px',
-                  textAlign: 'center',
-                }}>
-                  <span className="font-mono" style={{
-                    fontSize: '0.7rem',
-                    color: 'var(--color-text-muted)',
-                    letterSpacing: '0.1em',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: 4,
-                  }}>
-                    {expandedCard === section.id ? 'TUTUP' : 'BACA SELENGKAPNYA'}
-                    <svg
-                      width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
-                      style={{
-                        transform: expandedCard === section.id ? 'rotate(180deg)' : 'rotate(0deg)',
-                        transition: 'transform 0.3s ease',
-                      }}
-                    >
-                      <path d="M6 9l6 6 6-6" />
-                    </svg>
-                  </span>
+                    {/* Expandable detail */}
+                    {expandedHangout === spot.id && (
+                      <p className="font-body" style={{
+                        fontSize: '0.8rem', color: 'var(--color-text-secondary)',
+                        lineHeight: 1.5, margin: '6px 0 2px',
+                        paddingLeft: 4, borderLeft: '2px solid var(--color-accent)',
+                      }}>
+                        {spot.detail}
+                      </p>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </section>
 
@@ -296,7 +386,7 @@ export default function EnsiklopediaPage() {
         {/* ═══════════ TRIP WIKI ═══════════ */}
         <section ref={scrollRevealRef} className="reveal-section" style={{ paddingBottom: 0 }}>
           <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 24, flexWrap: 'wrap', gap: 12 }}>
-            <h2 className="font-display" style={{ fontSize: 'clamp(1.4rem, 3vw, 1.8rem)' }}>Jejak Kelayapan</h2>
+            <h2 className="font-display" style={{ fontSize: 'clamp(1.4rem, 3vw, 1.8rem)' }}>Timeline Main</h2>
             <span className="font-mono" style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', letterSpacing: '0.05em' }}>
               {tripData.length} KASUS TERCATAT
             </span>
@@ -349,13 +439,8 @@ export default function EnsiklopediaPage() {
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', gap: 8, marginBottom: 24, flexWrap: 'wrap' }}>
-                  {activeTrip.tags.map(tag => (
-                    <span key={tag} className="badge" style={{ background: 'var(--color-bg-alt)', color: 'var(--color-text)', border: '1px solid var(--color-border)' }}>
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
+
+
 
                 <div style={{ marginBottom: 32 }}>
                   <h3 className="font-mono" style={{ fontSize: '1.2rem', marginBottom: 12 }}>Rangkuman</h3>
