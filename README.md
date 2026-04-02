@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>🌟 Tadika</h1>
+  <h1>Tadika</h1>
   <p><em>Website eksklusif untuk menyimpan dan mengorganisir ribuan kenangan, foto, video, serta cerita perjalanan sirkel.</em></p>
 
   ![Next.js](https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js&logoColor=white)
@@ -11,23 +11,23 @@
 
 <hr />
 
-## 📖 Project Overview
+## Project Overview
 
 **Tadika** adalah sebuah platform arsip digital internal yang dirancang khusus untuk anggota sirkel (±20 orang). Tujuannya adalah untuk menjadi wadah utama dalam menyimpan kenangan berbentuk media (foto, video), cerita *trip*, dan arsip *hangout* secara rapi, cepat, dan terpusat. 
 
 Mampu menampung hingga **10.000+ foto dan video** tanpa mengorbankan performa, Tadika adalah perpaduan elegan antara galeri *masonry* sekelas Pinterest dan platform dokumentasi personal.
 
-### ✨ Fitur Utama
-- 📸 **Galeri Terstruktur** - Koleksi foto dan video berdasarkan kategori (Pantai, Gunung, Kota, Random, Throwback).
-- ⚡ **Performa Kilat** - Menggunakan *Lazy Loading*, *Pagination*, dan CDN Cloudinary untuk akses gambar instan.
-- 📤 **Upload Mandiri** - Anggota dapat langsung mengunggah dokumentasi melalui web (Upload Form).
-- 🧩 **Tampilan Pintar (Masonry)** - *Layout* galeri rapi yang mengoptimalkan tampilan potret maupun lanskap.
-- ✨ **Animasi Mulus** - *Scroll reveal* dan transisi page premium menggunakan Framer Motion.
-- 🔒 **Akses Terbatas** - Sistem tertutup (Internal) menjaga privasi data.
+### Fitur Utama
+- **Galeri Terstruktur** - Koleksi foto dan video berdasarkan kategori (Pantai, Gunung, Kota, Random, Throwback).
+- **Performa Kilat** - Menggunakan *Lazy Loading*, *Pagination*, dan CDN Cloudinary untuk akses gambar instan.
+- **Upload Mandiri** - Anggota dapat langsung mengunggah dokumentasi melalui web (Upload Form).
+- **Tampilan Pintar (Masonry)** - *Layout* galeri rapi yang mengoptimalkan tampilan potret maupun lanskap.
+- **Animasi Mulus** - *Scroll reveal* dan transisi page premium menggunakan Framer Motion.
+- **Akses Terbatas** - Sistem tertutup (Internal) menjaga privasi data.
 
 ---
 
-## 🛠️ Tech Stack & Ekosistem
+## Tech Stack & Ekosistem
 
 Tadika dibangun di atas ekosistem modern yang menawarkan pengalaman *zero-cost* (free-tier) di ranah *production* dengan kapabilitas maksimal.
 
@@ -42,7 +42,7 @@ Tadika dibangun di atas ekosistem modern yang menawarkan pengalaman *zero-cost* 
 
 ---
 
-## 📂 Struktur & Arsitektur
+## Struktur & Arsitektur
 
 ### Alur Sistem Utama Website
 
@@ -88,7 +88,7 @@ sequenceDiagram
 
 ---
 
-## 📊 Kapasitas Target (Estimasi Sistem)
+## Kapasitas Target (Estimasi Sistem)
 
 | Komponen | Kapasitas |
 |:---|:---|
@@ -100,7 +100,7 @@ sequenceDiagram
 
 ---
 
-## 🚀 Opsional & Pengembangan Mendatang (Roadmap)
+## Opsional & Pengembangan Mendatang (Roadmap)
 
 - [ ] **Random Memory Generator**: Fitur menampilkan foto secara acak sesuai arsip lama.
 - [ ] **Trip Timeline**: Linimasa interaktif mengenai sejarah terbentuknya dan perjalanan sirkel.
@@ -109,5 +109,5 @@ sequenceDiagram
 
 ---
 <p align="center">
-  Dibuat dengan ❤️ oleh Tadika Team
+  Dibuat oleh Tadika Team
 </p>
