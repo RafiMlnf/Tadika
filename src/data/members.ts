@@ -183,8 +183,8 @@ export const members: Member[] = [
     quote: '"Multitalent."',
     image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1773596569/Gemini_Generated_Image_rjh99jrjh99jrjh9_xxsuhc.png",
     imageOffsetY: "25%", // Geser atas/bawah thumbnail (contoh: 'top', 'bottom', '20%')
-    bio: "Lu serba bisa, orang paling fleksibel. Ty bet udah mau ini itu, mvp parah. btw, TOMBOLLLLL.",
+    bio: "...",
     traits: ["CEO", "Serba Bisa"],
-    socials: { instagram: "@zidan_nav" },
+    socials: { instagram: "@..." },
   },
 ];

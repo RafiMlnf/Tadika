@@ -59,7 +59,7 @@ export default function MemberDetail({ member }: { member: Member }) {
         // Get phase of current beat (0.0 to 1.0)
         // Note: the audio.currentTime might need tweaking if the vocal doesn't align exactly at 0.0s.
         const phase = (audio.currentTime % beatDuration) / beatDuration;
-        
+
         // Attack (0-15%), Decay (15%-100%)
         let intensity = 0;
         if (phase < 0.15) {
@@ -70,7 +70,7 @@ export default function MemberDetail({ member }: { member: Member }) {
         }
 
         const bassRaw = intensity;
-        
+
         // Highs (hi-hats) pulse off-beat (offset by 0.5 beat)
         const highPhase = ((audio.currentTime + beatDuration * 0.5) % beatDuration) / beatDuration;
         let highIntensity = 0;
@@ -80,7 +80,7 @@ export default function MemberDetail({ member }: { member: Member }) {
           highIntensity = Math.pow(1 - ((highPhase - 0.1) / 0.9), 2);
         }
         const highRaw = highIntensity * 0.7; // slightly lower intensity
-        
+
         const midRaw = intensity * 0.6; // Mids follow the beat gently
 
         // Smooth output slightly to remove digital harshness
@@ -379,9 +379,9 @@ export default function MemberDetail({ member }: { member: Member }) {
                       }}
                     >
                       {/* Play / Pause */}
-                      <button 
-                        className="yt-play-btn" 
-                        aria-label={isPlaying ? "Pause" : "Play"} 
+                      <button
+                        className="yt-play-btn"
+                        aria-label={isPlaying ? "Pause" : "Play"}
                         onClick={togglePlay}
                         style={{
                           width: 40,

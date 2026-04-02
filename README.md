@@ -1,261 +1,113 @@
-# Tadika -- Project Brief & Architecture
+<div align="center">
+  <h1>🌟 Tadika</h1>
+  <p><em>Website eksklusif untuk menyimpan dan mengorganisir ribuan kenangan, foto, video, serta cerita perjalanan sirkel.</em></p>
 
-## 1. Project Overview
+  ![Next.js](https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js&logoColor=white)
+  ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+  ![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)
+  ![Cloudinary](https://img.shields.io/badge/Cloudinary-3448C5?style=for-the-badge&logo=Cloudinary&logoColor=white)
+  ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+</div>
 
-  -----------------------------------------------------------------------
-  Item                                Detail
-  ----------------------------------- -----------------------------------
-  Project Name                        Tadika
+<hr />
 
-  Purpose                             Website untuk menyimpan
-                                      media (foto, video, trip,
-                                      dan archive)
+## 📖 Project Overview
 
-  Target Users                        ±20 anggota
+**Tadika** adalah sebuah platform arsip digital internal yang dirancang khusus untuk anggota sirkel (±20 orang). Tujuannya adalah untuk menjadi wadah utama dalam menyimpan kenangan berbentuk media (foto, video), cerita *trip*, dan arsip *hangout* secara rapi, cepat, dan terpusat. 
 
-  Design Goal                         tba
+Mampu menampung hingga **10.000+ foto dan video** tanpa mengorbankan performa, Tadika adalah perpaduan elegan antara galeri *masonry* sekelas Pinterest dan platform dokumentasi personal.
 
-  Media Volume                        ±1k foto dan video
+### ✨ Fitur Utama
+- 📸 **Galeri Terstruktur** - Koleksi foto dan video berdasarkan kategori (Pantai, Gunung, Kota, Random, Throwback).
+- ⚡ **Performa Kilat** - Menggunakan *Lazy Loading*, *Pagination*, dan CDN Cloudinary untuk akses gambar instan.
+- 📤 **Upload Mandiri** - Anggota dapat langsung mengunggah dokumentasi melalui web (Upload Form).
+- 🧩 **Tampilan Pintar (Masonry)** - *Layout* galeri rapi yang mengoptimalkan tampilan potret maupun lanskap.
+- ✨ **Animasi Mulus** - *Scroll reveal* dan transisi page premium menggunakan Framer Motion.
+- 🔒 **Akses Terbatas** - Sistem tertutup (Internal) menjaga privasi data.
 
-  Access Scope                        Internal
-  -----------------------------------------------------------------------
+---
 
-------------------------------------------------------------------------
+## 🛠️ Tech Stack & Ekosistem
 
-# 2. Core Objectives
+Tadika dibangun di atas ekosistem modern yang menawarkan pengalaman *zero-cost* (free-tier) di ranah *production* dengan kapabilitas maksimal.
 
--   Menyimpan kenangan trip dan hangout sirkel
--   Galeri foto dan video dengan kategori
--   Upload media oleh anggota
--   Navigasi sederhana tetapi konten banyak, pakai page juga bisa
--   Performa cepat walaupun media ribuan
+| Layer | Technology | Kegunaan |
+|-------|------------|-----------|
+| **Frontend** | [Next.js](https://nextjs.org/) | Framework utama, optimasi SEO & API Routes |
+| **Styling** | [Tailwind CSS](https://tailwindcss.com/) | Desain *utility-first* yang cepat dan dinamis |
+| **Animation** | [Framer Motion](https://www.framer.com/motion/) | Transisi halaman dan mikro-animasi UI |
+| **Gallery** | `react-photo-album` | Membuat tampilan *Masonry* layaknya Pinterest |
+| **Media Host** | [Cloudinary](https://cloudinary.com/) | Storage media (Foto/Video) & distribusi CDN |
+| **Deployment** | [Vercel](https://vercel.com/) | Hosting performa tinggi (*Serverless*) |
 
-------------------------------------------------------------------------
+---
 
-# 3. Tech Stack
+## 📂 Struktur & Arsitektur
 
-  Layer            Technology              Purpose
-  ---------------- ----------------------- ------------------------------
-  Frontend         Next.js                 Framework utama
-  Styling          Tailwind CSS            Styling cepat dan clean
-  Animation        Framer Motion           Animasi UI
-  Gallery Layout   react-photo-album       Masonry gallery layout
-  Media Storage    Cloudinary              Penyimpanan foto/video + CDN
-  Hosting          Vercel                  Deploy dan hosting
-  Data Storage     JSON / lightweight DB   Metadata media
+### Alur Sistem Utama Website
 
-------------------------------------------------------------------------
-
-# 4. Website Structure
-
-  Page             Function
-  ---------------- ------------------------------------
-  Home             Landing page dan intro sirkel
-  Gallery          Daftar kategori galeri
-  Gallery Detail   Media dalam kategori
-  Trips            Cerita perjalanan
-  Archive          Meme, screenshot, nostalgia
-  Map              Peta tempat yang pernah dikunjungi
-  Upload           Upload media oleh anggota
-
-------------------------------------------------------------------------
-
-# 5. Gallery Categories
-
-  Category    Content
-  ----------- ------------------
-  Pantai      Trip pantai
-  Gunung      Hiking / camping
-  Kota        Hangout kota
-  Random      Momen random
-  Throwback   Foto lama
-
-------------------------------------------------------------------------
-
-# 6. Media Storage Structure
-
-    cloudinary
-       /sirkel-gallery
-          /pantai
-          /gunung
-          /kota
-          /random
-
-Example URL
-
-    https://res.cloudinary.com/sirkel/pantai/img1.jpg
-
-------------------------------------------------------------------------
-
-# 7. Upload System
-
-## Upload Flow
-
-    User
-     ↓
-    Upload Form (Frontend)
-     ↓
-    Next.js API Route
-     ↓
-    Upload to Cloudinary
-     ↓
-    Receive Media URL
-     ↓
-    Save metadata
-     ↓
-    Show in gallery
-
-------------------------------------------------------------------------
-
-# 8. Media Metadata Structure
-
-Example JSON
-
-``` json
-{
- "id": "001",
- "title": "Pantai Anyer",
- "category": "pantai",
- "url": "https://res.cloudinary.com/.../img1.jpg",
- "uploader": "username",
- "date": "2026-03-14"
-}
+```mermaid
+graph LR
+    A[Browser / User] -->|Akses| B(Next.js Frontend)
+    B -->|Fetch Data| C{JSON Metadata}
+    C -->|Ambil URL| D[Cloudinary CDN]
+    D -->|Kirim Gambar| B
 ```
 
-------------------------------------------------------------------------
+### Flow Upload Media
 
-# 9. Routing Structure
+```mermaid
+sequenceDiagram
+    participant User
+    participant Frontend
+    participant API
+    participant Cloudinary
+    
+    User->>Frontend: Pilih media & isi metadata
+    Frontend->>API: HTTP POST request
+    API->>Cloudinary: Upload via SDK
+    Cloudinary-->>API: Kembalikan Secure URL 
+    API-->>Frontend: Simpan JSON Data
+    Frontend-->>User: Refresh Galeri
+```
 
-  Route             Description
-  ----------------- --------------------
-  /                 Homepage
-  /gallery          Gallery categories
-  /gallery/pantai   Pantai album
-  /gallery/gunung   Gunung album
-  /upload           Upload page
+### Struktur Direktori Repositori
 
-------------------------------------------------------------------------
+```text
+/
+├── src/
+│   ├── app/           # App router Next.js (Home, Gallery, Ensiklopedia, etc)
+│   ├── components/    # Komponen React reusable (Navbar, GalleryGrid, Modal)
+│   ├── context/       # State management global (Theme)
+│   ├── data/          # Database flat-file & JSON metadata
+│   ├── lib/           # Utility dan koneksi library (Cloudinary configs)
+│   └── styles/        # File global/local CSS
+├── public/            # Static assets (fonts, default images)
+└── package.json       # Dependencies dan script npm
+```
 
-# 10. Project Folder Structure
+---
 
-    /app
-       /gallery
-       /upload
-    /components
-       GalleryGrid
-       UploadForm
-       Navbar
-    /lib
-       cloudinary
-    /data
-       media.json
-    /public
+## 📊 Kapasitas Target (Estimasi Sistem)
 
-------------------------------------------------------------------------
+| Komponen | Kapasitas |
+|:---|:---|
+| **Koleksi Foto** | ~5.000 hingga 10.000 item |
+| **Koleksi Video** | ~100+ item eksklusif |
+| **Jumlah User Maksimal** | ~20 Pengguna Aktif (Sirkel) |
+| **Kategori Aktif** | ±10 Kategori spesifik |
+| **Load per Halaman** | 20 - 40 Media (Efisiensi Pagination) |
 
-# 11. Gallery System
+---
 
-  Feature             Description
-  ------------------- --------------------------------
-  Masonry Layout      Pinterest-style layout
-  Pagination          20--40 media per page
-  Lazy Loading        Load media saat terlihat
-  Thumbnail Preview   Load gambar kecil dulu
-  Modal Viewer        Klik foto untuk resolusi besar
+## 🚀 Opsional & Pengembangan Mendatang (Roadmap)
 
-------------------------------------------------------------------------
+- [ ] **Random Memory Generator**: Fitur menampilkan foto secara acak sesuai arsip lama.
+- [ ] **Trip Timeline**: Linimasa interaktif mengenai sejarah terbentuknya dan perjalanan sirkel.
+- [ ] **Interactive Maps**: Peta interaktif dari tempat-tempat atau villa yang pernah dikunjungi.
+- [ ] **Memory Counter**: Kalkulator hari/waktu semenjak trip atau hangout terakhir dilakukan.
 
-# 12. Performance Optimization
-
-  Technique            Purpose
-  -------------------- ----------------------------
-  Lazy Loading         Kurangi initial load
-  Pagination           Hindari load ratusan media
-  CDN Delivery         Akses media cepat
-  Image Optimization   Resize otomatis
-
-------------------------------------------------------------------------
-
-# 13. System Architecture Diagram
-
-    User Browser
-          │
-          ▼
-    Next.js Frontend
-          │
-          ├── Request gallery metadata
-          │
-          ▼
-    Cloudinary CDN
-          │
-          ▼
-    Images / Videos
-          │
-          ▼
-    Masonry Gallery Render
-
-------------------------------------------------------------------------
-
-# 14. Upload Architecture
-
-    User Upload
-         │
-         ▼
-    Upload Form
-         │
-         ▼
-    Next.js API Route
-         │
-         ▼
-    Cloudinary Upload API
-         │
-         ▼
-    Media URL Returned
-         │
-         ▼
-    Save Metadata
-         │
-         ▼
-    Display in Gallery
-
-------------------------------------------------------------------------
-
-# 15. Target Capacity
-
-  Resource         Estimate
-  ---------------- -----------------
-  Photos           5,000 -- 10,000
-  Videos           ±100
-  Users            20
-  Categories       5 -- 10
-  Media per page   20 -- 30
-
-------------------------------------------------------------------------
-
-# 16. Optional Features
-
-  Feature          Function
-  ---------------- --------------------------
-  Random Memory    Generate foto random
-  Trip Timeline    History perjalanan
-  Memory Counter   Hari sejak trip terakhir
-  Location Map     Peta tempat perjalanan
-
-------------------------------------------------------------------------
-
-# 17. Final Architecture Summary
-
-    Frontend
-    Next.js
-
-    Hosting
-    Vercel
-
-    Media Storage
-    Cloudinary
-
-    Gallery Layout
-    Masonry Grid
-
-Website ini dirancang untuk: - ribuan foto - upload oleh anggota -
-performa cepat - biaya 0 (free tier)
+---
+<p align="center">
+  Dibuat dengan ❤️ oleh Tadika Team
+</p>

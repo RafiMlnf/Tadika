@@ -7,7 +7,7 @@ const zidan: Member = {
   name: "Maulana Zidan Perdana",
   quote: '"Multitalent."',
   image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1773596569/Gemini_Generated_Image_rjh99jrjh99jrjh9_xxsuhc.png",
-  bio: "Lu serba bisa, orang paling fleksibel. Ty bet udah mau ini itu, mvp parah. btw, TOMBOLLLLL.",
+  bio: "...",
   favSong: {
     audioSrc: "/audio/otuan.mp3",
     title: "o`Tuan",
@@ -15,8 +15,8 @@ const zidan: Member = {
     startAt: 135,
     bpm: 131
   },
-  traits: ["CEO", "Serba Bisa", "Navigator"],
-  socials: { instagram: "@zidan_nav" },
+  traits: ["CEO", "Serba Bisa"],
+  socials: { instagram: "@..." },
 };
 
 export default function ZidanPage() {
