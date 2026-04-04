@@ -149,11 +149,6 @@
     font-size: 2rem !important;
   }
 
-
-  .profile-bio {
-    font-size: 1rem;
-  }
-
   .social-links-inline {
     gap: 12px;
     font-size: 0.75rem;
@@ -187,13 +182,6 @@
 
 .social-link:hover {
   color: var(--color-accent);
-}
-
-.profile-bio {
-  font-size: 1.15rem;
-  line-height: 1.7;
-  color: var(--color-text-secondary);
-  margin-bottom: 40px;
 }
 
 .profile-stats-grid {

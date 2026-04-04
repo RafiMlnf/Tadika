@@ -6,7 +6,6 @@ const dafa: Member = {
   id: "dafa",
   name: "Dafa Alfiana Erlangga",
   image: "",
-  bio: "Paling sering butuh istirahat ngopi dalam perjalanan.",
   socials: { instagram: "@dafa" },
 };
 

@@ -6,7 +6,6 @@ const rafi: Member = {
   id: "rafi",
   name: "Rafi Maulana Firdaus",
   image: "https://res.cloudinary.com/dpr6rjjun/image/upload/q_auto/f_auto/v1775158090/pagerafi_b3uzhn.png",
-  bio: "Orang keren",
   favSong: {
     audioSrc: "/audio/arteri.mp3", // File audio lokal di folder public/audio/
     title: "Arteri",

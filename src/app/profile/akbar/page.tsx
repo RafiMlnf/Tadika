@@ -6,7 +6,6 @@ const akbar: Member = {
   id: "akbar",
   name: "Nurul Akbar",
   image: "",
-  bio: "Urusan logistik tiket dan penginapan, Akbar yang handle.",
   socials: { instagram: "@akbar" },
 };
 

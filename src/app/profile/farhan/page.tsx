@@ -6,7 +6,6 @@ const farhan: Member = {
   id: "farhan",
   name: "Muhammad Farhan Fahreza",
   image: "",
-  bio: "Penggemar kegiatan outdoor dan selalu sedia peralatan camping.",
   socials: { instagram: "@farhan" },
 };
 

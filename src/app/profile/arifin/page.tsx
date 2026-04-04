@@ -6,7 +6,6 @@ const arifin: Member = {
   id: "arifin",
   name: "MuhammadArifin",
   image: "",
-  bio: "Tukang ngide buat masuk ke rute yang nyeleneh.",
   socials: { instagram: "@arifin" },
 };
 

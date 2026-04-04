@@ -6,7 +6,6 @@ const navin: Member = {
   id: "navin",
   name: "Fadhlurohman Fatikh Navintino",
   image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/navin_j6quol.jpg",
-  bio: "Paling ngga sabaran kalau di jalan tol.",
   socials: { instagram: "@napvn" },
 };
 

@@ -6,7 +6,6 @@ const dzaki: Member = {
   id: "dzaki",
   name: "MuhammadDzaki Abiyyu",
   image: "",
-  bio: "Paling tenang saat nyasar atau ada masalah di jalan.",
   socials: { instagram: "@dzaki" },
 };
 

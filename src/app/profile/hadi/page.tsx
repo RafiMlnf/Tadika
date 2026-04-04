@@ -6,7 +6,6 @@ const hadi: Member = {
   id: "hadi",
   name: "Hadi Permana",
   image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1773612288/hadi_jnl2xo.jpg",
-  bio: "Sering menanyakan jadwal namun sering kali juga on-time.",
   socials: { instagram: "@hadi" },
 };
 

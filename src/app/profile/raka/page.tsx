@@ -6,7 +6,6 @@ const raka: Member = {
   id: "raka",
   name: "Muhammad Rizky Raka Pratama",
   image: "",
-  bio: "Supir andalan saat perjalanan jauh. Sangat hafal rute.",
   socials: { instagram: "@raka" },
 };
 

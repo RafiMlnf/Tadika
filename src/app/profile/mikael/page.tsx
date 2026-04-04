@@ -6,7 +6,6 @@ const mikael: Member = {
   id: "mikael",
   name: "Mikael Rivaldo",
   image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1773612289/mikel_siwync.jpg",
-  bio: "Depan PC mulu.",
   socials: { instagram: "@mikael" },
 };
 

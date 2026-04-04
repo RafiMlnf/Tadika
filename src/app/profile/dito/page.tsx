@@ -6,7 +6,6 @@ const dito: Member = {
   id: "dito",
   name: "Rizjky Dito Ridwansyah",
   image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1773603339/dito_ckdfsm.png",
-  bio: "Wingstop.",
   favSong: {
     audioSrc: "/audio/tacwm.mp3",
     title: "Take a Chance with Me",

@@ -322,10 +322,6 @@ export default function MemberDetail({ member }: { member: Member }) {
                 )}
               </div>
 
-              <div className="profile-bio">
-                <p>{member.bio}</p>
-              </div>
-
               {/* Spotify Favorite Song */}
               {member.spotifyTrackId && (
                 <div className="spotify-section" style={{ marginBottom: 40 }}>

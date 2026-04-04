@@ -6,7 +6,6 @@ const zidan: Member = {
   id: "zidan",
   name: "Maulana Zidan Perdana",
   image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1773596569/Gemini_Generated_Image_rjh99jrjh99jrjh9_xxsuhc.png",
-  bio: "...",
   favSong: {
     audioSrc: "/audio/otuan.mp3",
     title: "o`Tuan",
