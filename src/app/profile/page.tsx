@@ -85,18 +85,6 @@ export default function ProfilePage() {
                 </div>
                 <div className="profile-card-content">
                   <h3 className="font-display" style={{ fontSize: '1.5rem', marginBottom: 4 }}>{member.name}</h3>
-
-                  <blockquote className="profile-quote">
-                    {member.quote}
-                  </blockquote>
-
-                  <div className="profile-stats-mini" style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', justifyContent: 'center' }}>
-                    {member.traits.map(trait => (
-                      <span key={trait} className="font-mono" style={{ padding: '4px 8px', background: 'var(--color-bg)', border: '1px solid var(--color-border)', borderRadius: '12px', fontSize: '0.7rem' }}>
-                        {trait}
-                      </span>
-                    ))}
-                  </div>
                 </div>
               </Link>
             ))}

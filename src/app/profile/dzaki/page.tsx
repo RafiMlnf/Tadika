@@ -5,10 +5,8 @@ import { Member } from "@/data/members";
 const dzaki: Member = {
   id: "dzaki",
   name: "MuhammadDzaki Abiyyu",
-  quote: '"Santuy aja lah."',
   image: "",
   bio: "Paling tenang saat nyasar atau ada masalah di jalan.",
-  traits: ["Santuy", "Orang Sabar"],
   socials: { instagram: "@dzaki" },
 };
 

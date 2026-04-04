@@ -5,10 +5,8 @@ import { Member } from "@/data/members";
 const daffa: Member = {
   id: "daffa",
   name: "Muhammad Daffa Maulana Arrasyid",
-  quote: '"Cari WiFi di mana nih?"',
   image: "",
   bio: "Selalu butuh sinyal dan koneksi, tukang sebar hotspot.",
-  traits: ["Dewa Sinyal", "Penyelamat Kuota"],
   socials: { instagram: "@daffa" },
 };
 

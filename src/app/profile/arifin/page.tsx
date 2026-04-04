@@ -5,10 +5,8 @@ import { Member } from "@/data/members";
 const arifin: Member = {
   id: "arifin",
   name: "MuhammadArifin",
-  quote: '"Gampang itu mah."',
   image: "",
   bio: "Tukang ngide buat masuk ke rute yang nyeleneh.",
-  traits: ["Tukang Ngide", "Jalur Alternatif"],
   socials: { instagram: "@arifin" },
 };
 

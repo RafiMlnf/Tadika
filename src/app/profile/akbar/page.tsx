@@ -5,10 +5,8 @@ import { Member } from "@/data/members";
 const akbar: Member = {
   id: "akbar",
   name: "Nurul Akbar",
-  quote: '"Udah pesan tiket blm?"',
   image: "",
   bio: "Urusan logistik tiket dan penginapan, Akbar yang handle.",
-  traits: ["Menteri Keuangan", "PIC Tiket"],
   socials: { instagram: "@akbar" },
 };
 

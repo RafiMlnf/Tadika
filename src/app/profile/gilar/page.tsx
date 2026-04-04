@@ -5,10 +5,8 @@ import { Member } from "@/data/members";
 const gilar: Member = {
   id: "gilar",
   name: "Gilar Sumilar",
-  quote: '"Gass terus."',
   image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1773612295/gilar_spcbxx.jpg",
   bio: "Pemberi semangat kalau rombongan sudah mulai capek.",
-  traits: ["Motivator", "Energetik"],
   socials: { instagram: "@gilar" },
 };
 

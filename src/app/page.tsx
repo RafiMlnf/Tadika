@@ -7,21 +7,67 @@ import Scribbles from '@/components/Scribbles';
 import Link from 'next/link';
 import TripSlideshow from '@/components/TripSlideshow';
 
-/* ── Unsplash gallery images (featured masonry) ── */
-const galleryImages = [
-  { src: '/img/pgdn.jpg', alt: 'Pangandaran', h: 360 },
-  { src: 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=400&q=80', alt: 'Ombak biru', h: 240 },
-  { src: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&q=80', alt: 'Gunung salju', h: 320 },
-  { src: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400&q=80', alt: 'Danau tenang', h: 280 },
-  { src: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80', alt: 'Sunrise bukit', h: 340 },
-  { src: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&q=80', alt: 'Co-working space', h: 240 },
-  { src: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=600&q=80', alt: 'Festival malam', h: 300 },
-  { src: 'https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=400&q=80', alt: 'Travel road', h: 260 },
-  { src: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80', alt: 'Pantai tropis', h: 320 },
-  { src: 'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=400&q=80', alt: 'Venice canal', h: 280 },
-  { src: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80', alt: 'Mountain peak', h: 360 },
-  { src: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=400&q=80', alt: 'Camera shot', h: 240 },
+/* ── Berita / Hot Topics ── */
+const newsItems = [
+  {
+    id: 1,
+    category: '🔥 Hot Topic',
+    title: 'Trip Selanjutnya Kemana?',
+    summary: 'Poll resmi sudah dibuka! Pilihan antara Jogja, Malang, atau Bali. Vote sekarang sebelum deadline minggu depan.',
+    date: '2 Apr 2025',
+    isHot: true,
+    emoji: '🗳️',
+    reactions: { fire: 12, heart: 8, laugh: 3 },
+  },
+  {
+    id: 2,
+    category: '📸 Galeri Update',
+    title: 'Foto Lembang Sudah Terupload!',
+    summary: '72 foto + 15 video dari trip Lembang Januari kemarin sudah masuk arsip. Cek galeri sekarang!',
+    date: '28 Mar 2025',
+    isHot: false,
+    emoji: '🏔️',
+    reactions: { fire: 6, heart: 14, laugh: 2 },
+  },
+  {
+    id: 3,
+    category: '🎂 Ulang Tahun',
+    title: 'HBD Hafiz! 🎉',
+    summary: 'Selamat ulang tahun buat Hafiz yang ke-22! Semoga makin sering ikut trip dan makin rajin bayar kas.',
+    date: '25 Mar 2025',
+    isHot: false,
+    emoji: '🎈',
+    reactions: { fire: 4, heart: 18, laugh: 9 },
+  },
+  {
+    id: 4,
+    category: '💰 Kas Update',
+    title: 'Kas Tadika Bulan Ini',
+    summary: 'Reminder: yang belum bayar kas bulan Maret, segera transfer. Saldo saat ini cukup buat 1x makan bareng.',
+    date: '20 Mar 2025',
+    isHot: true,
+    emoji: '💸',
+    reactions: { fire: 2, heart: 1, laugh: 15 },
+  },
+  {
+    id: 5,
+    category: '🏆 Achievement',
+    title: 'Tadika Resmi 3 Tahun!',
+    summary: 'Dari 2022 sampai sekarang masih solid. 12 trips, 1,240+ foto, dan countless memories. Salute! 🫡',
+    date: '15 Mar 2025',
+    isHot: false,
+    emoji: '🎊',
+    reactions: { fire: 20, heart: 22, laugh: 5 },
+  },
 ];
+
+const categoryColors: Record<string, string> = {
+  '🔥 Hot Topic': '#FF7E67',
+  '📸 Galeri Update': '#699CD2',
+  '🎂 Ulang Tahun': '#A084E8',
+  '💰 Kas Update': '#FFD166',
+  '🏆 Achievement': '#6BCB77',
+};
 
 /* ── Trip Wiki data ── */
 const tripWiki = [
@@ -221,31 +267,119 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ═══════════ FEATURED GALLERY (MASONRY) ═══════════ */}
+        {/* ═══════════ BERITA / HOT TOPICS ═══════════ */}
         <section ref={scrollRevealRef} className="reveal-section" style={{ paddingBottom: 80 }}>
           <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 32, flexWrap: 'wrap', gap: 12 }}>
             <div>
-              <h2 className="font-display" style={{ marginTop: 8 }}>Galeri Pilihan</h2>
+              <h2 className="font-display" style={{ marginTop: 8 }}>Ada Apa Nih?</h2>
+              <p className="font-mono" style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', letterSpacing: '0.05em', marginTop: 4 }}>/ BERITA & HOT TOPICS</p>
             </div>
-            <Link href="/gallery" className="font-mono" style={{ fontSize: '0.85rem', letterSpacing: '0.05em', color: 'var(--color-accent)', textDecoration: 'underline', textUnderlineOffset: 4 }}>
-              LIHAT SEMUA →
-            </Link>
           </div>
 
-          <div className="masonry-grid">
-            {galleryImages.map((img, i) => (
+          <div className="news-feed" style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+            {newsItems.map((news, i) => (
               <div
-                key={i}
+                key={news.id}
                 ref={scrollRevealRef}
-                className="reveal-item media-wrapper"
-                style={{ animationDelay: `${i * 0.06}s` }}
+                className="card reveal-item news-card"
+                style={{
+                  animationDelay: `${i * 0.08}s`,
+                  display: 'flex',
+                  gap: 20,
+                  padding: '24px 28px',
+                  alignItems: 'flex-start',
+                  position: 'relative',
+                  overflow: 'visible',
+                }}
               >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  style={{ width: '100%', height: img.h, objectFit: 'cover', display: 'block' }}
-                  loading="lazy"
-                />
+                {/* Hot indicator pulse */}
+                {news.isHot && (
+                  <div style={{
+                    position: 'absolute',
+                    top: -4,
+                    right: -4,
+                    width: 14,
+                    height: 14,
+                    borderRadius: '50%',
+                    background: '#FF7E67',
+                    boxShadow: '0 0 8px rgba(255, 126, 103, 0.6)',
+                    animation: 'pixelBlink 1.5s ease-in-out infinite',
+                  }} />
+                )}
+
+                {/* Emoji Avatar */}
+                <div style={{
+                  width: 52,
+                  height: 52,
+                  minWidth: 52,
+                  borderRadius: 'var(--radius-md)',
+                  background: `${categoryColors[news.category] || 'var(--color-accent)'}18`,
+                  border: `1.5px solid ${categoryColors[news.category] || 'var(--color-accent)'}40`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '1.5rem',
+                }}>
+                  {news.emoji}
+                </div>
+
+                {/* Content */}
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6, flexWrap: 'wrap' }}>
+                    <span
+                      className="font-mono"
+                      style={{
+                        fontSize: '0.7rem',
+                        fontWeight: 600,
+                        letterSpacing: '0.06em',
+                        padding: '3px 10px',
+                        borderRadius: 'var(--radius-pill)',
+                        background: `${categoryColors[news.category] || 'var(--color-accent)'}20`,
+                        color: categoryColors[news.category] || 'var(--color-accent)',
+                        border: `1px solid ${categoryColors[news.category] || 'var(--color-accent)'}35`,
+                      }}
+                    >
+                      {news.category}
+                    </span>
+                    <span className="font-mono" style={{ fontSize: '0.7rem', color: 'var(--color-text-muted)' }}>
+                      {news.date}
+                    </span>
+                  </div>
+
+                  <h3
+                    className="font-display"
+                    style={{
+                      fontSize: '1.15rem',
+                      fontWeight: 700,
+                      margin: '0 0 6px 0',
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {news.title}
+                  </h3>
+
+                  <p style={{
+                    color: 'var(--color-text-secondary)',
+                    fontSize: '0.88rem',
+                    lineHeight: 1.55,
+                    margin: 0,
+                  }}>
+                    {news.summary}
+                  </p>
+
+                  {/* Reactions */}
+                  <div style={{ display: 'flex', gap: 12, marginTop: 12 }}>
+                    <span className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', display: 'flex', alignItems: 'center', gap: 4 }}>
+                      🔥 {news.reactions.fire}
+                    </span>
+                    <span className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', display: 'flex', alignItems: 'center', gap: 4 }}>
+                      ❤️ {news.reactions.heart}
+                    </span>
+                    <span className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', display: 'flex', alignItems: 'center', gap: 4 }}>
+                      😂 {news.reactions.laugh}
+                    </span>
+                  </div>
+                </div>
               </div>
             ))}
           </div>

@@ -5,7 +5,6 @@ import { Member } from "@/data/members";
 const dito: Member = {
   id: "dito",
   name: "Rizjky Dito Ridwansyah",
-  quote: '"Yang penting makan enak."',
   image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1773603339/dito_ckdfsm.png",
   bio: "Wingstop.",
   favSong: {
@@ -15,7 +14,6 @@ const dito: Member = {
     startAt: 253,
     bpm: 94
   },
-  traits: ["Foodie", "Makmur"],
   socials: { instagram: "@dito" },
 };
 

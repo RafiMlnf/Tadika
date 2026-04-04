@@ -5,10 +5,8 @@ import { Member } from "@/data/members";
 const dafa: Member = {
   id: "dafa",
   name: "Dafa Alfiana Erlangga",
-  quote: '"Ayo mampir beli kopi bentar."',
   image: "",
   bio: "Paling sering butuh istirahat ngopi dalam perjalanan.",
-  traits: ["Anak Senja", "Pecandu Kafein"],
   socials: { instagram: "@dafa" },
 };
 

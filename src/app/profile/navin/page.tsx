@@ -5,10 +5,8 @@ import { Member } from "@/data/members";
 const navin: Member = {
   id: "navin",
   name: "Fadhlurohman Fatikh Navintino",
-  quote: "Nyalakan Genderang Perang",
   image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/navin_j6quol.jpg",
   bio: "Paling ngga sabaran kalau di jalan tol.",
-  traits: ["Gay", "Kesayangan Tadika"],
   socials: { instagram: "@napvn" },
 };
 

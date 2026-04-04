@@ -126,6 +126,31 @@
   transform: translateY(0);
 }
 
+/* ── News Card ── */
+.news-card {
+  cursor: default;
+  transition: all var(--transition-base);
+}
+
+.news-card:hover {
+  border-color: var(--color-border);
+  transform: translate(-2px, -2px);
+}
+
+.news-card:nth-child(5n+1):hover { box-shadow: 4px 4px 0px #FF7E67; }
+.news-card:nth-child(5n+2):hover { box-shadow: 4px 4px 0px #699CD2; }
+.news-card:nth-child(5n+3):hover { box-shadow: 4px 4px 0px #A084E8; }
+.news-card:nth-child(5n+4):hover { box-shadow: 4px 4px 0px #FFD166; }
+.news-card:nth-child(5n+5):hover { box-shadow: 4px 4px 0px #6BCB77; }
+
+@media (max-width: 520px) {
+  .news-card {
+    flex-direction: column !important;
+    gap: 12px !important;
+    padding: 20px !important;
+  }
+}
+
 /* ── Scroll Reveal System ── */
 .reveal-section,
 .reveal-item {

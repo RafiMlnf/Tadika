@@ -5,10 +5,8 @@ import { Member } from "@/data/members";
 const raka: Member = {
   id: "raka",
   name: "Muhammad Rizky Raka Pratama",
-  quote: '"Gue yang nyetir aja."',
   image: "",
   bio: "Supir andalan saat perjalanan jauh. Sangat hafal rute.",
-  traits: ["Supir Andalan", "GPS Berjalan"],
   socials: { instagram: "@raka" },
 };
 

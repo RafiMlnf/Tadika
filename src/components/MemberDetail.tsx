@@ -322,8 +322,6 @@ export default function MemberDetail({ member }: { member: Member }) {
                 )}
               </div>
 
-              <blockquote className="profile-quote large">{member.quote}</blockquote>
-
               <div className="profile-bio">
                 <p>{member.bio}</p>
               </div>
@@ -461,26 +459,7 @@ export default function MemberDetail({ member }: { member: Member }) {
                 </div>
               )}
 
-              <div style={{ marginTop: 40, display: "flex", flexWrap: "wrap", gap: "12px" }}>
-                {member.traits.map((trait, index) => (
-                  <span
-                    key={index}
-                    style={{
-                      padding: "8px 16px",
-                      background: "var(--color-border)",
-                      border: "1px solid var(--color-text-muted)",
-                      borderRadius: "20px",
-                      fontSize: "0.85rem",
-                      color: "var(--color-text)",
-                      fontFamily: "monospace",
-                      letterSpacing: "0.05em",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    {trait}
-                  </span>
-                ))}
-              </div>
+
             </div>
           </div>
         </section>

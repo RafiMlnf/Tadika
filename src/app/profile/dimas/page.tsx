@@ -5,10 +5,8 @@ import { Member } from "@/data/members";
 const dimas: Member = {
   id: "dimas",
   name: "Dimas Adi Nugraha",
-  quote: '"Bro, dengerin playlist gue nih."',
   image: "",
   bio: "Tukang setel musik di mobil dan pencair suasana saat trip mulai garing. Selalu bawa speaker Bluetooth ke mana-mana dan stok jokes bapack-bapack.",
-  traits: ["Entertainer", "Jokes Bapack"],
   socials: { instagram: "@dimas.vibes" },
 };
 

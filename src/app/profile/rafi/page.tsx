@@ -5,8 +5,7 @@ import { Member } from "@/data/members";
 const rafi: Member = {
   id: "rafi",
   name: "Rafi Maulana Firdaus",
-  quote: '"Keren bgt jir gw"',
-  image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1773612655/rafi_syykn9.jpg",
+  image: "https://res.cloudinary.com/dpr6rjjun/image/upload/q_auto/f_auto/v1775158090/pagerafi_b3uzhn.png",
   bio: "Orang keren",
   favSong: {
     audioSrc: "/audio/arteri.mp3", // File audio lokal di folder public/audio/
@@ -15,7 +14,6 @@ const rafi: Member = {
     startAt: 232,
     bpm: 182,
   },
-  traits: ["Orang Keren", "IQ 115", "Event Planner"],
   socials: { instagram: "@rafimlnf" },
 };
 

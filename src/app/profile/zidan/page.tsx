@@ -5,7 +5,6 @@ import { Member } from "@/data/members";
 const zidan: Member = {
   id: "zidan",
   name: "Maulana Zidan Perdana",
-  quote: '"Multitalent."',
   image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1773596569/Gemini_Generated_Image_rjh99jrjh99jrjh9_xxsuhc.png",
   bio: "...",
   favSong: {
@@ -15,7 +14,6 @@ const zidan: Member = {
     startAt: 135,
     bpm: 131
   },
-  traits: ["CEO", "Serba Bisa"],
   socials: { instagram: "@..." },
 };
 
