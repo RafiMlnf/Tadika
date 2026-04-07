@@ -13,7 +13,7 @@ const dito: Member = {
     startAt: 253,
     bpm: 94
   },
-  socials: { instagram: "@dito" },
+  socials: { instagram: "@rizjkydito2003" },
   bio: "...",
 };
 

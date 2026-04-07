@@ -4,9 +4,9 @@ import { Member } from "@/data/members";
 // ====== DATA DZAKI — Edit di sini aja! ======
 const dzaki: Member = {
   id: "dzaki",
-  name: "MuhammadDzaki Abiyyu",
+  name: "Muhammad Dzaki Abiyyu",
   image: "",
-  socials: { instagram: "@dzaki" },
+  socials: { instagram: "@ccythnz" },
   bio: "...",
 };
 

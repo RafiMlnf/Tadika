@@ -6,7 +6,7 @@ const gilar: Member = {
   id: "gilar",
   name: "Gilar Sumilar",
   image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1773612295/gilar_spcbxx.jpg",
-  socials: { instagram: "@gilar" },
+  socials: { instagram: "@glrsfdamm" },
   bio: "...",
 };
 

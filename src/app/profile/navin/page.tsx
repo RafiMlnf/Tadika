@@ -8,7 +8,7 @@ const navin: Member = {
   image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1775524923/IMG_2974_yxvsap.jpg",
   imageOffsetY: "70%",
   imageScale: 1.7,
-  socials: { instagram: "@napvn" },
+  socials: { instagram: "@navntn" },
   bio: "...",
 };
 

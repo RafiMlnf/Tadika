@@ -4,9 +4,9 @@ import { Member } from "@/data/members";
 // ====== DATA ARIFIN — Edit di sini aja! ======
 const arifin: Member = {
   id: "arifin",
-  name: "MuhammadArifin",
+  name: "Muhammad Arifin",
   image: "",
-  socials: { instagram: "@arifin" },
+  socials: { instagram: "@marifiin.s" },
   bio: "...",
 };
 

@@ -6,7 +6,7 @@ const daffa: Member = {
   id: "daffa",
   name: "Muhammad Daffa Maulana Arrasyid",
   image: "",
-  socials: { instagram: "@daffa" },
+  socials: { instagram: "@nullable_human" },
   bio: "...",
 };
 

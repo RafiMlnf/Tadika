@@ -7,7 +7,7 @@ const hafiz: Member = {
   name: "Ahmad Hapizhudin",
   image: "https://res.cloudinary.com/dpr6rjjun/image/upload/f_auto,q_auto/v1773515971/hafiz_qnczjq.heic",
   imageScale: 1.7,
-  socials: { instagram: "@hafiz" },
+  socials: { instagram: "@hafizkariem" },
   bio: "...",
   favSong: {
     audioSrc: "/audio/nina.mp3",

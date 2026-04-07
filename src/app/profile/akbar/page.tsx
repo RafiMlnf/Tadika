@@ -6,7 +6,7 @@ const akbar: Member = {
   id: "akbar",
   name: "Nurul Akbar",
   image: "",
-  socials: { instagram: "@akbar" },
+  socials: { instagram: "@akbrsk_" },
   bio: "...",
 };
 

@@ -8,7 +8,7 @@ const ricky: Member = {
   image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/ricky_c8uiry.jpg",
   imageScale: 1.4,
   imageOffsetY: "90%",
-  socials: { instagram: "@ricky" },
+  socials: { instagram: "@rcky.as" },
   bio: "...",
 };
 

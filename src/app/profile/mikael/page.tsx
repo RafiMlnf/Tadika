@@ -8,7 +8,7 @@ const mikael: Member = {
   image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1775524923/IMG_3008_mf9go5.jpg",
   imageOffsetY: "50%",
   imageScale: 1.7,
-  socials: { instagram: "@mikael" },
+  socials: { instagram: "@mikaelrivaldo" },
   bio: "...",
 };
 

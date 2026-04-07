@@ -13,7 +13,7 @@ const zidan: Member = {
     startAt: 135,
     bpm: 131
   },
-  socials: { instagram: "@..." },
+  socials: { instagram: "@mz_per" },
   bio: "...",
 };
 

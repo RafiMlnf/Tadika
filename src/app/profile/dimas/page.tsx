@@ -6,7 +6,7 @@ const dimas: Member = {
   id: "dimas",
   name: "Dimas Adi Nugraha",
   image: "",
-  socials: { instagram: "@dimas.vibes" },
+  socials: { instagram: "@fvckngrh" },
   bio: "...",
 };
 
