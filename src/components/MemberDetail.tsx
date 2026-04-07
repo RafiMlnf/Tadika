@@ -295,54 +295,50 @@ export default function MemberDetail({ member }: { member: Member }) {
             </div>
 
             <div className="profile-detail-info">
-              <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 32 }}>
-                <h1 className="font-display" style={{ fontSize: "3rem", margin: 0 }}>
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 12, marginBottom: 32 }}>
+                <h1 className="font-display" style={{ fontSize: "3rem", margin: 0, lineHeight: 1.1 }}>
                   {member.name}
                 </h1>
-                {member.socials.instagram && (
-                  <a
-                    href={`https://instagram.com/${member.socials.instagram.replace("@", "")}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="social-icon-link"
-                    aria-label={`Instagram ${member.socials.instagram}`}
-                    title={member.socials.instagram}
-                  >
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" strokeWidth="1.8" />
-                      <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="1.8" />
-                      <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
-                    </svg>
-                  </a>
-                )}
-                {member.socials.twitter && (
-                  <a
-                    href={`https://twitter.com/${member.socials.twitter.replace("@", "")}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="social-icon-link"
-                    aria-label={`Twitter ${member.socials.twitter}`}
-                    title={member.socials.twitter}
-                  >
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                    </svg>
-                  </a>
+                {(member.socials.instagram || member.socials.twitter) && (
+                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                    {member.socials.instagram && (
+                      <a
+                        href={`https://instagram.com/${member.socials.instagram.replace("@", "")}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="social-icon-link"
+                        aria-label={`Instagram ${member.socials.instagram}`}
+                        title={member.socials.instagram}
+                      >
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" strokeWidth="1.8" />
+                          <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="1.8" />
+                          <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
+                        </svg>
+                      </a>
+                    )}
+                    {member.socials.twitter && (
+                      <a
+                        href={`https://twitter.com/${member.socials.twitter.replace("@", "")}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="social-icon-link"
+                        aria-label={`Twitter ${member.socials.twitter}`}
+                        title={member.socials.twitter}
+                      >
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                      </a>
+                    )}
+                  </div>
                 )}
               </div>
 
               {/* Spotify Favorite Song */}
               {member.spotifyTrackId && (
                 <div className="spotify-section" style={{ marginBottom: 40 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-                    <span
-                      className="font-mono"
-                      style={{ fontSize: "0.85rem", color: "var(--color-text-muted)", letterSpacing: "0.05em" }}
-                    >
-                      LAGU FAVORIT
-                    </span>
-                  </div>
-                  <div className="spotify-embed-wrapper card" style={{ borderRadius: 12, overflow: "hidden" }}>
+                  <div className="spotify-embed-wrapper card" style={{ borderRadius: 16, overflow: "hidden", padding: 0 }}>
                     <iframe
                       src={`https://open.spotify.com/embed/track/${member.spotifyTrackId}?utm_source=generator&theme=0`}
                       width="100%"
@@ -350,7 +346,7 @@ export default function MemberDetail({ member }: { member: Member }) {
                       frameBorder="0"
                       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                       loading="lazy"
-                      style={{ borderRadius: 12, border: "none" }}
+                      style={{ borderRadius: 16, border: "none" }}
                     />
                   </div>
                 </div>
@@ -359,107 +355,98 @@ export default function MemberDetail({ member }: { member: Member }) {
               {/* Local Audio Player */}
               {member.favSong && (
                 <div className="yt-audio-section" style={{ marginBottom: 40 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-                    <span
-                      className="font-mono"
-                      style={{ fontSize: "0.85rem", color: "var(--color-text-muted)", letterSpacing: "0.05em" }}
-                    >
-                      LAGU FAVORIT
-                    </span>
-                  </div>
-
                   {/* Hidden native audio element */}
                   <audio ref={audioRef} src={member.favSong.audioSrc} preload="metadata" crossOrigin="anonymous" />
 
                   {/* Clean Minimal Audio Player */}
-                  <div className="yt-audio-player" style={{ padding: 0, overflow: "hidden" }}>
-                    <div
+                  <div className="yt-audio-player card" style={{ 
+                    padding: "16px 20px", 
+                    borderRadius: 16, 
+                    display: "flex", 
+                    alignItems: "center", 
+                    gap: "16px",
+                    background: "var(--color-surface)",
+                    border: "1px solid var(--color-border-light)"
+                  }}>
+                    {/* Play / Pause */}
+                    <button
+                      className="yt-play-btn"
+                      aria-label={isPlaying ? "Pause" : "Play"}
+                      onClick={togglePlay}
                       style={{
+                        width: 48,
+                        height: 48,
+                        borderRadius: "50%",
+                        background: "var(--color-accent)",
+                        border: "none",
+                        color: "var(--color-bg)",
                         display: "flex",
                         alignItems: "center",
-                        gap: "12px",
-                        width: "100%",
+                        justifyContent: "center",
+                        cursor: "pointer",
+                        flexShrink: 0,
+                        transition: "transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease, box-shadow 0.2s ease",
+                        boxShadow: isPlaying ? "0 0 15px var(--color-accent)" : "0 4px 10px rgba(0,0,0,0.1)",
+                        transform: isPlaying ? "scale(0.95)" : "scale(1)",
+                      }}
+                      onMouseEnter={(e) => { if(!isPlaying) e.currentTarget.style.transform = 'scale(1.05)' }}
+                      onMouseLeave={(e) => { if(!isPlaying) e.currentTarget.style.transform = 'scale(1)' }}
+                    >
+                      {isPlaying ? (
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                          <rect x="6" y="5" width="4" height="14" rx="1.5" />
+                          <rect x="14" y="5" width="4" height="14" rx="1.5" />
+                        </svg>
+                      ) : (
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style={{ marginLeft: 3 }}>
+                          <path d="M7 4.5v15L20 12 7 4.5z" />
+                        </svg>
+                      )}
+                    </button>
+
+                    {/* Song Info */}
+                    <div className="yt-song-info" style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                      <div className="yt-song-title font-display" style={{ fontSize: '1.2rem', fontWeight: 600, margin: 0, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", color: "var(--color-text)", lineHeight: 1.2 }}>
+                        {member.favSong.title}
+                      </div>
+                      <div className="yt-song-artist font-mono" style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', marginTop: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                        {member.favSong.artist}
+                      </div>
+                    </div>
+
+                    {/* Reset Button */}
+                    <button
+                      className="yt-reset-btn"
+                      aria-label="Reset"
+                      onClick={handleReset}
+                      style={{
+                        width: 36,
+                        height: 36,
+                        borderRadius: "50%",
+                        background: "var(--color-bg-alt)",
+                        border: "1px solid var(--color-border)",
+                        color: "var(--color-text)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        cursor: "pointer",
+                        flexShrink: 0,
+                        transition: "all 0.2s ease",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = 'var(--color-border)';
+                        e.currentTarget.style.transform = 'rotate(-30deg)';
+                      }}
+                      onMouseLeave={(e) => {
+                         e.currentTarget.style.background = 'var(--color-bg-alt)';
+                         e.currentTarget.style.transform = 'rotate(0deg)';
                       }}
                     >
-                      {/* Play / Pause */}
-                      <button
-                        className="yt-play-btn"
-                        aria-label={isPlaying ? "Pause" : "Play"}
-                        onClick={togglePlay}
-                        style={{
-                          width: 40,
-                          height: 40,
-                          borderRadius: "50%",
-                          background: "var(--color-accent)",
-                          border: "none",
-                          color: "var(--color-bg)",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          cursor: "pointer",
-                          transition: "transform 0.2s ease, opacity 0.2s ease",
-                        }}
-                      >
-                        {isPlaying ? (
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <rect x="6" y="4" width="4" height="16" rx="1" />
-                            <rect x="14" y="4" width="4" height="16" rx="1" />
-                          </svg>
-                        ) : (
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style={{ marginLeft: 3 }}>
-                            <polygon points="6,4 20,12 6,20" />
-                          </svg>
-                        )}
-                      </button>
-
-                      {/* Song Info */}
-                      <div className="yt-song-info" style={{ flex: 1, minWidth: 0 }}>
-                        <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
-                          <span className="yt-song-title font-display" style={{ fontSize: '1.2rem', margin: 0 }}>{member.favSong.title}</span>
-                          <span className="yt-song-artist font-mono" style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)' }}>{member.favSong.artist}</span>
-                        </div>
-                      </div>
-
-                      {/* Reset to startAt */}
-                      <button
-                        className="yt-reset-btn"
-                        aria-label="Reset"
-                        onClick={handleReset}
-                        style={{
-                          width: 28,
-                          height: 28,
-                          borderRadius: "50%",
-                          background: "transparent",
-                          border: "1px solid var(--color-border)",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          cursor: "pointer",
-                          opacity: 0.6,
-                          flexShrink: 0,
-                          transition: "opacity 0.2s ease",
-                        }}
-                        onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
-                        onMouseLeave={(e) => e.currentTarget.style.opacity = '0.6'}
-                      >
-                        <svg width="12" height="12" viewBox="0 0 20 20" fill="none">
-                          <path
-                            d="M10 3v2.5A5.5 5.5 0 1 1 4.5 11"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                          <polyline
-                            points="7 6 10 3 13 6"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </button>
-                    </div>
+                      <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+                        <path d="M10 3v2.5A5.5 5.5 0 1 1 4.5 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        <polyline points="7 6 10 3 13 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </button>
                   </div>
                 </div>
               )}

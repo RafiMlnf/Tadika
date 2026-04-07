@@ -177,7 +177,8 @@ export default function EnsiklopediaPage() {
 
             <h1 className="font-display" style={{ marginBottom: 16 }}>Ensiklopedia Tadika</h1>
             <p style={{ color: 'var(--color-text-secondary)', fontSize: '1.1rem', maxWidth: 600, margin: '0 auto' }}>
-              Semua hal absurd yang butuh lu tau tentang bader-bader ini. Mulai dari kronologi kejadian awal, kelakuan minus, sampe arsip aib terekam jelas di mari.
+              Kehidupan yang tidak ditelaah tidak layak untuk dihidupi.
+              - Socrates
             </p>
           </div>
         </section>
@@ -213,18 +214,18 @@ export default function EnsiklopediaPage() {
                       <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
                     </svg>
                   ),
-                  content: '...',
+                  content: 'Akram',
                 },
                 {
                   chapter: 'II',
                   title: 'Nama "Tadika"',
-                  subtitle: 'Arti di balik nama yang absurd',
+                  subtitle: 'Darimana Nama Tadika?',
                   icon: (
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
                     </svg>
                   ),
-                  content: '...',
+                  content: 'TK Di series Upin & Ipin',
                 },
                 {
                   chapter: 'III',
@@ -239,14 +240,14 @@ export default function EnsiklopediaPage() {
                 },
                 {
                   chapter: 'IV',
-                  title: 'Nilai yang Kita Pegang',
+                  title: 'Prinsip',
                   subtitle: 'Prinsip tanpa perlu ditulis',
                   icon: (
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                     </svg>
                   ),
-                  content: '...',
+                  content: 'Kebersamaan',
                 },
                 {
                   chapter: 'V',
