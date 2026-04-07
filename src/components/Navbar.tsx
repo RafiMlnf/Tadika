@@ -123,7 +123,7 @@ export default function Navbar() {
                 </nav>
 
                 <div className="mobile-menu-footer font-mono">
-                    /TADIKA MEMORIES
+                    /TADIKA ARCHIVES
                 </div>
             </div>
         </>

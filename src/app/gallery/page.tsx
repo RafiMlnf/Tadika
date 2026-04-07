@@ -7,7 +7,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 /* ── Gallery photo data ── */
-const categories = ['Semua', 'Bandung 1', 'Pangandaran', 'Puncak Bogor', 'Gunung Putri', 'Blok M', 'Lembang', 'Throwback', 'Random'];
+const categories = ['Semua', 'Bandung 1', 'Pangandaran', 'Puncak Bogor', 'Gunung Putri', 'Jakarta', 'Lembang', 'Throwback', 'Random'];
 
 const photos: any[] = [];
 
@@ -105,7 +105,7 @@ export default function GalleryPage() {
             if (cat.toLowerCase() === 'throwback') cat = 'Throwback';
             if (cat.toLowerCase() === 'pantai') cat = 'Pangandaran';
             if (cat.toLowerCase() === 'gunung') cat = 'Gunung Putri';
-            if (cat.toLowerCase() === 'kota') cat = 'Blok M';
+            if (cat.toLowerCase() === 'kota') cat = 'Jakarta';
 
             let srcUrl = item.url;
             if (srcUrl.includes('cloudinary.com') && !srcUrl.includes('f_auto')) {

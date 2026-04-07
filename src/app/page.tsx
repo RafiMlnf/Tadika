@@ -69,84 +69,12 @@ const categoryColors: Record<string, string> = {
   '🏆 Achievement': '#6BCB77',
 };
 
-/* ── Trip Wiki data ── */
-const tripWiki = [
-  {
-    title: 'Bandung 1',
-    date: 'Mar 2022',
-    desc: 'Wacana motoran Gedebage gara-gara Dafa ngajak Rafi nge-thrift berujung pecah jadi trip beneran setelah Dzaki tiba-tiba nimbrung H-2.',
-    detail: `suatu hari dikelas, rafi seseorang yang menyedihkan, tiba-tiba dihampiri oleh dafa alfiana. dafa ngajak ngobrol, 
----
-bro said : fi, nge thrift yo ke gedebage bandung motoran
-rafi     : ayo, ajak yang lain juga yo biar ramean
-bro dafa : gas
----
-lalu si keren rafi menyusun dan mengajak yang lain. tapi... setelah semua tersusun, ter-plan rapih, dihari yg panas dikelas, dafa menghampiri.
----
-dafa : fi kayanya gua gabisa (lupa alesan nya apa njir).
-rafi : damn okoklah
----
-rafi kebingungan nyari siapa lagi biar partisipan pas 8 orang, hingga h-2, seseorang yang gapernah disangka, orang yang mungkin tidak bisa dianggap remeh atas kerasnya dunia upb, 
----
-dzaki bilek : gua ikut, bayar berapa
----
-dan tour pertama terjadi, terimakasih dzaki`,
-    img: 'https://images.unsplash.com/photo-1555899434-94d1368aa7af?w=800&q=80',
-    photos: 84,
-  },
-  {
-    title: 'Pangandaran',
-    date: 'Jul 2023',
-    desc: 'Weekend getaway ke pantai selatan yang pecah banget. Ada snorkeling, chilling liat sunset, plus deep talk rill depan api unggun.',
-    detail: `Selang semesteran after bandung 1, ada usulan villa-an lagi tapi ke bogor. cuma partisipan nya kyknya dikit, yaudah geser plan extreme, berbahaya, yang mungkin dapat menyebabkan kematian, bahkan orang manapun mungkin tidak bisa (ymma). pangandaran, usulan konyol yang suprisingly ada yang minat, keren2. dengan keterbatasan anggota yg ikut tapi terjadi meski menantang batas kemampuan mental dan batin rata2 manusia UPB. bretttt baliknya ilang setengah nyawa dan akal sehat.`,
-    img: '/img/pgdn.jpg',
-    photos: 126,
-  },
-  {
-    title: 'Puncak Bogor',
-    date: 'Des 2023',
-    desc: 'Vibing akhir tahun di villa Puncak dengan view yang sick parah.',
-    detail: `kebersamaan cenah, biar ga tadika2 aja, kawan2 pengen adain acara sekelas, dimas, rafi, fajri telah pidato di grup A4 tapi gaada yg jawab, dahlah ujungnya mah tadika2 lagi. tour yg membangun chemistry tadika, emang ada yg masi asing pas di loc, tapi lihatlah sekarang. tour ter-goated.`,
-    img: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&q=80',
-    photos: 67,
-  },
-  {
-    title: 'Gunung Putri',
-    date: 'Apr 2024',
-    desc: 'Camping Sehari.',
-    detail: `dibilang trip bukan, dibilang filler juga bukan soalnya jauh, plan awalnya mau sawarna / goa langir banten, brett ada berita megathrust (siapa yg kaga takut coba diancam tsunami). yaudahlah geser ke gunung2an biar ga kena tsunami, bro ricky nyari2 rekomen tempat camping, nemu tu opsi loji atau gn putri, hasil vote gn putri menang. tour paling murah, ga pusing mikirin biaya, makanya biar rame lagi ngajak bro dimas dan raka, tapi si hafiz hampir gamau soalnya dia udah join satset (gasih, karena gaada ongkos wkwk), tapi terimakasih gita telah membujuk hapis.`,
-    img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80',
-    photos: 89,
-  },
-  {
-    title: 'Blok M',
-    date: 'Agt 2024',
-    desc: 'City stroll vibes Blok M. Mulai dari nge-thrift, café hopping estetik, sampai hunting kuliner malem.',
-    detail: `dadakan njir`,
-    img: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80',
-    photos: 54,
-  },
-  {
-    title: 'Lembang',
-    date: 'Jan 2025',
-    desc: 'One day escape ke Lembang ngadem sambil hunting kuliner lokal yang maknyus.',
-    detail: `tba`,
-    img: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80',
-    photos: 72,
-  },
-];
 
-/* ── Stats ── */
-const stats = [
-  { value: '1,240+', label: 'Foto' },
-  { value: '86', label: 'Video' },
-  { value: '12', label: 'Trips' },
-  { value: '20', label: 'Legenda' },
-];
+
 
 export default function Home() {
   const [pixelCells, setPixelCells] = useState<React.ReactNode[]>([]);
-  const [activeTrip, setActiveTrip] = useState<typeof tripWiki[0] | null>(null);
+
   const [mediaList, setMediaList] = useState<any[]>([]);
 
   useEffect(() => {
@@ -259,10 +187,10 @@ export default function Home() {
         <section style={{ position: 'relative', width: '110vw', left: '50%', right: '50%', marginLeft: '-55vw', marginRight: '-55vw', padding: '16px 0', background: 'var(--color-text)', color: 'var(--color-bg)', transform: 'rotate(-2deg)', marginBottom: 100, zIndex: 10, overflow: 'hidden', borderTop: '2px solid var(--color-border)', borderBottom: '2px solid var(--color-border)' }}>
           <div className="marquee-container font-mono" style={{ display: 'flex', whiteSpace: 'nowrap' }}>
             <div className="marquee-content" style={{ fontSize: '1.1rem', fontWeight: 'bold', letterSpacing: '0.1em' }}>
-              ✦ TADIKA MEMORIES ✦ MEMORIES ✦ 2022-∞ ✦ FRIENDS ✦ JOURNEYS ✦ EST. 2022 ✦ TADIKA MEMORIES ✦ MEMORIES ✦ 2022-∞ ✦ FRIENDS ✦ JOURNEYS ✦ EST. 2022 ✦
+              ✦ TADIKA ✦ ARCHIVES ✦ 2022-∞ ✦ FRIENDS ✦ JOURNEYS ✦ EST. 2022 ✦ TADIKA ✦ ARCHIVES ✦ MEMORIES ✦ 2022-∞ ✦ FRIENDS ✦ JOURNEYS ✦ EST. 2022 ✦
             </div>
             <div className="marquee-content" style={{ fontSize: '1.1rem', fontWeight: 'bold', letterSpacing: '0.1em' }}>
-              ✦ TADIKA MEMORIES ✦ MEMORIES ✦ 2022-∞ ✦ FRIENDS ✦ JOURNEYS ✦ EST. 2022 ✦ TADIKA MEMORIES ✦ MEMORIES ✦ 2022-∞ ✦ FRIENDS ✦ JOURNEYS ✦ EST. 2022 ✦
+              ✦ TADIKA ✦ ARCHIVES ✦ 2022-∞ ✦ FRIENDS ✦ JOURNEYS ✦ EST. 2022 ✦ TADIKA ✦ ARCHIVES ✦ MEMORIES ✦ 2022-∞ ✦ FRIENDS ✦ JOURNEYS ✦ EST. 2022 ✦
             </div>
           </div>
         </section>
@@ -385,48 +313,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ═══════════ STATS SECTION ═══════════ */}
-        <section ref={scrollRevealRef} className="reveal-section" style={{ paddingBottom: 80 }}>
-          <div className="stats-grid">
-            {stats.map((stat, i) => (
-              <div key={i} ref={scrollRevealRef} className="stat-card reveal-item" style={{ animationDelay: `${i * 0.1}s` }}>
-                <span className="stat-value font-display">{stat.value}</span>
-                <span className="stat-label font-mono">{stat.label}</span>
-              </div>
-            ))}
-          </div>
-        </section>
 
-        {/* ═══════════ TRIP WIKI ═══════════ */}
-        <section ref={scrollRevealRef} className="reveal-section" style={{ paddingBottom: 80 }}>
-          <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 32, flexWrap: 'wrap', gap: 12 }}>
-            <div>
-              <h2 className="font-display" style={{ marginTop: 8 }}>Trip Wiki</h2>
-            </div>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 24 }}>
-            {tripWiki.map((trip, i) => (
-              <div key={i} ref={scrollRevealRef} className="card trip-card reveal-item" style={{ animationDelay: `${i * 0.12}s`, cursor: 'pointer' }} onClick={() => setActiveTrip(trip)}>
-                <div className="trip-card-img">
-                  <TripSlideshow
-                    category={trip.title}
-                    fallbackImg={trip.img}
-                    mediaList={mediaList}
-                  />
-                </div>
-                <div className="trip-card-content">
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 2 }}>
-                    <h3 className="font-display" style={{ fontSize: '1.3rem', margin: 0 }}>{trip.title}</h3>
-                    <span className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', marginTop: 6 }}>{trip.photos} foto</span>
-                  </div>
-                  <div className="font-mono" style={{ fontSize: '0.85rem', color: 'var(--color-accent)', marginBottom: 8 }}>{trip.date}</div>
-                  <p style={{ color: 'var(--color-text-secondary)', fontSize: '0.9rem', lineHeight: 1.5 }}>{trip.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
 
         {/* ═══════════ GALERI (scrollable cards) ═══════════ */}
         <section ref={scrollRevealRef} className="reveal-section" style={{ paddingBottom: 80 }}>
@@ -480,14 +367,14 @@ export default function Home() {
               </div>
             </Link>
 
-            {/* 5. Blok M */}
-            <Link href="/gallery/blok-m" className="card reveal-item" ref={scrollRevealRef} style={{ position: 'relative', display: 'flex', flexDirection: 'column', minHeight: 300, minWidth: 300, flex: '0 0 300px', overflow: 'hidden', scrollSnapAlign: 'start' }}>
+            {/* 5. Jakarta */}
+            <Link href="/gallery/jakarta" className="card reveal-item" ref={scrollRevealRef} style={{ position: 'relative', display: 'flex', flexDirection: 'column', minHeight: 300, minWidth: 300, flex: '0 0 300px', overflow: 'hidden', scrollSnapAlign: 'start' }}>
               <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
-                <TripSlideshow category="Blok M" fallbackImg="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80" mediaList={mediaList} />
+                <TripSlideshow category="Jakarta" fallbackImg="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80" mediaList={mediaList} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%)' }} />
               </div>
               <div style={{ padding: 24, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', position: 'relative', zIndex: 1 }}>
-                <h3 className="font-display" style={{ marginBottom: 8, color: '#FFFFFF' }}>Blok M</h3>
+                <h3 className="font-display" style={{ marginBottom: 8, color: '#FFFFFF' }}>Jakarta</h3>
                 <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '0.95rem' }}>62 foto dan video city stroll hangout di kota.</p>
               </div>
             </Link>
@@ -507,67 +394,7 @@ export default function Home() {
         </section>
       </div>
 
-      {/* ═══════════ TRIP WIKI MODAL ═══════════ */}
-      {activeTrip && (
-        <div
-          style={{ position: 'fixed', inset: 0, zIndex: 200, background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(12px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24, animation: 'fadeIn 0.25s ease-out' }}
-          onClick={() => setActiveTrip(null)}
-        >
-          <div
-            style={{ background: 'var(--color-surface)', borderRadius: 'var(--radius-lg)', maxWidth: 600, width: '100%', maxHeight: '90vh', overflow: 'auto', position: 'relative', animation: 'scaleIn 0.35s cubic-bezier(0.16, 1, 0.3, 1)', border: '1.5px solid var(--color-border-light)' }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Close button */}
-            <button
-              onClick={() => setActiveTrip(null)}
-              style={{ position: 'absolute', top: 16, right: 16, zIndex: 10, width: 40, height: 40, borderRadius: '50%', border: '1.5px solid rgba(255,255,255,0.3)', background: 'rgba(0,0,0,0.4)', color: '#fff', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(8px)' }}
-              aria-label="Close"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
 
-            {/* Image */}
-            <div style={{ width: '100%', height: 280, borderRadius: 'var(--radius-lg) var(--radius-lg) 0 0', overflow: 'hidden' }}>
-              <TripSlideshow
-                category={activeTrip.title}
-                fallbackImg={activeTrip.img}
-                mediaList={mediaList}
-              />
-            </div>
-
-            {/* Content */}
-            <div style={{ padding: 32 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, flexWrap: 'wrap', gap: 8 }}>
-                <span className="badge badge-accent font-mono">{activeTrip.date}</span>
-                <span className="font-mono" style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)' }}>{activeTrip.photos} foto</span>
-              </div>
-              <h2 className="font-display" style={{ fontSize: '1.8rem', marginBottom: 12 }}>{activeTrip.title}</h2>
-              <div style={{ color: 'var(--color-text-secondary)', fontSize: '1rem', lineHeight: 1.7 }}>
-                {activeTrip.detail.split('---').map((part, index) => {
-                  const isDialog = index % 2 === 1;
-                  return (
-                    <div key={index} style={{
-                      padding: isDialog ? '12px 16px' : '0',
-                      margin: isDialog ? '16px 0' : '0',
-                      background: isDialog ? 'var(--color-bg-alt)' : 'transparent',
-                      borderTop: isDialog ? '1px dashed var(--color-border)' : 'none',
-                      borderBottom: isDialog ? '1px dashed var(--color-border)' : 'none',
-                      whiteSpace: 'pre-wrap',
-                      fontFamily: isDialog ? 'monospace' : 'inherit',
-                      fontSize: isDialog ? '0.9rem' : '1rem',
-                      color: isDialog ? 'var(--color-text-muted)' : 'var(--color-text-secondary)'
-                    }}>
-                      {part.trim()}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* ═══════════ FOOTER ═══════════ */}
       <Footer />

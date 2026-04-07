@@ -37,7 +37,7 @@ const timelineEvents = [
   { year: '2022', month: 'Agt', event: 'Trip Pangandaran — Fix pantai pertama, gosong ria bareng.', icon: '02' },
   { year: '2023', month: 'Des', event: 'Gathering Puncak Bogor — Akhir tahun sok asik pamer kedinginan.', icon: '03' },
   { year: '2024', month: 'Apr', event: 'Gunung Putri — First camping trip, isinya full komplain dan mengeluh.', icon: '04' },
-  { year: '2024', month: 'Agt', event: 'Blok M — Anak skena dadakan, ngemper gembel di kota raya.', icon: '05' },
+  { year: '2024', month: 'Agt', event: 'Jakarta — Anak skena dadakan, ngemper gembel di kota raya.', icon: '05' },
   { year: '2025', month: 'Jan', event: 'Lembang — One day trip, isinya numpang makan doang kagak ada ujungnya.', icon: '06' },
 ];
 
@@ -108,10 +108,10 @@ dan tour pertama terjadi, terimakasih dzaki`,
     photos: 89,
   },
   {
-    title: 'Blok M',
+    title: 'Jakarta',
     date: 'Agt 2024',
     tags: ['Skena', 'Nongkrong', 'Thrift'],
-    desc: 'Sok skena muterin Blok M. Rutenya nge-thrift gajelas, mampir cafe overprice ga ngotak, trus kelayapan jajan.',
+    desc: 'Sok skena muterin Jakarta. Rutenya nge-thrift gajelas, mampir cafe overprice ga ngotak, trus kelayapan jajan.',
     detail: `dadakan njir`,
     img: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80',
     photos: 54,

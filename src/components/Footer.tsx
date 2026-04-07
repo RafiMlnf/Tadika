@@ -47,7 +47,7 @@ export default function Footer() {
                         <ul className="footer-links">
                             <li><Link href="/gallery">Pangandaran</Link></li>
                             <li><Link href="/gallery">Gunung Putri</Link></li>
-                            <li><Link href="/gallery">Blok M</Link></li>
+                            <li><Link href="/gallery">Jakarta</Link></li>
                             <li><Link href="/gallery">Random</Link></li>
                         </ul>
                     </div>

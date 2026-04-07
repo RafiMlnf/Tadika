@@ -110,7 +110,7 @@ export default function UploadPage() {
                 <option value="Pangandaran">Pangandaran</option>
                 <option value="Puncak Bogor">Puncak Bogor</option>
                 <option value="Gunung Putri">Gunung Putri</option>
-                <option value="Blok M">Blok M</option>
+                <option value="Jakarta">Jakarta</option>
                 <option value="Lembang">Lembang</option>
                 <option value="Throwback">Throwback</option>
                 <option value="Random">Random</option>
