@@ -1,3 +1,8 @@
+export interface MemberContentBlock {
+  label: string;
+  value: string;
+}
+
 export interface Member {
   id: string;
   name: string;
@@ -13,6 +18,8 @@ export interface Member {
     startAt?: number;
     bpm?: number;
   };
+  bio?: string;
+  extraContent?: MemberContentBlock[];
   socials: {
     instagram?: string;
     twitter?: string;
@@ -23,8 +30,8 @@ export const members: Member[] = [
   {
     id: "hafiz",
     name: "Hafiz",
-    image: "https://res.cloudinary.com/dpr6rjjun/image/upload/f_auto,q_auto/v1773515971/hafiz_qnczjq.heic",
-    imageScale: 1.7,
+    image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1775526240/hafiz_mjvedf.jpg",
+    imageOffsetY: "25%",
     socials: { instagram: "@hafiz" },
   },
   {
@@ -60,8 +67,8 @@ export const members: Member[] = [
     name: "Ricky",
     image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/ricky_c8uiry.jpg",
     imageScale: 1.7,
-    imageOffsetY: "bottom",
-    imageOffsetX: "10px",
+    imageOffsetY: "80%",
+    imageOffsetX: "40%",
     socials: { instagram: "@ricky" },
   },
   {
@@ -99,8 +106,8 @@ export const members: Member[] = [
   {
     id: "raka",
     name: "Raka",
-    image: "https://res.cloudinary.com/dpr6rjjun/image/upload/q_auto/f_auto/v1775156829/raka_bspiqq.jpg",
-    imageOffsetY: "25%",
+    image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1775526825/raka_ywzzpl.jpg",
+    imageOffsetY: "35%",
     socials: { instagram: "@raka" },
   },
   {

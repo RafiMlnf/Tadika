@@ -7,6 +7,7 @@ const akbar: Member = {
   name: "Nurul Akbar",
   image: "",
   socials: { instagram: "@akbar" },
+  bio: "...",
 };
 
 export default function AkbarPage() {

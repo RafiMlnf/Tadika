@@ -14,6 +14,7 @@ const zidan: Member = {
     bpm: 131
   },
   socials: { instagram: "@..." },
+  bio: "...",
 };
 
 export default function ZidanPage() {

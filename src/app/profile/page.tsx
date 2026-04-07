@@ -67,7 +67,7 @@ export default function ProfilePage() {
                         width: '100%',
                         height: '100%',
                         transform: member.imageScale ? `scale(${member.imageScale})` : 'none',
-                        transformOrigin: 'center center'
+                        transformOrigin: `${member.imageOffsetX || 'center'} ${member.imageOffsetY || 'center'}`
                       }}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       priority={i < 4}

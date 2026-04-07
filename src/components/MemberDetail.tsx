@@ -266,7 +266,7 @@ export default function MemberDetail({ member }: { member: Member }) {
                       width: "100%",
                       height: "100%",
                       transform: member.imageScale ? `scale(${member.imageScale})` : "none",
-                      transformOrigin: "center center",
+                      transformOrigin: `${member.imageOffsetX || "center"} ${member.imageOffsetY || "center"}`,
                     }}
                     priority
                   />
@@ -295,19 +295,24 @@ export default function MemberDetail({ member }: { member: Member }) {
             </div>
 
             <div className="profile-detail-info">
-              <h1 className="font-display" style={{ fontSize: "3rem", marginBottom: 8 }}>
-                {member.name}
-              </h1>
-
-              <div className="social-links-inline font-mono" style={{ marginBottom: 32 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 32 }}>
+                <h1 className="font-display" style={{ fontSize: "3rem", margin: 0 }}>
+                  {member.name}
+                </h1>
                 {member.socials.instagram && (
                   <a
                     href={`https://instagram.com/${member.socials.instagram.replace("@", "")}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="social-link"
+                    className="social-icon-link"
+                    aria-label={`Instagram ${member.socials.instagram}`}
+                    title={member.socials.instagram}
                   >
-                    IG: {member.socials.instagram}
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" strokeWidth="1.8" />
+                      <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="1.8" />
+                      <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
+                    </svg>
                   </a>
                 )}
                 {member.socials.twitter && (
@@ -315,9 +320,13 @@ export default function MemberDetail({ member }: { member: Member }) {
                     href={`https://twitter.com/${member.socials.twitter.replace("@", "")}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="social-link"
+                    className="social-icon-link"
+                    aria-label={`Twitter ${member.socials.twitter}`}
+                    title={member.socials.twitter}
                   >
-                    X: {member.socials.twitter}
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
                   </a>
                 )}
               </div>
@@ -458,6 +467,31 @@ export default function MemberDetail({ member }: { member: Member }) {
 
             </div>
           </div>
+
+          {/* About Card */}
+          {(member.bio || (member.extraContent && member.extraContent.length > 0)) && (
+            <div className="member-about-card card" style={{ marginTop: 48 }}>
+              {/* Bio */}
+              {member.bio && (
+                <div className="member-about-bio">
+                  <span className="font-mono member-about-label">TENTANG</span>
+                  <p className="member-about-text">{member.bio}</p>
+                </div>
+              )}
+
+              {/* Extra Content Blocks */}
+              {member.extraContent && member.extraContent.length > 0 && (
+                <div className="member-about-extras">
+                  {member.extraContent.map((block, i) => (
+                    <div key={i} className="member-about-block">
+                      <span className="font-mono member-about-label">{block.label.toUpperCase()}</span>
+                      <p className="member-about-text">{block.value}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
         </section>
       </div>
 

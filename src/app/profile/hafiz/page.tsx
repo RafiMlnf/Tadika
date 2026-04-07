@@ -8,6 +8,14 @@ const hafiz: Member = {
   image: "https://res.cloudinary.com/dpr6rjjun/image/upload/f_auto,q_auto/v1773515971/hafiz_qnczjq.heic",
   imageScale: 1.7,
   socials: { instagram: "@hafiz" },
+  bio: "...",
+  favSong: {
+    audioSrc: "/audio/nina.mp3",
+    title: "Nina",
+    artist: ".Feast",
+    startAt: 227,
+    bpm: 91,
+  },
 };
 
 export default function HafizPage() {

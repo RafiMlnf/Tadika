@@ -7,6 +7,7 @@ const dimas: Member = {
   name: "Dimas Adi Nugraha",
   image: "",
   socials: { instagram: "@dimas.vibes" },
+  bio: "...",
 };
 
 export default function DimasPage() {

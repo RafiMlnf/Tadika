@@ -7,6 +7,7 @@ const daffa: Member = {
   name: "Muhammad Daffa Maulana Arrasyid",
   image: "",
   socials: { instagram: "@daffa" },
+  bio: "...",
 };
 
 export default function DaffaPage() {

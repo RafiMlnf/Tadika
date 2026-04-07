@@ -14,6 +14,7 @@ const rafi: Member = {
     bpm: 182,
   },
   socials: { instagram: "@rafimlnf" },
+  bio: "...",
 };
 
 export default function RafiPage() {

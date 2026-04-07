@@ -14,6 +14,7 @@ const dito: Member = {
     bpm: 94
   },
   socials: { instagram: "@dito" },
+  bio: "...",
 };
 
 export default function DitoPage() {

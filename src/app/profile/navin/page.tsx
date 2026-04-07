@@ -5,8 +5,11 @@ import { Member } from "@/data/members";
 const navin: Member = {
   id: "navin",
   name: "Fadhlurohman Fatikh Navintino",
-  image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1773515972/navin_j6quol.jpg",
+  image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1775524923/IMG_2974_yxvsap.jpg",
+  imageOffsetY: "70%",
+  imageScale: 1.7,
   socials: { instagram: "@napvn" },
+  bio: "...",
 };
 
 export default function NavinPage() {

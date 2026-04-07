@@ -7,6 +7,7 @@ const gilar: Member = {
   name: "Gilar Sumilar",
   image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1773612295/gilar_spcbxx.jpg",
   socials: { instagram: "@gilar" },
+  bio: "...",
 };
 
 export default function GilarPage() {

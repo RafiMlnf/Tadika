@@ -7,6 +7,7 @@ const raka: Member = {
   name: "Muhammad Rizky Raka Pratama",
   image: "",
   socials: { instagram: "@raka" },
+  bio: "...",
 };
 
 export default function RakaPage() {

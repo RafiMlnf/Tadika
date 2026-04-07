@@ -7,6 +7,7 @@ const dafa: Member = {
   name: "Dafa Alfiana Erlangga",
   image: "",
   socials: { instagram: "@dafa" },
+  bio: "...",
 };
 
 export default function DafaPage() {

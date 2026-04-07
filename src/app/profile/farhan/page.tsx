@@ -7,6 +7,7 @@ const farhan: Member = {
   name: "Muhammad Farhan Fahreza",
   image: "",
   socials: { instagram: "@farhan" },
+  bio: "...",
 };
 
 export default function FarhanPage() {

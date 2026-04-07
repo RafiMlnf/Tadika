@@ -7,6 +7,7 @@ const arifin: Member = {
   name: "MuhammadArifin",
   image: "",
   socials: { instagram: "@arifin" },
+  bio: "...",
 };
 
 export default function ArifinPage() {

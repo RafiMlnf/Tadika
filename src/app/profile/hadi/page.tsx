@@ -5,8 +5,10 @@ import { Member } from "@/data/members";
 const hadi: Member = {
   id: "hadi",
   name: "Hadi Permana",
-  image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1773612288/hadi_jnl2xo.jpg",
+  image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1775527026/hadi_gxuofm.jpg",
+  imageScale: 1.5,
   socials: { instagram: "@hadi" },
+  bio: "...",
 };
 
 export default function HadiPage() {

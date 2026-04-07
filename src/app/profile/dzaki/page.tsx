@@ -7,6 +7,7 @@ const dzaki: Member = {
   name: "MuhammadDzaki Abiyyu",
   image: "",
   socials: { instagram: "@dzaki" },
+  bio: "...",
 };
 
 export default function DzakiPage() {
