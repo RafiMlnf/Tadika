@@ -7,11 +7,11 @@ const rafi: Member = {
   name: "Rafi Maulana Firdaus",
   image: "https://res.cloudinary.com/dpr6rjjun/image/upload/q_auto/f_auto/v1775158090/pagerafi_b3uzhn.png",
   favSong: {
-    audioSrc: "/audio/arteri.mp3", // File audio lokal di folder public/audio/
-    title: "Arteri",
-    artist: ".Feast",
-    startAt: 232,
-    bpm: 182,
+    audioSrc: "/audio/nope.mp3", // File audio lokal di folder public/audio/
+    title: "nope your too late i already died",
+    artist: "wifiskeleton",
+    startAt: 44,
+    bpm: 122,
   },
   socials: { instagram: "@rafimlnf" },
   bio: "...",
