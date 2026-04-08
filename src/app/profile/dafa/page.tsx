@@ -5,7 +5,9 @@ import { Member } from "@/data/members";
 const dafa: Member = {
   id: "dafa",
   name: "Dafa Alfiana Erlangga",
-  image: "",
+  image: "https://res.cloudinary.com/dpr6rjjun/image/upload/q_auto/f_auto/v1775654968/dafa_tl2eds.png",
+  imageScale: 1.1,
+  imageOffsetY: "1%",
   favSong: {
     audioSrc: "/audio/iwitw.mp3",
     title: "I Want It That Way",

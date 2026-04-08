@@ -120,7 +120,7 @@ export const members: Member[] = [
   {
     id: "dafa",
     name: "Dafa",
-    image: "",
+    image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1775654768/dafa_igwof5.jpg",
     socials: { instagram: "@dafa" },
   },
   {
@@ -141,5 +141,23 @@ export const members: Member[] = [
     image: "https://res.cloudinary.com/dpr6rjjun/image/upload/v1773596569/Gemini_Generated_Image_rjh99jrjh99jrjh9_xxsuhc.png",
     imageOffsetY: "25%",
     socials: { instagram: "@..." },
+  },
+  {
+    id: "shofwan",
+    name: "Shofwan",
+    image: "",
+    socials: { instagram: "@shofwan" },
+  },
+  {
+    id: "diska",
+    name: "Diska",
+    image: "",
+    socials: { instagram: "@diska" },
+  },
+  {
+    id: "yuda",
+    name: "Yuda",
+    image: "",
+    socials: { instagram: "@yuda" },
   },
 ];
