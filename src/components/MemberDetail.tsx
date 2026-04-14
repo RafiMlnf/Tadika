@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback, useEffect } from "react";
-import Link from "next/link";
+
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -9,6 +9,7 @@ import { Member } from "@/data/members";
 
 export default function MemberDetail({ member }: { member: Member }) {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement>(null);
   const audioCtxRef = useRef<AudioContext | null>(null);
@@ -238,12 +239,6 @@ export default function MemberDetail({ member }: { member: Member }) {
       <Navbar />
 
       <div className="section-container" style={{ position: "relative", zIndex: 1, paddingBottom: 100 }}>
-        {/* Back Link */}
-        <section style={{ paddingTop: 40, paddingBottom: 20 }}>
-          <Link href="/profile" className="font-mono text-muted back-link">
-            ← BALIK KE LIST MEMBER
-          </Link>
-        </section>
 
         {/* Member Info */}
         <section className="profile-detail">
@@ -352,106 +347,6 @@ export default function MemberDetail({ member }: { member: Member }) {
                 </div>
               )}
 
-              {/* Local Audio Player */}
-              {member.favSong && (
-                <div className="yt-audio-section" style={{ marginBottom: 40 }}>
-                  {/* Hidden native audio element */}
-                  <audio ref={audioRef} src={member.favSong.audioSrc} preload="metadata" crossOrigin="anonymous" />
-
-                  {/* Clean Minimal Audio Player */}
-                  <div className="yt-audio-player card" style={{ 
-                    padding: "16px 20px", 
-                    borderRadius: 16, 
-                    display: "flex", 
-                    alignItems: "center", 
-                    gap: "16px",
-                    background: "var(--color-surface)",
-                    border: "1px solid var(--color-border-light)"
-                  }}>
-                    {/* Play / Pause */}
-                    <button
-                      className="yt-play-btn"
-                      aria-label={isPlaying ? "Pause" : "Play"}
-                      onClick={togglePlay}
-                      style={{
-                        width: 48,
-                        height: 48,
-                        borderRadius: "50%",
-                        background: "var(--color-accent)",
-                        border: "none",
-                        color: "var(--color-bg)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        cursor: "pointer",
-                        flexShrink: 0,
-                        transition: "transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease, box-shadow 0.2s ease",
-                        boxShadow: isPlaying ? "0 0 15px var(--color-accent)" : "0 4px 10px rgba(0,0,0,0.1)",
-                        transform: isPlaying ? "scale(0.95)" : "scale(1)",
-                      }}
-                      onMouseEnter={(e) => { if(!isPlaying) e.currentTarget.style.transform = 'scale(1.05)' }}
-                      onMouseLeave={(e) => { if(!isPlaying) e.currentTarget.style.transform = 'scale(1)' }}
-                    >
-                      {isPlaying ? (
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                          <rect x="6" y="5" width="4" height="14" rx="1.5" />
-                          <rect x="14" y="5" width="4" height="14" rx="1.5" />
-                        </svg>
-                      ) : (
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style={{ marginLeft: 3 }}>
-                          <path d="M7 4.5v15L20 12 7 4.5z" />
-                        </svg>
-                      )}
-                    </button>
-
-                    {/* Song Info */}
-                    <div className="yt-song-info" style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                      <div className="yt-song-title font-display" style={{ fontSize: '1.2rem', fontWeight: 600, margin: 0, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", color: "var(--color-text)", lineHeight: 1.2 }}>
-                        {member.favSong.title}
-                      </div>
-                      <div className="yt-song-artist font-mono" style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', marginTop: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                        {member.favSong.artist}
-                      </div>
-                    </div>
-
-                    {/* Reset Button */}
-                    <button
-                      className="yt-reset-btn"
-                      aria-label="Reset"
-                      onClick={handleReset}
-                      style={{
-                        width: 36,
-                        height: 36,
-                        borderRadius: "50%",
-                        background: "var(--color-bg-alt)",
-                        border: "1px solid var(--color-border)",
-                        color: "var(--color-text)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        cursor: "pointer",
-                        flexShrink: 0,
-                        transition: "all 0.2s ease",
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'var(--color-border)';
-                        e.currentTarget.style.transform = 'rotate(-30deg)';
-                      }}
-                      onMouseLeave={(e) => {
-                         e.currentTarget.style.background = 'var(--color-bg-alt)';
-                         e.currentTarget.style.transform = 'rotate(0deg)';
-                      }}
-                    >
-                      <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
-                        <path d="M10 3v2.5A5.5 5.5 0 1 1 4.5 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        <polyline points="7 6 10 3 13 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              )}
-
-
             </div>
           </div>
 
@@ -481,6 +376,76 @@ export default function MemberDetail({ member }: { member: Member }) {
           )}
         </section>
       </div>
+
+      {/* ── Floating Music Player Popup — Fixed bottom-right ── */}
+      {member.favSong && (
+        <>
+          <audio ref={audioRef} src={member.favSong.audioSrc} preload="metadata" crossOrigin="anonymous" />
+
+          <div className={`music-popup${isPlaying ? " music-popup--playing" : ""}${isMinimized ? " music-popup--minimized" : ""}`}>
+            {/* Top row: label + actions */}
+            <div className="music-popup__header" style={{ justifyContent: "flex-end" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                <button
+                  className="music-popup__reset-btn"
+                  aria-label="Reset"
+                  onClick={handleReset}
+                >
+                  <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+                    <path d="M10 3v2.5A5.5 5.5 0 1 1 4.5 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <polyline points="7 6 10 3 13 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+                <button
+                  className="music-popup__minimize-btn"
+                  aria-label={isMinimized ? "Expand player" : "Minimize player"}
+                  onClick={() => setIsMinimized(!isMinimized)}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points={isMinimized ? "18 15 12 9 6 15" : "6 9 12 15 18 9"} />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            {/* Collapsible body */}
+            <div className="music-popup__body">
+              {/* Song info */}
+              <div className="music-popup__info">
+                <div className="music-popup__title font-display">
+                  {member.favSong.title}
+                </div>
+                <div className="music-popup__artist font-mono">
+                  {member.favSong.artist}
+                </div>
+              </div>
+
+              {/* EQ bars animation */}
+              <div className={`music-popup__eq${isPlaying ? " music-popup__eq--active" : ""}`}>
+                <span /><span /><span /><span /><span />
+              </div>
+
+              {/* Play / Pause button */}
+              <button
+                className="music-popup__play-btn"
+                aria-label={isPlaying ? "Pause" : "Play"}
+                onClick={togglePlay}
+              >
+                {isPlaying ? (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="6" y="4" width="4" height="16" rx="1.5" />
+                    <rect x="14" y="4" width="4" height="16" rx="1.5" />
+                  </svg>
+                ) : (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style={{ marginLeft: 2 }}>
+                    <path d="M7 4.5v15L20 12 7 4.5z" />
+                  </svg>
+                )}
+              </button>
+            </div>
+          </div>
+        </>
+      )}
 
       <Footer />
     </div>

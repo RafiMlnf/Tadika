@@ -29,7 +29,7 @@
   background: var(--color-surface);
   color: var(--color-text);
   border-color: var(--color-text);
-  transform: translate(-4px, -4px);
+  transform: translate(-4px, -4px) rotate(-3deg) skewX(-1deg);
 }
 
 .nav-pill:nth-child(5n+1):hover { box-shadow: 6px 6px 0px #FF7E67; }
