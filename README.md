@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Tadika</h1>
+  <h1>Tadika On Progress</h1>
   <p><em>Website eksklusif untuk menyimpan dan mengorganisir ribuan kenangan, foto, video, serta cerita perjalanan sirkel.</em></p>
 
   ![Next.js](https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js&logoColor=white)
