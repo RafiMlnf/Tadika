@@ -11,7 +11,7 @@ const rafi: Member = {
     title: "nope your too late i already died",
     artist: "wifiskeleton",
     startAt: 44,
-    bpm: 122,
+    bpm: 120,
   },
   socials: { instagram: "@rafimlnf" },
   bio: "...",
